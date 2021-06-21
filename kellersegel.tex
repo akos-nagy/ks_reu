@@ -1,0 +1,165 @@
+\documentclass[reqno,12pt]{amsart}
+
+%%%%%%%%%% Packages %%%%%%%%%%
+
+\usepackage{amsmath,amssymb,mathtools,verbatim,bbm}%,kpfonts}
+\usepackage[widespace,upright]{fourier}
+\usepackage[backrefs]{amsrefs}
+\usepackage[protrusion=true]{microtype}
+\usepackage[english]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage[pdfusetitle,colorlinks,pagebackref,hypertexnames=false,bookmarks=false]{hyperref}
+\numberwithin{equation}{section}						% must call it before cleveref
+\usepackage[nameinlink,noabbrev]{cleveref}
+\expandafter\def\csname ver@etex.sty\endcsname{3000/12/31}
+\let\globcount\newcount
+\usepackage{autonum}									% must call after cleveref
+
+%%%%%%%%%% Left/Right and eqref fixes %%%%%%%%%%
+
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
+\makeatletter
+\renewcommand*{\eqref}[1]{\hyperref[{#1}]{\textup{\tagform@{\ref*{#1}}}}}		% eqref now links parentheses as well
+\makeatother
+
+\newcommand{\creflastconjunction}{, and\nobreakspace}		% Oxford comma in cleveref
+
+%%%%%%%%%% Theorems/numbering %%%%%%%%%%
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{Mtheorem}{Main Theorem}
+\newtheorem*{acknowledgment}{Acknowledgment}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{hypoth}[theorem]{Hypothesis}
+\crefname{theorem}{Theorem}{Theorems}						% label for Theorems
+\creflabelformat{theorem}{#2{#1}#3}							% label format for 'theorem'
+\crefname{Mtheorem}{Main Theorem}{Main Theorems}			% label for the Main Theorems
+\creflabelformat{Mtheorem}{#2{#1}#3}						% label format for 'Mtheorem'
+\crefname{lemma}{Lemma}{Lemmata}							% label for Lemmata
+\creflabelformat{lemma}{#2{#1}#3}							% label format for 'lemma'
+\crefname{corollary}{Corollary}{Corollaries}				% label for Corollaries
+\creflabelformat{corollary}{#2{#1}#3}						% label format for 'corollary'
+\crefname{proposition}{Proposition}{Propositions}			% label for Propositions
+\creflabelformat{proposition}{#2{#1}#3}						% label format for 'proposition'
+\crefname{ineq}{inequality}{inequalities}					% label for inequalities
+\creflabelformat{ineq}{#2{\upshape(#1)}#3}					% label format for 'ineq'
+\crefname{cond}{condition}{conditions}						% label for conditions
+\creflabelformat{cond}{#2{\upshape(#1)}#3}					% label format for 'cond'
+\crefname{hypoth}{Hypothesis}{Hypotheses}					% label for Hypotheses
+\creflabelformat{hypoth}{#2{#1}#3}							% label format for 'hypoth'
+\crefname{definition}{Definition}{Definitions}						% label for Definitions
+\creflabelformat{def}{#2{#1}#3}								% label format for 'def'
+\crefname{appsec}{Appendix}{Appendices}
+
+%%%%%%%%%% Blackboard %%%%%%%%%%
+
+\def\id{\mathbbm{1}}
+\def\cx{\mathbb{C}}
+\def\rl{\mathbb{R}}
+\def\N{\mathbb{N}}
+\def\P{\mathbb{P}}
+\def\Z{\mathbb{Z}}
+
+%%%%%%%%%% CalligraPhics %%%%%%%%%%
+
+\def\cA{\mathcal{A}}
+\def\cB{\mathcal{B}}
+\def\cC{\mathcal{C}}
+\def\cD{\mathcal{D}}
+\def\cE{\mathcal{E}}
+\def\cF{\mathcal{F}}
+\def\cG{\mathcal{G}}
+\def\cH{\mathcal{H}}
+\def\cI{\mathcal{I}}
+\def\cJ{\mathcal{J}}
+\def\cK{\mathcal{K}}
+\def\cL{\mathcal{L}}
+\def\cM{\mathcal{M}}
+\def\cN{\mathcal{N}}
+\def\cO{\mathcal{O}}
+\def\cP{\mathcal{P}}
+\def\cQ{\mathcal{Q}}
+\def\cR{\mathcal{R}}
+\def\cS{\mathcal{S}}
+\def\cT{\mathcal{T}}
+\def\cU{\mathcal{U}}
+\def\cV{\mathcal{V}}
+\def\cW{\mathcal{W}}
+\def\cZ{\mathcal{Z}}
+
+%%%%%%%%%% Romans %%%%%%%%%%
+
+\def\Ar{\mathrm{Area}}
+\def\dist{\mathrm{dist}}
+\def\Im{\mathrm{Im}}
+\def\image{\mathrm{image}}
+\def\Re{\mathrm{Re}}
+\def\sign{\textsc{sign}}
+\def\Spec{\mathrm{Spec}}
+\def\supp{\mathrm{supp}}
+\def\tr{\mathrm{tr}}
+
+%%%%%%%%%% Other symbols (paper specific) %%%%%%%%%%
+
+\def\del{\partial}
+\def\delbar{\overline{\partial}}
+\def\rd{\operatorname{d\!}{}}
+
+%%%%%%%%%% Other formatting %%%%%%%%%%
+
+\title{The Keller--Segel equation on the torus}
+\date{\today}
+\keywords{Keller--Segel equations}
+%\subjclass[2010]{}
+
+%\author{}
+%\address[]{}
+%\urladdr{\href{}{}}
+%\email{\href{}{}}
+
+\calclayout
+\pagestyle{plain}
+\clubpenalty = 10000
+\widowpenalty = 10000
+\setlength{\footskip}{20pt}
+
+\hypersetup{
+	unicode			= true,
+	pdffitwindow	= true,
+	pdftoolbar		= false,
+	pdfmenubar		= false,
+	pdfstartview	= {FitH},
+	hypertexnames	= false,
+	colorlinks		= true,
+	linkcolor		= black,
+	citecolor		= black,
+	filecolor		= black,
+	urlcolor		= blue
+}
+
+\begin{document}
+
+\maketitle
+
+We can use this file for our notes. You can compile with xelatex or pdflatex.
+
+(You can also use the shell script I wrote for compilation, compile.sh, but it's probably an overkill at this stage. Also I did not make a documentation for it.)
+
+%===============================================================================
+%\bibliography{references}
+%===============================================================================
+
+\end{document}
