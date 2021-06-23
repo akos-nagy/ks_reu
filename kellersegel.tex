@@ -3,7 +3,7 @@
 %%%%%%%%%% Packages %%%%%%%%%%
 
 \usepackage{amsmath,amssymb,mathtools,verbatim,bbm}%,kpfonts}
-\usepackage[widespace,upright]{fourier}
+%\usepackage[widespace,upright]{fourier}
 \usepackage[backrefs]{amsrefs}
 \usepackage[protrusion=true]{microtype}
 \usepackage[english]{babel}
@@ -154,9 +154,25 @@
 
 \maketitle
 
-We can use this file for our notes. You can compile with xelatex or pdflatex.
+%We can use this file for our notes. You can compile with xelatex or pdflatex.
 
-(You can also use the shell script I wrote for compilation, compile.sh, but it's probably an overkill at this stage. Also I did not make a documentation for it.)
+%(You can also use the shell script I wrote for compilation, compile.sh, but it's probably an overkill at this stage. Also I did not make a documentation for it.)
+
+Consider a distribution of germs $\rho(t,x_1,x_2)=\rho(t,\underline x)$ and food $c(t,x_1,x_2)=c(t,\underline x)$.  We impose, as a model of nature,
+\[\left\{\begin{array}l\partial_t\rho=\partial_a^2\rho-\partial_a(\rho\partial_ac),\\\partial_a^2c=-\rho.\end{array}\right.\]
+When $a$ appears as an index, summation over $a\in\{x_1,x_2\}$ is implied.  We take the fourier transform of $\rho$: with $f_{k_1,k_2}(x_1,x_2)=f_{\underline k}(\underline x)=e^{2\pi i\underline k\cdot\underline x}$ eigenfunctions,%!ad!why don't we use Einstein summation for fourier transforms?!ad!
+\[\rho(t,\underline x)=\sum_{\underline k\in\mathbb Z^2}R_{\underline k}(t)f_{\underline k}(\underline x).\]
+Now we may explicitly write $c$ to satisfy the shorter equation:
+\[c(t,\underline x)=\sum_{\substack{\underline k\in\mathbb Z^2\\\underline k\neq\underline0}}\frac1{4\pi^2|\underline k|^2}R_{\underline k}(t)f_{\underline k}(\underline x).\]%!ad!perhaps some clarification about $c$ not being unique!ad!
+Let's write the remaining equation more explicitly:
+\[\sum_{\underline k\in\mathbb Z^2}\dot{R_{\underline k}}f_{\underline k}=-\sum_{\underline k\in\mathbb Z^2}4\pi^2|\underline k|^2R_{\underline k}f_{\underline k}-\partial_a\left(\sum_{\underline k\in\mathbb Z^2}\sum_{\substack{\underline l\in\mathbb Z^2\\\underline l\neq\underline0}}\frac{R_{\underline k}f_{\underline k}}{4\pi^2|\underline l|^2}2\pi ik_aR_{\underline l}f_{\underline l}\right).\]
+Next we perform the outer derivative and rearrange:
+\[\sum_{\underline k\in\mathbb Z^2}\dot{R_{\underline k}}f_{\underline k}+\sum_{\underline k\in\mathbb Z^2}4\pi^2|\underline k|^2R_{\underline k}f_{\underline k}=-i^2\sum_{\underline k\in\mathbb Z^2}\sum_{\substack{\underline l\in\mathbb Z^2\\\underline l\neq\underline0}}\frac{R_{\underline k}R_{\underline l}f_{\underline k+\underline l}}{|\underline l|^2}k_a(k_a+l_a).\]
+We substitute $k\mapsto k-l$ in the right sum so that
+\[\sum_{\underline k\in\mathbb Z^2}\left(\dot{R_{\underline k}}+4\pi^2|\underline k|^2R_{\underline k}\right)f_{\underline k}=\sum_{\underline k\in\mathbb Z^2}\sum_{\substack{\underline l\in\mathbb Z^2\\\underline l\neq\underline0}}\frac{R_{\underline k-\underline l}R_{\underline l}}{|\underline l|^2}\underline k\cdot(\underline k-\underline l)f_{\underline k}.\]
+We use the fact, as we have implicitly already used to assert the form of $\rho$, that $L^2(\pi)$ is a vector space with basis $\{f_k\}$ to assert that the coefficients are equal
+\[\forall\underline k\quad\dot{R_{\underline k}}+4\pi^2|\underline k|^2R_{\underline k}=\sum_{\substack{\underline l\in\mathbb Z^2\\\underline l\neq\underline0}}\frac{R_{\underline k-\underline l}R_{\underline l}}{|\underline l|^2}\underline k\cdot(\underline k-\underline l).\]
+It remains to be shown that there are such $R_{\underline k}$ which satisfy the equations.
 
 %===============================================================================
 %\bibliography{references}
