@@ -1,0 +1,176 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5667,        168]
+NotebookOptionsPosition[      5219,        153]
+NotebookOutlinePosition[      5619,        169]
+CellTagsIndexPosition[      5576,        166]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Rsymbol", "[", 
+   RowBox[{"k1_", ",", "k2_"}], "]"}], ":=", 
+  RowBox[{"Symbol", "[", 
+   RowBox[{"StringReplace", "[", 
+    RowBox[{
+     RowBox[{"\"\<R\>\"", "<>", 
+      RowBox[{"ToString", "@", "k1"}], "<>", "\"\<y\>\"", "<>", 
+      RowBox[{"ToString", "@", "k2"}]}], ",", 
+     RowBox[{"\"\<-\>\"", "\[Rule]", "\"\<n\>\""}]}], "]"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Rremove", "[", "howmanynonzerok_Integer", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Remove", "@@", 
+    RowBox[{"Flatten", "@", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Rsymbol", "[", 
+        RowBox[{"k1", ",", "k2"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"k1", ",", 
+         RowBox[{"-", "howmanynonzerok"}], ",", "howmanynonzerok"}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"k2", ",", 
+         RowBox[{"-", "howmanynonzerok"}], ",", "howmanynonzerok"}], "}"}]}], 
+      "]"}]}]}], "/;", 
+   RowBox[{"howmanynonzerok", ">", "0"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Requation", "[", 
+   RowBox[{"k1_Integer", ",", "k2_Integer", ",", "howmanynonzerok_Integer"}], 
+   "]"}], ":=", 
+  RowBox[{
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"R", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Rsymbol", "[", "##", "]"}], "[", "t", "]"}], "&"}]}], "}"}],
+      ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"R", "[", 
+          RowBox[{"k1", ",", "k2"}], "]"}], ",", "t"}], "]"}], "+", 
+       RowBox[{"4", 
+        SuperscriptBox["\[Pi]", "2"], 
+        RowBox[{"(", 
+         RowBox[{
+          SuperscriptBox["k1", "2"], "+", 
+          SuperscriptBox["k2", "2"]}], ")"}], 
+        RowBox[{"R", "[", 
+         RowBox[{"k1", ",", "k2"}], "]"}]}]}], "\[Equal]", 
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"l1", "\[Equal]", "l2", "\[Equal]", "0"}], ",", "0", ",", 
+          RowBox[{
+           FractionBox[
+            RowBox[{
+             RowBox[{"R", "[", 
+              RowBox[{
+               RowBox[{"k1", "-", "l1"}], ",", 
+               RowBox[{"k2", "-", "l2"}]}], "]"}], 
+             RowBox[{"R", "[", 
+              RowBox[{"l1", ",", "l2"}], "]"}]}], 
+            RowBox[{
+             SuperscriptBox["l1", "2"], "+", 
+             SuperscriptBox["l2", "2"]}]], 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"k1", 
+              RowBox[{"(", 
+               RowBox[{"k1", "-", "l1"}], ")"}]}], "+", 
+             RowBox[{"k2", 
+              RowBox[{"(", 
+               RowBox[{"k2", "-", "l2"}], ")"}]}]}], ")"}]}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"l1", ",", 
+          RowBox[{"-", "howmanynonzerok"}], ",", "howmanynonzerok"}], "}"}], 
+        ",", 
+        RowBox[{"{", 
+         RowBox[{"l2", ",", 
+          RowBox[{"-", "howmanynonzerok"}], ",", "howmanynonzerok"}], "}"}]}],
+        "]"}]}]}], "]"}], "/;", 
+   RowBox[{"howmanynonzerok", ">", "0"}]}]}]}], "Input",
+ CellChangeTimes->{{3.833452538208578*^9, 3.833452588425703*^9}, {
+  3.833452646383466*^9, 3.8334529902362957`*^9}, {3.833453021251562*^9, 
+  3.8334530859993267`*^9}, {3.833453216957808*^9, 3.833453383941465*^9}, {
+  3.833453423796877*^9, 3.8334535145237503`*^9}, {3.8334536115900383`*^9, 
+  3.833453662975471*^9}},
+ CellLabel->"In[68]:=",ExpressionUUID->"baffd37d-585b-495b-ad6e-91fad36735e2"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"n", "=", "1"}], "}"}], ",", 
+   RowBox[{"DSolve", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "@", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Requation", "[", 
+         RowBox[{"k1", ",", "k2", ",", "n"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k1", ",", 
+          RowBox[{"-", "n"}], ",", "n"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k2", ",", 
+          RowBox[{"-", "n"}], ",", "n"}], "}"}]}], "]"}]}], ",", 
+     RowBox[{"Flatten", "@", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Rsymbol", "[", 
+          RowBox[{"k1", ",", "k2"}], "]"}], "[", "t", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k1", ",", 
+          RowBox[{"-", "n"}], ",", "n"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k2", ",", 
+          RowBox[{"-", "n"}], ",", "n"}], "}"}]}], "]"}]}], ",", "t"}], 
+    "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.833453777774281*^9, 3.833453869540086*^9}, {
+  3.833453938447329*^9, 3.833453972305833*^9}},
+ CellLabel->"In[82]:=",ExpressionUUID->"17a39d9e-dd06-457e-804a-a064d688a1f3"]
+},
+WindowSize->{606., 407.25},
+WindowMargins->{{-10.5, Automatic}, {Automatic, 71.25}},
+FrontEndVersion->"12.1 for Linux x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"bde6fa36-26e2-428f-8c89-bba24fc62732"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3469, 96, 400, "Input",ExpressionUUID->"baffd37d-585b-495b-ad6e-91fad36735e2"],
+Cell[4030, 118, 1185, 33, 92, "Input",ExpressionUUID->"17a39d9e-dd06-457e-804a-a064d688a1f3"]
+}
+]
+*)
+
