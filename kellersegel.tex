@@ -156,26 +156,7 @@
 
 
 
-\section{\LaTeX comments}
-
-A few ``best practices'' that might be worth adopting (in no particular order):
-
-\begin{itemize}
-	\item Cleaner code: Try adding tabs and empty line (between paragraphs) for better readability. Nothing I ever write is good on the first try, so being able to conveniently go back and re-read the whole thing is a life-saver. :)\\
-	I also like adding some amount of spaces in the the math environment, so when I have to change something later in a huge formula it's easier.
-
-	\item Don't use $\textbackslash [ \ldots \textbackslash ]$ (or \$\$ for that matter), but the \emph{equation} environment. Better formatting, easier to add labels later, etc. You can make a macro for it if you think it's too long to type it out.
-
-	\item Instead of arrays with an equation, use the \emph{align} environment.
-
-	\item Less important: integrals and sums look nicer in equation mode (but not in text) if you use $\textbackslash \mathrm{limits}$.
-
-	\item To make what I mean clearer, I've implemented the changes in your code. Let me know what you think!
-\end{itemize}
-
 \section{The Keller--Segel equation on the torus}
-
-{\color{red} I've found a mistake in the equation that probably I've made too in the meeting. Fixed it below, please double-check!}
 
 Consider a distribution of germs $\rho (t, x_1, x_2) = \rho (t, \underline{x})$ and food $c (t, x_1, x_2) = c (t, \underline{x})$. We impose, as a model of nature,
 \begin{subequations}
@@ -184,32 +165,32 @@ Consider a distribution of germs $\rho (t, x_1, x_2) = \rho (t, \underline{x})$ 
 	\partial_a^2 c	&= - \rho. \label{eq:KS_2}
 \end{align}
 \end{subequations}
-When $a$ appears as an index, summation over $a \in \{ 1, 2 \}$ is implied. We take the Fourier transform of $\rho$: For all $\underline{k} \in \mathbb{Z}^2$, let $f_{\underline{k}} (\underline{x}) = e^{2 \pi i \underline{k} \cdot \underline{x}}$. Note that $f_{\underline{k}}$ is an eigenfunction of the Laplacian; i. e. $\partial_a^2 f_{\underline{k}} = 4 \pi^2 |k^2| f_{\underline{k}}$. Also note that $\partial_a f_{\underline{k}} = 2 \pi i k_a f_{\underline{k}}$.
+When $a$ appears as an index, summation over $a \in \{ 1, 2 \}$ is implied. We take the Fourier transform of $\rho$: For all $\underline{k} \in \Z^2$, let $f_{\underline{k}} (\underline{x}) = e^{2 \pi i \underline{k} \cdot \underline{x}}$. Note that $f_{\underline{k}}$ is an eigenfunction of the Laplacian; i.e. $\partial_a^2 f_{\underline{k}} = -4 \pi^2 |k|^2 f_{\underline{k}}$. Also note that $\partial_a f_{\underline{k}} = 2 \pi i k_a f_{\underline{k}}$.%toremove: i.e. vs i. e.?
 
-Now let us write
+Let us write
 \begin{equation}
-	\rho (t, \underline{x}) = \sum\limits_{\underline{k} \in \mathbb{Z}^2} R_{\underline{k}} (t) f_{\underline{k}} (\underline{x}). \label{eq:Fourier}
+	\rho (t, \underline{x}) = \sum\limits_{\underline{k} \in \Z^2} R_{\underline{k}} (t) f_{\underline{k}} (\underline{x}). \label{eq:Fourier}
 \end{equation}
 Now any solution, $c$, to \cref{eq:KS_2} has the form
 \begin{equation}
-	c (t, \underline{x}) = c_0 + \sum\limits_{\substack{\underline{l} \in \mathbb{Z}^2 \\ \underline{l} \neq \underline{0}}} \frac{1}{4 \pi^2 |\underline{l}|^2} R_{\underline{l}} (t) f_{\underline{l}} (\underline{x}),
+	c (t, \underline{x}) = c_0 + \sum\limits_{\substack{\underline{l} \in \Z^2 \\ \underline{l} \neq \underline{0}}} \frac{1}{4 \pi^2 |\underline{l}|^2} R_{\underline{l}} (t) f_{\underline{l}} (\underline{x}),
 \end{equation}
-where $c_0 \in \mathbb{C}$ can be chosen arbitrarily.
+where $c_0 \in \cx$ can be chosen arbitrarily.
 
 Using \cref{eq:KS_1,eq:Fourier} we get that
 \begin{align}
-	\sum\limits_{\underline{k} \in \mathbb{Z}^2} \dot{R}_{\underline{k}} f_{\underline{k}} + \sum\limits_{\underline{k} \in \mathbb{Z}^2} 4 \pi^2 |\underline{k}|^2 R_{\underline{k}} f_{\underline{k}}	&= - \partial_a \left( \sum\limits_{\underline{m} \in \mathbb{Z}^2} R_{\underline{m}} f_{\underline{m}} \sum\limits_{\substack{\underline{l} \in \mathbb{Z}^2 \\ \underline{l} \neq \underline{0}}} \frac{R_{\underline{l}}}{4 \pi^2 |\underline{l}|^2} \partial_a f_{\underline{l}} \right) \\
-									&= - \sum\limits_{\substack{\underline{l}, \underline{m} \in \mathbb{Z}^2 \\ \underline{l} \neq \underline{0}}} \frac{2 \pi i l_a}{4 \pi^2 |\underline{l}|^2} R_{\underline{l}} R_{\underline{m}} \partial_a \left( f_{\underline{l}} f_{\underline{m}} \right).
+	\sum\limits_{\underline{k} \in \Z^2} \dot{R}_{\underline{k}} f_{\underline{k}} + \sum\limits_{\underline{k} \in \Z^2} 4 \pi^2 |\underline{k}|^2 R_{\underline{k}} f_{\underline{k}}	&= - \partial_a \left( \sum\limits_{\underline{m} \in \Z^2} R_{\underline{m}} f_{\underline{m}} \sum\limits_{\substack{\underline{l} \in \Z^2 \\ \underline{l} \neq \underline{0}}} \frac{R_{\underline{l}}}{4 \pi^2 |\underline{l}|^2} \partial_a f_{\underline{l}} \right) \\
+									&= - \sum\limits_{\substack{\underline{l}, \underline{m} \in \Z^2 \\ \underline{l} \neq \underline{0}}} \frac{2 \pi i l_a}{4 \pi^2 |\underline{l}|^2} R_{\underline{l}} R_{\underline{m}} \partial_a \left( f_{\underline{l}} f_{\underline{m}} \right).
 \end{align}
 Using that $f_{\underline{m}} f_{\underline{l}} = f_{\underline{m} + \underline{l}}$ and substituting $\underline{k} = \underline{l} + \underline{m}$ on the right-hand side, we get
 \begin{align}
-	\sum\limits_{\underline{k} \in \mathbb{Z}^2} \dot{R}_{\underline{k}} f_{\underline{k}} + \sum\limits_{\underline{k} \in \mathbb{Z}^2} 4 \pi^2 |\underline{k}|^2 R_{\underline{k}} f_{\underline{k}}	&= - i^2 \sum\limits_{\substack{\underline{l}, \underline{m} \in \mathbb{Z}^2 \\ \underline{l} \neq \underline{0}}} \frac{l_a (l_a + m_a)}{|\underline{l}|^2} R_{\underline{l}} R_{\underline{m}} f_{\underline{l} + \underline{m}} \\
-									&= \sum\limits_{\substack{\underline{l}, \underline{m} \in \mathbb{Z}^2 \\ \underline{l} \neq \underline{0}}} \frac{\underline{l} \cdot (\underline{l} + \underline{m})}{|\underline{l}|^2} R_{\underline{l}} R_{\underline{m}} f_{\underline{l} + \underline{m}} \\
-									&= \sum\limits_{\substack{\underline{l}, \underline{m} \in \mathbb{Z}^2 \\ \underline{l} \neq \underline{0}}} \frac{\underline{k} \cdot \underline{l}}{|\underline{l}|^2} R_{\underline{l}} R_{\underline{k} - \underline{l}} f_{\underline{k}}.
+	\sum\limits_{\underline{k} \in \Z^2} \dot{R}_{\underline{k}} f_{\underline{k}} + \sum\limits_{\underline{k} \in \Z^2} 4 \pi^2 |\underline{k}|^2 R_{\underline{k}} f_{\underline{k}}	&= - i^2 \sum\limits_{\substack{\underline{l}, \underline{m} \in \Z^2 \\ \underline{l} \neq \underline{0}}} \frac{l_a (l_a + m_a)}{|\underline{l}|^2} R_{\underline{l}} R_{\underline{m}} f_{\underline{l} + \underline{m}} \\
+									&= \sum\limits_{\substack{\underline{l}, \underline{m} \in \Z^2 \\ \underline{l} \neq \underline{0}}} \frac{\underline{l} \cdot (\underline{l} + \underline{m})}{|\underline{l}|^2} R_{\underline{l}} R_{\underline{m}} f_{\underline{l} + \underline{m}} \\
+									&= \sum\limits_{\substack{\underline{l}, \underline{k} \in \Z^2 \\ \underline{l} \neq \underline{0}}} \frac{\underline{l} \cdot \underline{k}}{|\underline{l}|^2} R_{\underline{l}} R_{\underline{k} - \underline{l}} f_{\underline{k}}.
 \end{align}
-After pairing with $f_{\underline{k}}$ for any $\underline{k} \in \mathbb{Z}^2 - \{ \underline{0} \}$ and separating out $R_{\underline{k}}$ terms, we get
+After pairing with $f_{\underline{k}}$ for any $\underline{k} \in \Z^2 - \{ \underline{0} \}$ and separating out $R_{\underline{k}}$ terms, we get
 \begin{equation}
-	\dot{R}_{\underline{k}} = \left( R_0 - 4 \pi^2 |\underline{k}|^2 \right) R_{\underline{k}} + \sum\limits_{\substack{\underline{l} \in \mathbb{Z}^2 \\ \underline{l} \neq \underline{0}, \underline{k}}} \frac{\underline{k} \cdot \underline{l}}{|\underline{l}|^2} R_{\underline{k} - \underline{l}} R_{\underline{l}}.
+	\dot{R}_{\underline{k}} = \left( R_0 - 4 \pi^2 |\underline{k}|^2 \right) R_{\underline{k}} + \sum\limits_{\substack{\underline{l} \in \Z^2 \\ \underline{l} \neq \underline{0}, \underline{k}}} \frac{\underline{l} \cdot \underline{k}}{|\underline{l}|^2} R_{\underline{l}} R_{\underline{k} - \underline{l}}.
 \end{equation}
 
 It remains to be shown that there are such $R_{\underline{k}}$ which satisfy the equations.
@@ -233,6 +214,31 @@ For all $n, o, p \in \N$, let
 \begin{remark}
 	Note how the sign of the first term changes depending on whether $R_0 = \int_\Sigma \rho \rd A$ is small or greater than $\lambda_n$! 
 \end{remark}
+
+\section{Banach Business}
+Consider the map $\cK:\{R_{\underline k}\}_{\underline k\in\Z^2}\to C$ ({\color{red} $C$ is something, perhaps $\{R_{\underline k}\}_{\underline k\in\Z^2}$}) defined by
+\begin{equation}
+	\cK(R_{\underline k})=R_{\underline k}(0)+%I forget what this, written as little r_{\underline k}, was supposed to be
+		\int\limits_0^t (R_0-4\pi^2|\underline k|^2)R_{\underline k}(\tau)+\sum\limits_{\substack{\underline{l} \in \Z^2 \\ \underline{l} \neq \underline{0}}}\frac{\underline k\cdot\underline l}{|\underline l|^2}R_{\underline k-\underline l}(\tau)R_{\underline l}(\tau) \rd\tau
+\end{equation}
+Collections of fourier coefficients with $\cK(R)=R$ satisfy \cref{eq:KS_1}.  We seek, therefore, conditions (on $(R_{\underline k})_{\underline k\in\Z^2}$ and $t$) which yield fixed points of $\cK$.  It would be sufficient to bound
+\begin{equation}
+	\lVert\cK(R)-\cK(S)\rVert\leq\theta\lVert R-S\rVert
+\end{equation}
+where $\lVert\cdot\rVert$ is perhaps
+\begin{equation}
+	\sup_{t\in[0,t]} \sum_{\underline k\in\Z^2} |R_k(t)|^2.
+\end{equation}
+and $0\leq\theta<1$ is some constant.  We might begin to consider $\lVert\cK(R)-\cK(S)\rVert=$
+\begin{equation}
+	\left\lVert
+		\int\limits_0^t (R_0-4\pi^2|\underline k|^2) \left(R_{\underline k}(\tau)-S_{\underline k}(\tau)\right) + 
+			\sum\limits_{\substack{\underline{l} \in \Z^2 \\ \underline{l} \neq \underline{0}}}
+			\frac{\underline k\cdot\underline l}{|\underline l|^2} \left(R_{\underline k-\underline l}(\tau)R_{\underline l}(\tau) - S_{\underline k-\underline l}(\tau)S_{\underline l}(\tau)\right)
+		\rd\tau
+	\right\rVert.
+\end{equation}
+It may be fruitful to bound the summands of $\lVert\cdot\rVert$ corresponding to values of $\underline k$, sharply enough that the infinite sum converges.
 
 %===============================================================================
 %\bibliography{references}
