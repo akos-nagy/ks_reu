@@ -240,6 +240,18 @@ and $0\leq\theta<1$ is some constant.  We might begin to consider $\lVert\cK(R)-
 \end{equation}
 It may be fruitful to bound the summands of $\lVert\cdot\rVert$ corresponding to values of $\underline k$, sharply enough that the infinite sum converges.
 
+\section{Bounding Blunders}
+Circuitously, we will show $\sum_{\underline k\in[1,2,\ldots]^2}\frac1{|\underline k|^2}=\infty$.  See that
+\begin{equation}
+	\sum_{n=1}^\infty\frac1{n^2+m^2}=\frac{\coth(\pi m)\pi m-1}{2m^2}.
+\end{equation}
+Now $\coth(x)>\frac1{\pi x}+\frac{\pi x}3-\frac{\pi^3x^3}{45}$ so that
+\begin{align}
+	\sum_{n,m=1}^\infty\frac1{n^2+m^2}=\sum_{m=1}^\infty\frac{\coth(\pi m)\pi m-1}{2m^2}&>\sum_{m=1}^\infty\frac{\left(\frac1{\pi^2m}+\frac{\pi^2m}3-\frac{\pi^6m^3}{45}\right)\pi m-1}{2m^2}\\
+	&=\sum_{m=1}^\infty\frac{1+\frac{\pi^4m^2}3-\frac{\pi^8m^4}{45}-\pi}{2\pi m^2}=\infty.
+\end{align}
+Details may be filled in later.  In the mean time, I will think of other sums.
+
 %===============================================================================
 %\bibliography{references}
 %===============================================================================
