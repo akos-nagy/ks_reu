@@ -252,6 +252,27 @@ Now $\coth(x)>\frac1{\pi x}+\frac{\pi x}3-\frac{\pi^3x^3}{45}$ so that
 \end{align}
 Details may be filled in later.  In the mean time, I will think of other sums.
 
+We have
+\begin{equation}
+	S(p)=\sum_{\substack{n_0=1\\n_1=1}}^\infty\frac1{n_0^{2p}+n_1^{2p}}
+		=\frac{-p+n_1\pi\sum_{i=1}^p(-1)^{\frac{2i-1}{2p}}\cot\left((-1)^{\frac{2i-1}{2p}}n_1\pi\right)}{2pn_1^{2p}}
+\end{equation}
+for $p>0$ an integer.  Consistent with $\zeta$, for odd powers of $n_0$ the sum is more difficult to evaluate.  We expand the cotangents into infinite sums and combine:
+\begin{align}
+		S(p)&=\frac{-p+n_1\pi\sum_{i=1}^p(-1)^{\frac{2i-1}{2p}}\sum_{j=0}^\infty\frac{(-1)^j2^{2j}B_{2j}}{(2j)!}\left((-1)^{\frac{2i-1}{2p}}n_1\pi\right)^{2j-1}}{2pn_1^{2p}}\\
+		&=\frac{-p+n_1\pi\sum_{j=0}^\infty(n_1\pi)^{2j-1}\frac{(-1)^j2^{2j}B_{2j}}{(2j)!}\sum_{i=1}^p(-1)^{\frac{2i-1}{2p}}(-1)^{\frac{(2i-1)(2j-1)}{2p}}}{2pn_1^{2p}}\\
+		&=\frac{-p+n_1\pi\sum_{j=0}^\infty(n_1\pi)^{2j-1}\frac{(-1)^j2^{2j}B_{2j}}{(2j)!}\sum_{i=1}^p(-1)^{\frac{(2i-1)j}p}}{2pn_1^{2p}}.
+\end{align}
+This particular sum of roots of unity is a number theoretic one.  It evaluates to $(-1)^{\frac jp}p$ if $p$ divides $j$, and $0$ if $p$ does not divide $j$.  That is,
+\begin{equation}
+	\sum_{i=1}^p(-1)^{\frac{(2i-1)j}p}=\left\{\begin{array}{cl}(-1)^{\frac jp}p&\text{if }p|j\\0&\text{if }p\nmid j.\end{array}\right.
+\end{equation}
+Then
+\begin{align}
+	S(p)&=\frac{-p+n_1\pi\sum_{k=0}^\infty(n_1\pi)^{2pk-1}\frac{(-1)^{pk}2^{2pk}B_{2pk}}{(2pk)!}(-1)^kp}{2pn_1^{2p}}\\
+	&=\frac{-1+\sum_{k=0}^\infty(n_1\pi)^{2pk}\frac{(-1)^{(p+1)k}2^{2pk}B_{2pk}}{(2pk)!}}{2n_1^{2p}}
+\end{align}
+
 %===============================================================================
 %\bibliography{references}
 %===============================================================================
