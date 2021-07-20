@@ -279,21 +279,24 @@ Then
 \newcommand{\uj}{\underline j}
 
 We have
-\begin{equation*}\dot{R}_{\uk} = \left(R_0-4\pi^2|\uk|^2\right)R_{\uk} + \sum\limits_{\substack{\ul\in\Z^2\\\ul\neq\underline0,\uk}} \frac{\ul\cdot\uk}{|\ul|^2}R_{\ul}R_{\uk-\ul}.\end{equation*}
+\begin{equation}
+	\dot{R}_{\uk} = \left(R_0-4\pi^2|\uk|^2\right)R_{\uk} + \sum\limits_{\substack{\ul\in\Z^2\\\ul\neq\underline0,\uk}} \frac{\ul\cdot\uk}{|\ul|^2}R_{\ul}R_{\uk-\ul}.
+\end{equation}
 Substitute $\uj=\ul-\frac\uk2$.  Then
 
-\begin{equation*}\dot{R}_{\uk} = \left(R_0-4\pi^2|\uk|^2\right)R_{\uk} + \sum\limits_{\substack{\uj\in\Z^2+\frac{\text{mod}(\uk,2)}2\\\uj\neq\pm\frac\uk2}} \frac{(\uj+\frac\uk2)\cdot\uk}{|\uj+\frac\uk2|^2}R_{\frac\uk2+\uj}R_{\frac\uk2-\uj}\end{equation*}
+\begin{equation}
+	\dot{R}_{\uk} = \left(R_0-4\pi^2|\uk|^2\right)R_{\uk} + \sum\limits_{\substack{\uj\in\Z^2+\frac{\text{mod}(\uk,2)}2\\\uj\neq\pm\frac\uk2}} \frac{(\uj+\frac\uk2)\cdot\uk}{|\uj+\frac\uk2|^2}R_{\frac\uk2+\uj}R_{\frac\uk2-\uj}
+\end{equation}
 where $\text{mod}(n)$ is zero for even $n$ and 1 for odd $n$ (that is, $\uj$ and $\frac\uk2$ lie on common integer grids with offsets of $0$ or $\frac12$) (and it is evaluated elementwise).  Let us make each summand have unique $R$ products: we only sum over $j$ with $0\leq\arctan\uj<\pi$:
 
-\begin{equation*}\dot{R}_{\uk} = \left(R_0-4\pi^2|\uk|^2\right)R_{\uk} + \sum\limits_{\substack{0\leq\arctan\ujj<\pi\\\uj\in\Z^2+\frac{\text{mod}(\uk,2)}2\\\uj\neq\pm\frac\uk2}} \left(\frac{(\uj+\frac\uk2)\cdot\uk}{|\uj+\frac\uk2|^2}+\frac{(-\uj+\frac\uk2)\cdot\uk}{|-\uj+\frac\uk2|^2}\right)R_{\frac\uk2+\uj}R_{\frac\uk2-\uj}.\end{equation*}
+\begin{equation}
+	\dot{R}_{\uk} = \left(R_0-4\pi^2|\uk|^2\right)R_{\uk} + \sum\limits_{\substack{0\leq\arctan\uj<\pi\\\uj\in\Z^2+\frac{\text{mod}(\uk,2)}2\\\uj\neq\pm\frac\uk2}} \left(\frac{(\uj+\frac\uk2)\cdot\uk}{|\uj+\frac\uk2|^2}+\frac{(-\uj+\frac\uk2)\cdot\uk}{|-\uj+\frac\uk2|^2}\right)R_{\frac\uk2+\uj}R_{\frac\uk2-\uj}.
+\end{equation}
 We write the coefficients more explicitly:
 
-\begin{multline*}
-  \dot{R}_{\uk} = \left(R_0-4\pi^2|\uk|^2\right)R_{\uk} + \\
-  \sum\limits_{\substack{0\leq\arctan\ujj<\pi\\\uj\in\Z^2+\frac{\text{mod}(\uk,2)}2\\\uj\neq\pm\frac\uk2}}
-  \frac{|\uk|^2\left(|\uj|^2+\frac{|\uk|^2}4\right)-2(\uj\cdot\uk)^2}{\left(|\uj|^2-\uj\cdot\uk+\frac{|\uk|^2}4\right)\left(|\uj|^2+\uj\cdot\uk+\frac{|\uk|^2}4\right)}
-  R_{\frac\uk2+\uj}R_{\frac\uk2-\uj}.
-\end{multline*}
+\begin{equation}
+  \dot{R}_{\uk} = \left(R_0-4\pi^2|\uk|^2\right)R_{\uk} + \sum\limits_{\substack{0\leq\arctan\uj<\pi\\\uj\in\Z^2+\frac{\text{mod}(\uk,2)}2\\\uj\neq\pm\frac\uk2}} \frac{|\uk|^2\left(|\uj|^2+\frac{|\uk|^2}4\right)-2(\uj\cdot\uk)^2}{\left(|\uj|^2-\uj\cdot\uk+\frac{|\uk|^2}4\right)\left(|\uj|^2+\uj\cdot\uk+\frac{|\uk|^2}4\right)} R_{\frac\uk2+\uj}R_{\frac\uk2-\uj}.
+\end{equation}
 
 %===============================================================================
 %\bibliography{references}

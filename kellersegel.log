@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/Arch Linux) (preloaded format=xelatex 2021.5.23)  30 JUN 2021 13:29
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/Arch Linux) (preloaded format=xelatex 2021.5.23)  19 JUL 2021 17:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -974,30 +974,30 @@ LaTeX Font Warning: Font shape `TU/jkp/m/sc' undefined
 (Font)              using `TU/jkp/m/n' instead on input line 159.
 
 
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 167.
+Underfull \vbox (badness 1867) has occurred while \output is active []
 
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 167.
-
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 171.
-
-[1]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+ [1]
+Underfull \vbox (badness 1062) has occurred while \output is active []
 
  [2]
-[3] (./kellersegel.aux)
+Underfull \vbox (badness 2065) has occurred while \output is active []
+
+ [3]
+Underfull \vbox (badness 2042) has occurred while \output is active []
+
+ [4]
+[5] (./kellersegel.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 17356 strings out of 476919
- 267564 string characters out of 5827674
- 632982 words of memory out of 5000000
- 36957 multiletter control sequences out of 15000+600000
- 426087 words of font info for 86 fonts, out of 8000000 for 9000
+ 17359 strings out of 476919
+ 267626 string characters out of 5827674
+ 635982 words of memory out of 5000000
+ 36958 multiletter control sequences out of 15000+600000
+ 426095 words of font info for 87 fonts, out of 8000000 for 9000
  1509 hyphenation exceptions out of 8191
- 98i,16n,102p,502b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 98i,16n,102p,508b,404s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on kellersegel.pdf (3 pages).
+Output written on kellersegel.pdf (5 pages).
