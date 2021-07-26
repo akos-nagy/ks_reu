@@ -150,6 +150,10 @@
 	urlcolor		= blue
 }
 
+\newcommand{\ul}{\underline l}
+\newcommand{\uk}{\underline k}
+\newcommand{\uj}{\underline j}
+
 \begin{document}
 
 \maketitle
@@ -193,7 +197,32 @@ After pairing with $f_{\underline{k}}$ for any $\underline{k} \in \Z^2 - \{ \und
 	\dot{R}_{\underline{k}} = \left( R_0 - 4 \pi^2 |\underline{k}|^2 \right) R_{\underline{k}} + \sum\limits_{\substack{\underline{l} \in \Z^2 \\ \underline{l} \neq \underline{0}, \underline{k}}} \frac{\underline{l} \cdot \underline{k}}{|\underline{l}|^2} R_{\underline{l}} R_{\underline{k} - \underline{l}}.
 \end{equation}
 
-It remains to be shown that there are such $R_{\underline{k}}$ which satisfy the equations.
+Let us consider solutions with analytic $R_{\uk}$.  Taking $R_{\uk}(t)=\sum_{i=0}^\infty R_{\uk,i}t^i$, we have
+
+\begin{equation}
+	\sum_{i=0}^\infty (i+1)R_{\uk,i+1}t^i = \left( R_0 - 4 \pi^2 |\uk|^2 \right) \sum_{i=0}^\infty R_{\uk,i}t^i + \sum\limits_{\substack{\ul \in \Z^2 \\ \ul \neq \underline{0}, \uk}} \frac{\ul \cdot \uk}{|\ul|^2} \sum_{i=0}^\infty\sum_{j=0}^\infty R_{\ul,i} R_{\uk - \ul,j}t^{i+j}.
+\end{equation}
+Equating coefficients of powers of $t$, we obtain
+
+\begin{equation}
+	R_{\uk,i+1} = \frac1{i+1}\left(\left( R_0 - 4 \pi^2 |\uk|^2 \right) R_{\uk,i} + \sum\limits_{\substack{\ul \in \Z^2 \\ \ul \neq \underline{0}, \uk}} \frac{\ul \cdot \uk}{|\ul|^2} \sum_{j=0}^i R_{\ul,j} R_{\uk - \ul,i-j}\right)
+\end{equation}
+which is an explicit recursive formula for the $R_k$'s given intitial coefficients.  This formula may be used for numerical computation; we might have polynomial initial conditions and produce simple series solutions for the $R_k$'s.  Along this line of inquiry, we prove the following theorem about the number of terms in successive truncations: it may at most double.
+
+\theorem{}
+Suppose for fixed $i$ and $D$, $R_{\uk,I}=0$ for $I\leq i$ and $|\uk|_\infty>D$.  Then $R_{\uk,i+1}=0$ for $|\uk|_\infty>2D$.
+\proof
+We have
+\begin{align}
+	(i+1)R_{\uk,i+1} 
+		&= \left( R_0 - 4 \pi^2 |\uk|^2 \right) R_{\uk,i} + \sum\limits_{\substack{\ul \in \Z^2 \\ \ul \neq \underline{0}, \uk}} \frac{\ul \cdot \uk}{|\ul|^2} \sum_{j=0}^i R_{\ul,j} R_{\uk - \ul,i-j}\\
+		&= \left( R_0 - 4 \pi^2 |\uk|^2 \right) R_{\uk,i} + \sum\limits_{\substack{\ul \in \Z^2 \\ |\ul|_\infty\leq D \\ \ul \neq \underline{0}, \uk}} \frac{\ul \cdot \uk}{|\ul|^2} \sum_{j=0}^i R_{\ul,j} R_{\uk - \ul,i-j}.
+\end{align}
+Take $|\uk|_\infty>2D$.  Since $|\ul|_\infty\leq D\leq|\uk|_\infty$, the reverse triangle inequality yields
+\begin{equation}
+	|\uk-\ul|_\infty\geq|\uk|_\infty-|\ul|_\infty>2D-|\ul|_\infty=D+(D-|\ul|_\infty)\geq D+0=D
+\end{equation}
+where the rightmost inequality follows from $|l|_\infty\leq D$.  Then $R_{\uk-\ul,i-j}=0$ for all $i-j$.  Of course $R_{\uk,i}=0$ by assumption, so $(i+1)R_{\uk,i+1}=0$.
 
 \section{The general case}
 
@@ -274,9 +303,6 @@ Then
 \end{align}
 
 \section{Symmetric in $R$ summands}
-\newcommand{\ul}{\underline l}
-\newcommand{\uk}{\underline k}
-\newcommand{\uj}{\underline j}
 
 We have
 \begin{equation}
