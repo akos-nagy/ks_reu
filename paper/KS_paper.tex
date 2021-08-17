@@ -1,0 +1,284 @@
+\documentclass[12pt,reqno]{amsart}
+
+%%%%%%%%%% Packages %%%%%%%%%%
+
+\usepackage{amsmath,amssymb,mathtools,verbatim,enumitem,appendix}%,kpfonts}
+\usepackage[widespace,upright]{fourier}
+\usepackage[backrefs]{amsrefs}
+\usepackage[protrusion=true,babel=true]{microtype}
+\usepackage[english]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage[pdfusetitle,colorlinks,pagebackref,hypertexnames=false,bookmarks=false]{hyperref}
+\numberwithin{equation}{section}							% must call it before cleveref
+\usepackage[nameinlink,noabbrev]{cleveref}
+\expandafter\def\csname ver@etex.sty\endcsname{3000/12/31}	% this fixes a random, irrelevant warning that clever throws
+\let\globcount\newcount
+\usepackage{autonum}										% must call after cleveref
+
+%%%%%%%%%% align break fix %%%%%%%%%%
+
+\allowdisplaybreaks
+
+%%%%%%%%%% Left/Right fix %%%%%%%%%%
+
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
+%%%%%%%%%% eqref fix %%%%%%%%%%
+
+\makeatletter
+\renewcommand*{\eqref}[1]{\hyperref[{#1}]{\textup{\tagform@{\ref*{#1}}}}}
+\makeatother
+
+%%%%%%%%%% oxford comma fix %%%%%%%%%%
+
+\newcommand{\creflastconjunction}{, and\nobreakspace}
+
+%%%%%%%%%% coloneqq fix %%%%%%%%%%
+
+\newcommand{\eqdef}{\mathrel{\vcenter{\baselineskip0.5ex\lineskiplimit0pt\hbox{.}\hbox{.}}}=}
+
+%%%%%%%%%% Theorems/numbering %%%%%%%%%%
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{Mtheorem}{Main Theorem}
+\newtheorem*{acknowledgment}{Acknowledgment}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{hypoth}[theorem]{Hypothesis}
+\crefname{theorem}{Theorem}{Theorems}						% label for Theorems
+\creflabelformat{theorem}{#2{#1}#3}							% label format for 'theorem'
+\crefname{Mtheorem}{Main Theorem}{Main Theorems}			% label for the Main Theorems
+\creflabelformat{Mtheorem}{#2{#1}#3}						% label format for 'Mtheorem'
+\crefname{lemma}{Lemma}{Lemmata}							% label for Lemmata
+\creflabelformat{lemma}{#2{#1}#3}							% label format for 'lemma'
+\crefname{corollary}{Corollary}{Corollaries}				% label for Corollaries
+\creflabelformat{corollary}{#2{#1}#3}						% label format for 'corollary'
+\crefname{proposition}{Proposition}{Propositions}			% label for Propositions
+\creflabelformat{proposition}{#2{#1}#3}						% label format for 'proposition'
+\crefname{ineq}{inequality}{inequalities}					% label for inequalities
+\creflabelformat{ineq}{#2{\upshape(#1)}#3}					% label format for 'ineq'
+\crefname{cond}{condition}{conditions}						% label for conditions
+\creflabelformat{cond}{#2{\upshape(#1)}#3}					% label format for 'cond'
+\crefname{hypoth}{Hypothesis}{Hypotheses}					% label for Hypotheses
+\creflabelformat{hypoth}{#2{#1}#3}							% label format for 'hypoth'
+\crefname{definition}{Definition}{Definitions}						% label for Definitions
+\creflabelformat{def}{#2{#1}#3}								% label format for 'def'
+\crefname{appsec}{Appendix}{Appendices}
+
+%%%%%%%%%% Blackboard %%%%%%%%%%
+
+\def\id{\mathbbm{1}}
+\def\cx{\mathbb{C}}
+\def\rl{\mathbb{R}}
+\def\N{\mathbb{N}}
+\def\P{\mathbb{P}}
+\def\Z{\mathbb{Z}}
+
+%%%%%%%%%% CalligraPhics %%%%%%%%%%
+
+\def\cA{\mathcal{A}}
+\def\cB{\mathcal{B}}
+\def\cC{\mathcal{C}}
+\def\cD{\mathcal{D}}
+\def\cE{\mathcal{E}}
+\def\cF{\mathcal{F}}
+\def\cG{\mathcal{G}}
+\def\cH{\mathcal{H}}
+\def\cI{\mathcal{I}}
+\def\cJ{\mathcal{J}}
+\def\cK{\mathcal{K}}
+\def\cL{\mathcal{L}}
+\def\cM{\mathcal{M}}
+\def\cN{\mathcal{N}}
+\def\cO{\mathcal{O}}
+\def\cP{\mathcal{P}}
+\def\cQ{\mathcal{Q}}
+\def\cR{\mathcal{R}}
+\def\cS{\mathcal{S}}
+\def\cT{\mathcal{T}}
+\def\cU{\mathcal{U}}
+\def\cV{\mathcal{V}}
+\def\cW{\mathcal{W}}
+\def\cZ{\mathcal{Z}}
+
+%%%%%%%%%% Romans %%%%%%%%%%
+
+\def\Ar{\mathrm{Area}}
+\def\dist{\mathrm{dist}}
+\def\Im{\mathrm{Im}}
+\def\image{\mathrm{image}}
+\def\Re{\mathrm{Re}}
+\def\sign{\textsc{sign}}
+\def\Spec{\mathrm{Spec}}
+\def\supp{\mathrm{supp}}
+\def\tr{\mathrm{tr}}
+
+%%%%%%%%%% Other symbols (paper specific) %%%%%%%%%%
+
+\def\del{\partial}
+\def\delbar{\overline{\partial}}
+\def\rd{\operatorname{d\!}{}}
+
+%%%%%%%%%% Other formatting %%%%%%%%%%
+
+\title{The Keller--Segel equation compact surfaces}
+\date{\today}
+\keywords{Keller--Segel equations}
+\keywords{chemotaxis, Keller--Segel equations}
+\subjclass[2020]{35J15, 35Q92, 92C17}
+
+\author{Adam Mendenhall}
+\address[UCSB]{University of California, Santa Barbara}
+\email{\href{amendenhall@ucsb.edu}{amendenhall@ucsb.edu}}
+
+\author{\'Akos Nagy}
+\address[UCSB]{University of California, Santa Barbara}
+\email{\href{contact@akosnagy.com}{contact@akosnagy.com}}
+\urladdr{\href{https://akosnagy.com}{akosnagy.com}}
+
+\calclayout
+\pagestyle{plain}
+\clubpenalty = 10000
+\widowpenalty = 10000
+\setlength{\footskip}{20pt}
+
+\hypersetup{
+	unicode			= true,
+	pdffitwindow	= true,
+	pdftoolbar		= false,
+	pdfmenubar		= false,
+	pdfstartview	= {FitH},
+	hypertexnames	= false,
+	colorlinks		= true,
+	linkcolor		= black,
+	citecolor		= black,
+	filecolor		= black,
+	urlcolor		= blue
+}
+
+\newcommand{\ul}{\underline l}
+\newcommand{\uk}{\underline k}
+\newcommand{\uj}{\underline j}
+
+\begin{document}
+
+\begin{abstract}
+	We study the parabolic--elliptic Keller--Segel equations on compact surfaces.
+
+	[rest of to be completed...]
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+{\color{red} This is the part that we will write last.}
+
+\medskip
+
+\subsection*{Organization of the paper}
+
+To be completed...
+
+\medskip
+
+\begin{acknowledgment}
+	To be completed...
+\end{acknowledgment}
+
+\bigskip
+
+\section{Reformulation of the equation}
+
+Let $\Sigma$ be a smooth, closed surface with a Riemannian metric $g$ and area form $\omega$. Let $G$ be the Green operator of the Laplacian, $\Delta$, on $L^2 \left( \Sigma, g \right)$ and let us fix $\varrho_0 \in L^2 \left( \Sigma, g \right)$. Note that $L^2 \hookrightarrow L^1$ on domains of finite measure. We say that a positive function, $\varrho \in C^1 \left( (0, T); L^2 \left( \Sigma, g \right) \right)$ is said to satisfy the \emph{parabolic--elliptic Keller--Segel equations} on $\left( \Sigma, g \right)$ with initial value $\varrho_0$ if it is a solution to the following system:
+\begin{subequations}
+\begin{align}
+	\del_t \varrho								&= - \Delta \varrho + \rd^* \left( \varrho \rd G \left( \varrho \right) \right), \label{eq:KS_eq} \\
+	\lim\limits_{t \rightarrow 0^+} \varrho_t	&= \varrho_0. \label{eq:KS_IV}
+\end{align}
+\end{subequations}
+where for all $t \in (0, T)$
+\begin{equation}
+	 \varrho_t \eqdef \varrho|_{\{ t \} \times \Sigma},
+\end{equation}
+regarded as a function in $L^2 \left( \Sigma, g \right)$.
+
+Now let
+\begin{equation}
+	m (t) \eqdef \int\limits_\Sigma \varrho_t \: \omega.
+\end{equation}
+Then $m$ is constant, because
+\begin{equation}
+	\dot{m} (t) = \int\limits_\Sigma \left( - \Delta \varrho + \rd^* \left( \varrho \rd G \left( \varrho \right) \right) \right) \: \omega = \int\limits_\Sigma \rd^* \left( - \rd \varrho + \varrho \rd G \left( \varrho \right) \right) \: \omega = 0.
+\end{equation}
+Thus we drop the $t$-dependence of $m$ from its notation.
+
+\smallskip
+
+For the rest of the paper, let $A_\Sigma \eqdef \Ar \left( \Sigma, g \right)$. The following lemma recasts \cref{eq:KS_eq,eq:KS_IV} in a simpler form.
+
+\begin{lemma}
+	Let $\chi_0 \coloneqq \varrho_0 - \tfrac{m}{A_\Sigma}$ and $\chi \coloneqq \varrho - \tfrac{m}{A_\Sigma}$. Then \cref{eq:KS_eq,eq:KS_IV} is equivalent to
+	\begin{subequations}
+	\begin{align}
+		\del_t \chi						&= \left( \tfrac{m}{A_\Sigma} - \Delta \right) \chi + \rd^* \left( \chi \rd G \left( \chi \right) \right), \label{eq:new_KS_eq} \\
+		\chi|_{\{ 0 \} \times \Sigma}	&= \chi_0. \label{eq:new_KS_IV}
+	\end{align}
+	\end{subequations}
+\end{lemma}
+
+\begin{proof}
+	To be completed...
+\end{proof}
+
+\medskip
+
+\section{The iteration}
+
+Let now $\left( \Psi_a \right)_{a \in \N}$ be a orthonormal eigenbasis of $\Delta$ and
+\begin{equation}
+	\Delta \Psi_a = \lambda_a \Psi_a.
+\end{equation}
+Let us order this basis so that
+\begin{equation}
+	0 = \lambda_0 < \lambda_1 \leqslant \lambda_2 \leqslant \ldots \lambda_a \leqslant \lambda_{a + 1} \leqslant \ldots
+\end{equation}
+In particular, $\Psi_0 = \tfrac{1}{\sqrt{A_\Sigma}}$.
+
+Assume that $\chi$ is a solution to \cref{eq:new_KS_eq,eq:new_KS_IV} and write
+\begin{equation}
+	R_a (t) \eqdef \left\langle \Psi_a \middle| \chi|_{\{ t \} \times \Sigma} \right\rangle_{L^2 \left( \Sigma, g \right)}.
+\end{equation}
+Then for each $a \in \N$, we have that $R_a \in C^1 \left( (0, T); \rl \right)$. Note that $R_0 \equiv \tfrac{m}{A_\Sigma}$. Finally let
+\begin{equation}
+	\forall a, b, c \in \N : \quad \varphi_{abc} \coloneqq \int\limits_\Sigma \Psi_a \Psi_b \Psi_c \: \omega.
+\end{equation}
+
+\begin{theorem}
+	The function $\varrho$ is a solution to \cref{eq:KS_eq,eq:KS_IV} exactly when the functions $\left( R_a \right)_{a \in \N}$ satisfy
+	\begin{subequations}
+	\begin{align}
+		\forall t \in (0, T) : \quad \left( R_a (t) \right)_{a \in \N} &\in l^2 \left( \N \right), \\
+		\varrho_0	&= \sum\limits_{a \in \N} \left( \lim\limits_{t \rightarrow 0^+} R_a (t) \right) \Psi_a, \\
+		\forall a \in \N - \{ 0 \} : \quad \dot{R}_a	&= \left( \tfrac{m}{A_\Sigma} - \lambda_a \right) R_a + \sum\limits_{b, c \in N} \frac{\lambda_a - \lambda_b + \lambda_c}{\lambda_c} \varphi_{abc} R_b R_c.
+	\end{align}
+	\end{subequations}
+\end{theorem}
+
+
+	%=========================
+	%\bibliography{references}
+	%=========================
+
+\end{document}

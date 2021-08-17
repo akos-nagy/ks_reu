@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/Arch Linux) (preloaded format=xelatex 2021.5.23)  17 AUG 2021 14:11
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/Arch Linux) (preloaded format=xelatex 2021.5.23)  17 AUG 2021 16:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**KS_convergence.tex
-(./KS_convergence.tex
+**KS_paper.tex
+(./KS_paper.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18>
 (/usr/share/texmf-dist/tex/latex/amscls/amsart.cls
@@ -155,12 +155,20 @@ Package: verbatim 2020-07-07 v1.5u LaTeX2e package for verbatim enhancements
 \verbatim@line=\toks28
 \verbatim@in@stream=\read2
 )
-(/usr/share/texmf-dist/tex/latex/bbm-macros/bbm.sty
-Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
-LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
-(Font)                  U/bbm/m/n --> U/bbm/bx/n on input line 33.
-LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
-(Font)                  U/bbmss/m/n --> U/bbmss/bx/n on input line 35.
+(/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip61
+\enit@outerparindent=\dimen160
+\enit@toks=\toks29
+\enit@inbox=\box51
+\enit@count@id=\count266
+\enitdp@description=\count267
+)
+(/usr/share/texmf-dist/tex/latex/appendix/appendix.sty
+Package: appendix 2020/02/08 v1.2c extra appendix facilities
+\c@@pps=\count268
+\c@@ppsavesec=\count269
+\c@@ppsaveapp=\count270
 )
 (/usr/share/texmf-dist/tex/latex/fourier/fourier.sty
 Package: fourier 2020/03/03 2.2 fourier-GUTenberg package
@@ -370,8 +378,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 ))
 (/usr/share/texmf-dist/tex/latex/amsrefs/rkeyval.sty
 Package: rkeyval 2004/05/05 v1.08
-\@temptokenb=\toks29
-\rsk@toks=\toks30
+\@temptokenb=\toks30
+\rsk@toks=\toks31
 )
 (/usr/share/texmf-dist/tex/latex/amsrefs/textcmds.sty
 Package: textcmds 2012/08/02 v2.00
@@ -379,21 +387,21 @@ Package: textcmds 2012/08/02 v2.00
 (/usr/share/texmf-dist/tex/latex/amsrefs/mathscinet.sty
 Package: mathscinet 2002/04/17 v1.05
 )
-\c@bib=\count266
-\@maxlabelwidth=\dimen160
-\c@bib@env=\count267
+\c@bib=\count271
+\@maxlabelwidth=\dimen161
+\c@bib@env=\count272
 \bib@dbfile=\read3
-\alpha@suffix=\count268
-\series@index=\count269
+\alpha@suffix=\count273
+\series@index=\count274
 )
 (/usr/share/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2021/03/14 v2.8c Micro-typographical refinements (RS)
-\MT@toks=\toks31
-\MT@count=\count270
+\MT@toks=\toks32
+\MT@count=\count275
 LaTeX Info: Redefining \textls on input line 790.
-\MT@outer@kern=\dimen161
+\MT@outer@kern=\dimen162
 LaTeX Info: Redefining \textmicrotypecontext on input line 1374.
-\MT@listname@count=\count271
+\MT@listname@count=\count276
 
 (/usr/share/texmf-dist/tex/latex/microtype/microtype-xetex.def
 File: microtype-xetex.def 2021/03/14 v2.8c Definitions specific to xetex (RS)
@@ -409,15 +417,15 @@ Package: babel 2021/03/24 3.56 The Babel package
 
 (/usr/share/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2021/03/24 3.56 Babel common definitions
-\babel@savecnt=\count272
-\U@D=\dimen162
+\babel@savecnt=\count277
+\U@D=\dimen163
 \l@babelnohyphens=\language87
 
 (/usr/share/texmf-dist/tex/generic/babel/xebabel.def
 (/usr/share/texmf-dist/tex/generic/babel/txtbabel.def))
 \bbl@readstream=\read4
 )
-\bbl@dirlevel=\count273
+\bbl@dirlevel=\count278
 
 (/usr/share/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
@@ -434,18 +442,18 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
 (/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count274
-\Gm@cntv=\count275
-\c@Gm@tempcnt=\count276
-\Gm@bindingoffset=\dimen163
-\Gm@wd@mp=\dimen164
-\Gm@odd@mp=\dimen165
-\Gm@even@mp=\dimen166
-\Gm@layoutwidth=\dimen167
-\Gm@layoutheight=\dimen168
-\Gm@layouthoffset=\dimen169
-\Gm@layoutvoffset=\dimen170
-\Gm@dimlist=\toks32
+\Gm@cnth=\count279
+\Gm@cntv=\count280
+\c@Gm@tempcnt=\count281
+\Gm@bindingoffset=\dimen164
+\Gm@wd@mp=\dimen165
+\Gm@odd@mp=\dimen166
+\Gm@even@mp=\dimen167
+\Gm@layoutwidth=\dimen168
+\Gm@layoutheight=\dimen169
+\Gm@layouthoffset=\dimen170
+\Gm@layoutvoffset=\dimen171
+\Gm@dimlist=\toks33
 )
 (/usr/share/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
@@ -468,9 +476,9 @@ Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 (/usr/share/texmf-dist/tex/latex/auxhook/auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 )
-\@linkdim=\dimen171
-\Hy@linkcounter=\count277
-\Hy@pagecounter=\count278
+\@linkdim=\dimen172
+\Hy@linkcounter=\count282
+\Hy@pagecounter=\count283
 
 (/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2021-02-27 v7.00k Hyperref: PDFDocEncoding definition (HO)
@@ -485,7 +493,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 (/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count279
+\Hy@SavedSpaceFactor=\count284
 
 (/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2021-02-27 v7.00k Hyperref: PDF Unicode definition (HO)
@@ -501,16 +509,16 @@ Package hyperref Info: Plain pages OFF on input line 4207.
 Package hyperref Info: Backreferencing ON on input line 4210.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks OFF on input line 4451.
-\c@Hy@tempcnt=\count280
+\c@Hy@tempcnt=\count285
 LaTeX Info: Redefining \url on input line 4804.
-\XeTeXLinkMargin=\dimen172
+\XeTeXLinkMargin=\dimen173
 
 (/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 )
-\Fld@menulength=\count281
-\Field@Width=\dimen173
-\Fld@charsize=\dimen174
+\Fld@menulength=\count286
+\Field@Width=\dimen174
+\Fld@charsize=\dimen175
 Package hyperref Info: Hyper figures OFF on input line 6075.
 Package hyperref Info: Link nesting OFF on input line 6080.
 Package hyperref Info: Hyper index ON on input line 6083.
@@ -526,9 +534,9 @@ Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
 ge
 with kernel methods
 )
-\Hy@abspage=\count282
-\c@Item=\count283
-\c@Hfootnote=\count284
+\Hy@abspage=\count287
+\c@Item=\count288
+\c@Hfootnote=\count289
 )
 Package hyperref Info: Driver (autodetected): hxetex.
 
@@ -539,12 +547,12 @@ File: hxetex.def 2021-02-27 v7.00k Hyperref driver for XeTeX
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\pdfm@box=\box51
-\c@Hy@AnnotLevel=\count285
-\HyField@AnnotCount=\count286
-\Fld@listcount=\count287
-\c@bookmark@seq@number=\count288
-\Hy@SectionHShift=\skip61
+\pdfm@box=\box52
+\c@Hy@AnnotLevel=\count290
+\HyField@AnnotCount=\count291
+\Fld@listcount=\count292
+\c@bookmark@seq@number=\count293
+\Hy@SectionHShift=\skip62
 )
 (/usr/share/texmf-dist/tex/latex/cleveref/cleveref.sty
 Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
@@ -571,137 +579,137 @@ Package: autonum 2015/01/18 v0.3.11 Automatic numbering of equations
 
 (/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count289
+\etb@tempcnta=\count294
 )
 (/usr/share/texmf-dist/tex/latex/etextools/etextools.sty
 Package: etextools 2010/12/07 v3.1415926 e-TeX more useful tools for LaTeX pack
 age writers
-\ettl@fter=\count290
-\ettl@for@nested=\count291
+\ettl@fter=\count295
+\ettl@for@nested=\count296
 )
 (/usr/share/texmf-dist/tex/latex/textpos/textpos.sty
 Package: textpos 2020/09/26 v1.10
 
 Package: textpos 2020/09/26 1.10, absolute positioning of text on the page
 Package textpos Info: choosing support for LaTeX3 on input line 61.
-\TP@textbox=\box52
-\TP@holdbox=\box53
-\TPHorizModule=\dimen175
-\TPVertModule=\dimen176
-\TP@margin=\dimen177
-\TP@absmargin=\dimen178
+\TP@textbox=\box53
+\TP@holdbox=\box54
+\TPHorizModule=\dimen176
+\TPVertModule=\dimen177
+\TP@margin=\dimen178
+\TP@absmargin=\dimen179
 Grid set 16 x 16 = 38.39343pt x 49.68562pt
-\TPboxrulesize=\dimen179
-\TP@ox=\dimen180
-\TP@oy=\dimen181
-\TP@tbargs=\toks33
+\TPboxrulesize=\dimen180
+\TP@ox=\dimen181
+\TP@oy=\dimen182
+\TP@tbargs=\toks34
 TextBlockOrigin set to 0pt x 0pt
 )
-\c@autonum@counter=\count292
+\c@autonum@counter=\count297
 )
-\c@theorem=\count293
-\c@Mtheorem=\count294
-Package hyperref Info: Option `unicode' set `true' on input line 163.
-Package hyperref Info: Option `pdffitwindow' set `true' on input line 163.
-Package hyperref Info: Option `pdftoolbar' set `false' on input line 163.
-Package hyperref Info: Option `pdfmenubar' set `false' on input line 163.
-Package hyperref Info: Option `hypertexnames' set `false' on input line 163.
-Package hyperref Info: Option `colorlinks' set `true' on input line 163.
+\c@theorem=\count298
+\c@Mtheorem=\count299
+Package hyperref Info: Option `unicode' set `true' on input line 168.
+Package hyperref Info: Option `pdffitwindow' set `true' on input line 168.
+Package hyperref Info: Option `pdftoolbar' set `false' on input line 168.
+Package hyperref Info: Option `pdfmenubar' set `false' on input line 168.
+Package hyperref Info: Option `hypertexnames' set `false' on input line 168.
+Package hyperref Info: Option `colorlinks' set `true' on input line 168.
  (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2021-03-18 L3 backend support: XeTeX
 
 (|extractbb --version)
-\c__kernel_sys_dvipdfmx_version_int=\count295
-\l__color_backend_stack_int=\count296
-\g__color_backend_stack_int=\count297
-\g__graphics_track_int=\count298
-\l__pdf_internal_box=\box54
-\g__pdf_backend_object_int=\count299
-\g__pdf_backend_annotation_int=\count300
-\g__pdf_backend_link_int=\count301
-) (./KS_convergence.aux)
-\openout1 = `KS_convergence.aux'.
+\c__kernel_sys_dvipdfmx_version_int=\count300
+\l__color_backend_stack_int=\count301
+\g__color_backend_stack_int=\count302
+\g__graphics_track_int=\count303
+\l__pdf_internal_box=\box55
+\g__pdf_backend_object_int=\count304
+\g__pdf_backend_annotation_int=\count305
+\g__pdf_backend_link_int=\count306
+) (./KS_paper.aux)
+\openout1 = `KS_paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 169.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 174.
+LaTeX Font Info:    ... okay on input line 174.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 174.
+LaTeX Font Info:    ... okay on input line 174.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 174.
+LaTeX Font Info:    ... okay on input line 174.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 174.
+LaTeX Font Info:    ... okay on input line 174.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 174.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-69.
+74.
 
 (/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 169.
+LaTeX Font Info:    ... okay on input line 174.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 174.
+LaTeX Font Info:    ... okay on input line 174.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 174.
+LaTeX Font Info:    ... okay on input line 174.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 174.
+LaTeX Font Info:    ... okay on input line 174.
+LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 174.
 LaTeX Font Info:    Trying to load font information for FML+futm on input line 
-169.
+174.
 
 (/usr/share/texmf-dist/tex/latex/fourier/fmlfutm.fd
 File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
 )
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 174.
+LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 174.
 LaTeX Font Info:    Trying to load font information for FMS+futm on input line 
-169.
+174.
 
 (/usr/share/texmf-dist/tex/latex/fourier/fmsfutm.fd
 File: fmsfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FMS/futm.
 )
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 174.
+LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 174.
 LaTeX Font Info:    Trying to load font information for FMX+futm on input line 
-169.
+174.
 
 (/usr/share/texmf-dist/tex/latex/fourier/fmxfutm.fd
 File: fmxfutm.fd futm-extension
 )
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    ... okay on input line 174.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 174.
+LaTeX Font Info:    ... okay on input line 174.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 174.
+LaTeX Font Info:    ... okay on input line 174.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 7.35999pt on input line 169.
+(Font)              scaled to size 9.19998pt on input line 174.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 6.25598pt on input line 169.
+(Font)              scaled to size 6.99199pt on input line 174.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 169.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 169
+(Font)              scaled to size 5.51999pt on input line 174.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 174
 .
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 169
+LaTeX Font Info:    Trying to load font information for U+msb on input line 174
 .
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for FML+futmi on input line
- 169.
+ 174.
 
 (/usr/share/texmf-dist/tex/latex/fourier/fmlfutmi.fd
 File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
 )
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 7.35999pt on input line 169.
+(Font)              scaled to size 9.19998pt on input line 174.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 6.25598pt on input line 169.
+(Font)              scaled to size 6.99199pt on input line 174.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 169.
+(Font)              scaled to size 5.51999pt on input line 174.
 
 (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
@@ -720,22 +728,22 @@ Package graphics Info: Driver file: xetex.def on input line 105.
 (/usr/share/texmf-dist/tex/latex/graphics-def/xetex.def
 File: xetex.def 2021/03/18 v5.0k Graphics/color driver for xetex
 ))
-\Gin@req@height=\dimen182
-\Gin@req@width=\dimen183
+\Gin@req@height=\dimen183
+\Gin@req@width=\dimen184
 )
-LaTeX Font Info:    Redeclaring math accent \widehat on input line 169.
-LaTeX Font Info:    Redeclaring math accent \widetilde on input line 169.
-
-(./KS_convergence.brf)
+LaTeX Font Info:    Redeclaring math accent \widehat on input line 174.
+LaTeX Font Info:    Redeclaring math accent \widetilde on input line 174.
+ (./KS_paper.brf)
 \tf@brf=\write3
-\openout3 = `KS_convergence.brf'.
+\openout3 = `KS_paper.brf'.
 
-LaTeX Info: Redefining \microtypecontext on input line 169.
+LaTeX Info: Redefining \microtypecontext on input line 174.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of spacing.
 Package microtype Info: No adjustment of kerning.
+Package microtype Info: Redefining babel's language switching commands.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `futs' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -783,7 +791,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: xetex.def on input line 147.
 )
-Package hyperref Info: Link coloring ON on input line 169.
+Package hyperref Info: Link coloring ON on input line 174.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -794,16 +802,18 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count302
+\c@section@level=\count307
 )
-LaTeX Info: Redefining \ref on input line 169.
-LaTeX Info: Redefining \pageref on input line 169.
-LaTeX Info: Redefining \nameref on input line 169.
-\autonum@environmentWidth=\skip62
+LaTeX Info: Redefining \ref on input line 174.
+LaTeX Info: Redefining \pageref on input line 174.
+LaTeX Info: Redefining \nameref on input line 174.
+\autonum@environmentWidth=\skip63
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 169.
+(Font)              scaled to size 11.03998pt on input line 174.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 6.99199pt on input line 169.
+(Font)              scaled to size 8.27998pt on input line 174.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 6.43999pt on input line 174.
 
 (/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
@@ -812,18 +822,30 @@ File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 169.
+(Font)              scaled to size 11.03998pt on input line 174.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 6.99199pt on input line 169.
- [1] [2]
-(./KS_convergence.aux) ) 
-Here is how much of TeX's memory you used:
- 16731 strings out of 476919
- 260683 string characters out of 5827674
- 640317 words of memory out of 5000000
- 36335 multiletter control sequences out of 15000+600000
- 461555 words of font info for 74 fonts, out of 8000000 for 9000
- 1509 hyphenation exceptions out of 8191
- 98i,13n,102p,531b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
+(Font)              scaled to size 8.27998pt on input line 174.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 6.43999pt on input line 174.
+ [1]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
+84.
 
-Output written on KS_convergence.pdf (2 pages).
+(/usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [2] [3] (./KS_paper.aux) ) 
+Here is how much of TeX's memory you used:
+ 17184 strings out of 476919
+ 267778 string characters out of 5827674
+ 641177 words of memory out of 5000000
+ 36778 multiletter control sequences out of 15000+600000
+ 475851 words of font info for 85 fonts, out of 8000000 for 9000
+ 1509 hyphenation exceptions out of 8191
+ 98i,11n,102p,635b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on KS_paper.pdf (3 pages).
