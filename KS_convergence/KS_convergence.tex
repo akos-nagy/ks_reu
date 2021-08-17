@@ -16,18 +16,30 @@
 \let\globcount\newcount
 \usepackage{autonum}									% must call after cleveref
 
-%%%%%%%%%% Left/Right and eqref fixes %%%%%%%%%%
+%%%%%%%%%% align break fix %%%%%%%%%%
+
+\allowdisplaybreaks
+
+%%%%%%%%%% Left/Right fix %%%%%%%%%%
 
 \let\originalleft\left
 \let\originalright\right
 \renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
 \renewcommand{\right}{\aftergroup\egroup\originalright}
 
+%%%%%%%%%% eqref fix %%%%%%%%%%
+
 \makeatletter
-\renewcommand*{\eqref}[1]{\hyperref[{#1}]{\textup{\tagform@{\ref*{#1}}}}}		% eqref now links parentheses as well
+\renewcommand*{\eqref}[1]{\hyperref[{#1}]{\textup{\tagform@{\ref*{#1}}}}}
 \makeatother
 
-\newcommand{\creflastconjunction}{, and\nobreakspace}		% Oxford comma in cleveref
+%%%%%%%%%% oxford comma fix %%%%%%%%%%
+
+\newcommand{\creflastconjunction}{, and\nobreakspace}
+
+%%%%%%%%%% eqdef fix %%%%%%%%%%
+
+\newcommand{\eqdef}{\mathrel{\vcenter{\baselineskip0.5ex\lineskiplimit0pt\hbox{.}\hbox{.}}}=}
 
 %%%%%%%%%% Theorems/numbering %%%%%%%%%%
 
@@ -158,42 +170,34 @@
 
 \vspace*{-1in}
 
-\section{convergence of the iterative method}
+\section{general discussion}
 
-\begin{comment}
-
-Let us write $\Delta f_a = \lambda_a f_a$ and
+Let $\Sigma$ be any smooth, compact surface (potentially with boundary), and let $\Delta$ be its Laplace operators. Let $\left( f_a \in L^2 (\Sigma) \right)_{a \in I}$ be a complete, orthonormal set of eigenfunctions (thus $I$ is countable infinite), that is $\Delta f_a = \lambda_a f_a$. Without any loss of generality, assume that $0 \in I$ and $f_0$ is a constant. Then write
 \begin{equation}
 	\varrho_t = \sum\limits_{a \in I} \sum\limits_{n \in \N} R_{n, a} t^n f_a.
 \end{equation}
-If $\varrho_t$ solves the Keller--Segel equation, then and $a \neq 0$, then
+Let
 \begin{equation}
-	R_{n + 1, a} = \frac{R_{0, \underline{0}} - \lambda_a}{n + 1} R_{n, a} + \sum\limits_{b, c \in I - \{ 0 \}} \sum\limits_{m = 0}^n \frac{\lambda_a - \lambda_b + \lambda_c}{(n + 1) \lambda_c} \varphi_{a, b, c} R_{b, m} R_{c, n - m}. \label{eq:iteration}
+	\varphi_{a, b, c} \eqdef \int\limits_\Sigma f_a f_b f_c \mathrm{d} A.
 \end{equation}
 
-\begin{lemma}
-	Let us assume that
-	\begin{equation}
-		\exists C > 0 : \forall a \in \N : \forall n \in \N : \quad \left| R_{0, a} \right| \leqslant C \exp \left( - \tfrac{\sqrt{\lambda_a}}{C} \right). \label[cond]{cond:initial}
-	\end{equation}
-	Then the coefficients in \cref{eq:iteration} exist for all $n \in N$, and moreover, after potentially increasing $C > 0$, we have
-	\begin{equation}
-		\forall a \in \N : \forall n \in \N : \quad \left| R_{0, a} \right| \leqslant \frac{C^{n + 1} \lambda_a^n}{n!} \exp \left( - \tfrac{\sqrt{\lambda_a}}{C} \right). \label{eq:R_bound}
-	\end{equation}
-\end{lemma}
+If $\varrho_t$ solves the Keller--Segel equation, then and $a \neq 0$, then
+\begin{equation}
+	R_{n + 1, a} = \frac{R_{0, 0} - \lambda_a}{n + 1} R_{n, a} + \sum\limits_{b, c \in I - \{ 0 \}} \sum\limits_{m = 0}^n \frac{\lambda_a - \lambda_b + \lambda_c}{(n + 1) \lambda_c} \varphi_{a, b, c} R_{b, m} R_{c, n - m}. \label{eq:general_iteration_0}
+\end{equation}
 
-\begin{proof}
-	First of all, recall Weyl's law, that states that
+\begin{remark}
+	For all $\Lambda \in \rl_+$, let
 	\begin{equation}
-		\lim\limits_{a \rightarrow \infty} \frac{\lambda_a}{a} = \frac{2}{\Ar \left( \Sigma, g \right)}.
+		n (\Lambda) \eqdef \left| \left\{ \ a \in I \ \middle| \ \lambda_a \leqslant \Lambda \ \right\} \right|.
 	\end{equation}
-	Also note that \cref{cond:initial} is \cref{eq:R_bound} for $n = 0$, so we ca argue by induction. Let us assume now that we have proved \cref{eq:R_bound} for every nonnegative integer up to $n \in \N$. Then we have that
+	Weyl's law, that states that
 	\begin{equation}
-		\left| \frac{R_{0, \underline{0}} - \lambda_a}{n + 1} R_{n, a} \right| \leqslant \frac{|R_{0, \underline{0}} - \lambda_a| C^{n + 1} \lambda_a^n}{(n + 1) n!} \exp \left( - \tfrac{\sqrt{\lambda_a}}{C} \right) \leqslant \frac{\max \left( \{ R_{0, \underline{0}}, \lambda_a \} \right) C^{n + 1} \lambda_a^n}{(n + 1)!} \exp \left( - \tfrac{\sqrt{\lambda_a}}{C} \right).
+		\lim\limits_{\Lambda \rightarrow \infty} \frac{\Lambda}{n (\Lambda)} = \frac{2}{\Ar \left( \Sigma, g \right)}.
 	\end{equation}
-\end{proof}
+\end{remark}
 
-\end{comment}
+\section{convergence of the iterative method on the standard torus}
 
 Let us write
 \begin{equation}
@@ -201,27 +205,40 @@ Let us write
 \end{equation}
 If $\varrho$ solves the Keller--Segel equation, then and $\underline{k} \neq \underline{0}$, then
 \begin{equation}
-	R_{n + 1, \underline{k}} = \tfrac{R_{0, \underline{0}} - 4 \pi^2 \left| \underline{k} \right|^2}{n + 1} R_{n, \underline{k}} + \sum\limits_{\underline{l} \in \Z^2 - \left\{ \underline{0}, \underline{k} \right\}} \tfrac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} \sum\limits_{m = 0}^n \tfrac{1}{n + 1} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}}. \label{eq:iteration}
+	R_{n + 1, \underline{k}} = \tfrac{R_{0, \underline{0}} - 4 \pi^2 \left| \underline{k} \right|^2}{n + 1} R_{n, \underline{k}} + \sum\limits_{\underline{l} \in \Z^2 - \left\{ \underline{0}, \underline{k} \right\}} \tfrac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} \sum\limits_{m = 0}^n \tfrac{1}{n + 1} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}}. \label{eq:iteration_torus}
 \end{equation}
 
-If that the coefficients in \cref{eq:iteration} exist after the $n^{\textnormal{th}}$ step, then let
+Finally let
 \begin{equation}
-	Z_n \coloneqq \left\{ \ \underline{k} \in \Z^2 \ \middle| \ R_{n, \underline{k}} \neq 0 \ \right\} \subseteq \Z^2.
+	\forall \underline{k} \in \Z^2 : \quad S_{\underline{k}} (t) \eqdef R_{\underline{k}} (t) \exp \left( 4 \pi^2 \left| \underline{k} \right|^2 t \right),
+\end{equation}
+and write
+\begin{equation}
+	S_{\underline{k}} (t) = \sum\limits_{n \in \N} \quad S_{n, \underline{k}} t^n.
+\end{equation}
+Then, in terms of the $S_{n, \underline{k}}$ coefficients, \cref{eq:iteration_torus} becomes
+\begin{equation}
+	S_{n + 1, \underline{k}} = \frac{1}{n + 1} \sum\limits_{\underline{l} \in \Z^2 - \left\{ \underline{0}, \underline{k} \right\}} \tfrac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} \sum\limits_{a = 0}^n \sum\limits_{b = 0}^{n - a} S_{a, \underline{l}} S_{b, \underline{k} - \underline{l}} \frac{\left( 8 \pi^2 \left( \underline{k} - \underline{l} \right) \cdot \underline{l} \right)^{n - a - b}}{(n - a - b)!}. \label{eq:S_iteration_torus}
+\end{equation}
+
+If that the coefficients in \cref{eq:iteration_torus} exist after the $n^{\textnormal{th}}$ step, then let
+\begin{equation}
+	Z_n \eqdef \left\{ \ \underline{k} \in \Z^2 \ \middle| \ S_{n, \underline{k}} \neq 0 \ \right\} \subseteq \Z^2.
 \end{equation}
 
 \begin{lemma}
-	\label{lemma:finite}
+	\label{lemma:finiteness}
 	Let us assume that $Z_0$ is finite and symmetric, that is $- Z_0 = Z_0$, and let
 	\begin{equation}
-		d \coloneqq \max \left( \left\{ \ \left| \underline{k} \right| \ \middle| \ \underline{k} \in Z_0 \ \right\} \right) > 0.
+		d \eqdef \max \left( \left\{ \ \left| \underline{k} \right| \ \middle| \ \underline{k} \in Z_0 \ \right\} \right) > 0.
 	\end{equation}
-	Then for all $n \in \N_+$, the coefficients in \cref{eq:iteration} exist and $Z_n$ is finite and symmetric, moreover
+	Then for all $n \in \N_+$, the coefficients in \cref{eq:iteration_torus} exist and $Z_n$ is finite and symmetric, moreover
 	\begin{equation}
 		Z_n \subseteq Z_{n - 1} + Z_{n - 1},
 	\end{equation}
 	and
 	\begin{equation}
-		\max \left( \left\{ \ \left| \underline{k} \right| \ \middle| \ \underline{k} \in Z_n \ \right\} \right) = \max \left( \left\{ \ \left| \underline{k} \right| \ \middle| \ R_{n, \underline{k}} \neq 0 \ \right\} \right) \leqslant 2^n d.
+		\max \left( \left\{ \ \left| \underline{k} \right| \ \middle| \ \underline{k} \in Z_n \ \right\} \right) = \max \left( \left\{ \ \left| \underline{k} \right| \ \middle| \ S_{n, \underline{k}} \neq 0 \ \right\} \right) \leqslant 2^n d.
 	\end{equation}
 \end{lemma}
 
@@ -231,40 +248,36 @@ If that the coefficients in \cref{eq:iteration} exist after the $n^{\textnormal{
 
 For all $\underline{k} \in \Z^2 - \left\{ \underline{0} \right\}$ let
 \begin{equation}
-	N \left( \underline{k} \right) \coloneqq \min \left( \left\{ \ n \in \N \ \middle| \ \underline{k} \in Z_n \ \right\} \right).
-\end{equation} 
-
-For the rest of the section, let us assume that $Z_0$ is finite, and let $d$ be as in \Cref{lemma:finite}. Then let
-\begin{equation}
-	C \coloneqq \max \left( \left\{ \ 2 \pi^2, 2 R_{0, \underline{0}}, \| R_0 \|_{L^\infty} \ \right\} \right).
+	N \left( \underline{k} \right) \eqdef \min \left( \left\{ \ n \in \N \ \middle| \ \underline{k} \in Z_n \ \right\} \right).
 \end{equation}
 
+\smallskip
+
 \begin{lemma}
-	Let $C$ be as above. Then
+	Under the assumptions above, we have that
 	\begin{equation}
-		\forall \underline{k} \in \Z^2 - \left\{ \underline{0} \right\} : \forall n \in \N : \quad \left| R_{n, \underline{k}} \right| \leqslant \frac{C^{n + 1} 4^{n \ln (n)}}{n!} \exp \left( - \frac{\left| \underline{k} \right|}{C} \right). \label[ineq]{ineq:R_bound}
+		\forall \underline{k} \in \Z^2 - \left\{ \underline{0} \right\} : \forall n \in \N : \quad \left| S_{n, \underline{k}} \right| < \epsilon^n. \label[ineq]{ineq:S_bound}
 	\end{equation}
 \end{lemma}
 
 \begin{proof}
-	By \Cref{lemma:finite}, \cref{ineq:R_bound} is true for $n = 0$, so we can argue by induction.
+	By \Cref{lemma:finiteness}, we can rewrite \cref{eq:S_iteration_torus} as
+	\begin{equation}
+		S_{n + 1, \underline{k}} = \frac{1}{n + 1} \sum\limits_{x = 0}^n \sum\limits_{\underline{l} : N \left( \underline{k} \right) = x} \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} \sum\limits_{a = x}^n \sum\limits_{b = 0}^{n - a} S_{a, \underline{l}} S_{b, \underline{k} - \underline{l}} \frac{\left( 8 \pi^2 \left( \underline{k} - \underline{l} \right) \cdot \underline{l} \right)^{n - a - b}}{(n - a - b)!}. \label{eq:S_iteration_torus_new}
+	\end{equation}
 
-	Let us assume now that we have proved \cref{ineq:R_bound} for every nonnegative integer up to $n \in \N$. If $n < N \left( \underline{k} \right)$, then \cref{ineq:R_bound} holds. When $n \geqslant N \left( \underline{k} \right)$, then using that $\left| \underline{k} \right|^2 \leqslant 4^{N \left( \underline{k} \right)} d$ and that $\left| \underline{k} \right| \geqslant 1$, we then have that
+	The \cref{ineq:S_bound} is true for $n = 0$, so we can argue by induction.
+
+	Let us assume now that we have proved \cref{ineq:S_bound} for every nonnegative integer up to $n \in \N$. Without any loss of generality, we can assume that $n > N \left( \underline{k} \right)$, then \cref{ineq:S_bound} holds. Now using \cref{eq:S_iteration_torus_new} we have:
 	\begin{align}
-		\left| \tfrac{R_{0, \underline{0}} - 4 \pi^2 \left| \underline{k} \right|^2}{n + 1} R_{n, \underline{k}} \right|	&\leqslant \frac{\left| R_{0, \underline{0}} - 4 \pi^2 \left| \underline{k} \right|^2 \right|}{n + 1} \frac{C^{n + 1} 4^{n \ln (n)}}{n!} \exp \left( - \frac{\left| \underline{k} \right|}{C} \right) \\
-		&\leqslant \frac{\max \left( \left\{ R_{0, \underline{0}}, 4 \pi^2 \left| \underline{k} \right|^2 \right\} \right) C^{n + 1} 4^{n \ln (n)}}{(n + 1)!} \exp \left( - \frac{\left| \underline{k} \right|}{C} \right) \\
-		&\leqslant \frac{C^{n + 2} 4^{(n + 1) \ln (n + 1)}}{2 (n + 1)!} \exp \left( - \tfrac{\left| \underline{k} \right|}{C} \right).
-	\end{align}
-	Now let us analyze the inner summand in the quadratic term in \cref{eq:iteration}:
-	\begin{align}
-		\left| \sum\limits_{\underline{l} \in Z_m \atop \underline{k} - \underline{l} \in Z_{n - m}} \frac{1}{n + 1} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right|	&\leqslant \frac{1}{n + 1} \sum\limits_{\underline{l} \in Z_m \atop \underline{k} - \underline{l} \in Z_{n - m}} \left| R_{m, \underline{l}} \right| \left| R_{n - m, \underline{k} - \underline{l}} \right| \\
-		&\leqslant \frac{1}{n + 1} \sum\limits_{\underline{l} \in Z_m \atop \underline{k} - \underline{l} \in Z_{n - m}} \frac{C^{m + 1} 4^{m \ln (m)}}{m!} \exp \left( - \frac{\left| \underline{l} \right|}{C} \right) \frac{C^{n - m + 1} 4^{(n - m) \ln (n - m)}}{(n - m)!} \exp \left( - \frac{\left| \underline{k} - \underline{l} \right|}{C} \right) \\
-		&= \frac{C^{n + 2}}{(n + 1)!} \exp \left( - \tfrac{\left| \underline{l} \right| + \left| \underline{k} - \underline{l} \right|}{C} \right) \binom{n}{m} \sum\limits_{\underline{l} \in Z_m \atop \underline{k} - \underline{l} \in Z_{n - m}} 4^{m \ln (m) + (n - m) \ln (n - m)} \\
-		&= \frac{C^{n + 2}}{(n + 1)!} \exp \left( - \tfrac{\left| \underline{k} \right|}{C} \right) \binom{n}{m} 2 \pi 4^m 4^{n \ln (n)}.
+		\left| S_{n + 1, \underline{k}} \right|	&\leqslant \frac{1}{n + 1} \sum\limits_{x = 0}^n \sum\limits_{\underline{l} : N \left( \underline{l} \right) = x} \sum\limits_{a = x}^n \sum\limits_{b = 0}^{n - a} \epsilon^{a + b} \frac{\left| 8 \pi^2 \left( \underline{k} - \underline{l} \right) \cdot \underline{l} \right|^{n - a - b}}{(n - a - b)!} \frac{|\underline{k} \cdot \underline{l}|}{\left| \underline{l} \right|^2} \\
+		&\leqslant \frac{\epsilon^n}{n + 1} \sum\limits_{x = 0}^n \sum\limits_{\underline{l} : N \left( \underline{l} \right) = x} \sum\limits_{a = 0}^{n - x} a \frac{\left| 8 \pi^2 \left( \underline{k} - \underline{l} \right) \cdot \underline{l} / \epsilon \right|^{n - x - a}}{(n - x - a)!} \frac{|\underline{k} \cdot \underline{l}|}{\left| \underline{l} \right|^2} \\
+		&\leqslant \frac{\epsilon^n}{n + 1} \sum\limits_{x = 0}^n \sum\limits_{\underline{l} : N \left( \underline{l} \right) = x} \sum\limits_{a = 0}^{n - x} (n - x - a) \frac{\left| 8 \pi^2 \left( \underline{k} - \underline{l} \right) \cdot \underline{l} / \epsilon \right|^a}{a!} \frac{|\underline{k} \cdot \underline{l}|}{\left| \underline{l} \right|^2} \\
+		&\leqslant \frac{\epsilon^n}{n + 1} \sum\limits_{x = 0}^n \sum\limits_{a = 0}^{n - x} (n - x - a) \sum\limits_{\underline{l} : N \left( \underline{l} \right) = x} \frac{\left| 8 \pi^2 \left( \underline{k} - \underline{l} \right) \cdot \underline{l} / \epsilon \right|^a}{a!} \frac{|\underline{k} \cdot \underline{l}|}{\left| \underline{l} \right|^2}
 	\end{align}
 	Thus
 	\begin{align}
-		\left| \sum\limits_{m = 0}^n \sum\limits_{\underline{l} \in Z_m \atop \underline{k} - \underline{l} \in Z_{n - m}} \tfrac{1}{n + 1} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right|	&\leqslant \sum\limits_{m = 0}^n \frac{C^{n + 2}}{(n + 1)!} \exp \left( - \tfrac{\left| \underline{k} \right|}{C} \right) \binom{n}{m} 2 \pi 4^m 4^{n \ln (n)} \\
+		\left| \sum\limits_{m = 0}^n \sum\limits_{\substack{\underline{l} \in Z_m \\ \underline{k} - \underline{l} \in Z_{n - m}}} \tfrac{1}{n + 1} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right|	&\leqslant \sum\limits_{m = 0}^n \frac{C^{n + 2}}{(n + 1)!} \exp \left( - \tfrac{\left| \underline{k} \right|}{C} \right) \binom{n}{m} 2 \pi 4^m 4^{n \ln (n)} \\
 		&\leqslant \frac{C^{n + 2}}{(n + 1)!} \exp \left( - \tfrac{\left| \underline{k} \right|}{C} \right) 4^{n \ln (n)} \sum\limits_{m = 0}^n \binom{n}{m} 2 \pi 4^m \\
 		&= \frac{C^{n + 2}}{(n + 1)!} \exp \left( - \tfrac{\left| \underline{k} \right|}{C} \right) 4^{n \ln (n)} 2 \pi \frac{5^{n + 1} - 1}{5 - 1}.
 	\end{align}
