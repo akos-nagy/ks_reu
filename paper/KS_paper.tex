@@ -2,8 +2,8 @@
 
 %%%%%%%%%% Packages %%%%%%%%%%
 
-\usepackage{amsmath,amssymb,mathtools,verbatim,enumitem,appendix}%,kpfonts}
-\usepackage[widespace,upright]{fourier}
+\usepackage{amsmath,amssymb,mathtools,verbatim,enumitem,appendix,kpfonts}
+%\usepackage[widespace,upright]{fourier}
 \usepackage[backrefs]{amsrefs}
 \usepackage[protrusion=true,babel=true]{microtype}
 \usepackage[english]{babel}
@@ -15,6 +15,7 @@
 \expandafter\def\csname ver@etex.sty\endcsname{3000/12/31}	% this fixes a random, irrelevant warning that clever throws
 \let\globcount\newcount
 \usepackage{autonum}										% must call after cleveref
+\usepackage[T1]{fontenc}
 
 %%%%%%%%%% align break fix %%%%%%%%%%
 
@@ -366,8 +367,9 @@ The next lemma rewrites \cref{eq:R_a_eq} in terms of the coefficients $\left( R_
 	Under the above assumption, the function $\varrho$ is a $t$-analytic solution to \cref{eq:KS_eq} with mass $m$ exactly when $R_{0, 0} = \tfrac{m}{A_\Sigma}$, for all $n \in \N_+$, $R_{0, n} = 0$, and
 	\begin{subequations}
 	\begin{align}
-		\forall n \in \N	&: \quad \left( R_{a, n} \right)_{a \in \N} \in l^2 \left( \N \right), \\
-		\forall a, n \in \N	&: \quad R_{a, n + 1} = \frac{1}{n + 1} \left( \left( \tfrac{m}{A_\Sigma} - \lambda_a \right) R_{a, n} + \sum\limits_{b, c \in \N} \sum\limits_{m = 0}^n \frac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_{b, m} R_{c, n - m} \right).
+		\forall a, n \in \N	&: \quad R_{a, n + 1} = \frac{1}{n + 1} \left( \left( \tfrac{m}{A_\Sigma} - \lambda_a \right) R_{a, n} + \sum\limits_{b, c \in \N} \sum\limits_{m = 0}^n \frac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_{b, m} R_{c, n - m} \right), \label{eq:general_iteration} \\
+		\forall n \in \N	&: \quad \cR_n \coloneqq \left( R_{a, n} \right)_{a \in \N} \in l^2 \left( \N \right), \label{eq:regularity} \\
+		& \qquad \limsup\limits_{n \rightarrow \infty} \| \cR_n \|_{l^2 \left( \N \right)}^{\frac{1}{n}} = \limsup\limits_{n \rightarrow \infty} \left( \sum\limits_{a \in \N} R_{a, n}^2 \right)^{\frac{1}{n}} < \frac{1}{T}. \label{eq:convergence_radius}
 	\end{align}
 	\end{subequations}
 \end{lemma}
