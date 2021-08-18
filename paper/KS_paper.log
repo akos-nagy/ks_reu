@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/Arch Linux) (preloaded format=xelatex 2021.5.23)  17 AUG 2021 16:57
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/Arch Linux) (preloaded format=xelatex 2021.5.23)  18 AUG 2021 10:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -609,12 +609,12 @@ TextBlockOrigin set to 0pt x 0pt
 )
 \c@theorem=\count298
 \c@Mtheorem=\count299
-Package hyperref Info: Option `unicode' set `true' on input line 168.
-Package hyperref Info: Option `pdffitwindow' set `true' on input line 168.
-Package hyperref Info: Option `pdftoolbar' set `false' on input line 168.
-Package hyperref Info: Option `pdfmenubar' set `false' on input line 168.
-Package hyperref Info: Option `hypertexnames' set `false' on input line 168.
-Package hyperref Info: Option `colorlinks' set `true' on input line 168.
+Package hyperref Info: Option `unicode' set `true' on input line 169.
+Package hyperref Info: Option `pdffitwindow' set `true' on input line 169.
+Package hyperref Info: Option `pdftoolbar' set `false' on input line 169.
+Package hyperref Info: Option `pdfmenubar' set `false' on input line 169.
+Package hyperref Info: Option `hypertexnames' set `false' on input line 169.
+Package hyperref Info: Option `colorlinks' set `true' on input line 169.
  (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2021-03-18 L3 backend support: XeTeX
 
@@ -630,86 +630,86 @@ File: l3backend-xetex.def 2021-03-18 L3 backend support: XeTeX
 ) (./KS_paper.aux)
 \openout1 = `KS_paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 174.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 175.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-74.
+75.
 
 (/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 174.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 175.
 LaTeX Font Info:    Trying to load font information for FML+futm on input line 
-174.
+175.
 
 (/usr/share/texmf-dist/tex/latex/fourier/fmlfutm.fd
 File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
 )
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 174.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 175.
 LaTeX Font Info:    Trying to load font information for FMS+futm on input line 
-174.
+175.
 
 (/usr/share/texmf-dist/tex/latex/fourier/fmsfutm.fd
 File: fmsfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FMS/futm.
 )
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 174.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 175.
 LaTeX Font Info:    Trying to load font information for FMX+futm on input line 
-174.
+175.
 
 (/usr/share/texmf-dist/tex/latex/fourier/fmxfutm.fd
 File: fmxfutm.fd futm-extension
 )
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 174.
+(Font)              scaled to size 9.19998pt on input line 175.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 6.99199pt on input line 174.
+(Font)              scaled to size 6.99199pt on input line 175.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 174.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 174
+(Font)              scaled to size 5.51999pt on input line 175.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 175
 .
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 174
+LaTeX Font Info:    Trying to load font information for U+msb on input line 175
 .
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for FML+futmi on input line
- 174.
+ 175.
 
 (/usr/share/texmf-dist/tex/latex/fourier/fmlfutmi.fd
 File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
 )
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 174.
+(Font)              scaled to size 9.19998pt on input line 175.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 6.99199pt on input line 174.
+(Font)              scaled to size 6.99199pt on input line 175.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 174.
+(Font)              scaled to size 5.51999pt on input line 175.
 
 (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
@@ -731,13 +731,13 @@ File: xetex.def 2021/03/18 v5.0k Graphics/color driver for xetex
 \Gin@req@height=\dimen183
 \Gin@req@width=\dimen184
 )
-LaTeX Font Info:    Redeclaring math accent \widehat on input line 174.
-LaTeX Font Info:    Redeclaring math accent \widetilde on input line 174.
+LaTeX Font Info:    Redeclaring math accent \widehat on input line 175.
+LaTeX Font Info:    Redeclaring math accent \widetilde on input line 175.
  (./KS_paper.brf)
 \tf@brf=\write3
 \openout3 = `KS_paper.brf'.
 
-LaTeX Info: Redefining \microtypecontext on input line 174.
+LaTeX Info: Redefining \microtypecontext on input line 175.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: No adjustment of tracking.
@@ -791,7 +791,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: xetex.def on input line 147.
 )
-Package hyperref Info: Link coloring ON on input line 174.
+Package hyperref Info: Link coloring ON on input line 175.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -804,16 +804,16 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count307
 )
-LaTeX Info: Redefining \ref on input line 174.
-LaTeX Info: Redefining \pageref on input line 174.
-LaTeX Info: Redefining \nameref on input line 174.
+LaTeX Info: Redefining \ref on input line 175.
+LaTeX Info: Redefining \pageref on input line 175.
+LaTeX Info: Redefining \nameref on input line 175.
 \autonum@environmentWidth=\skip63
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 11.03998pt on input line 174.
+(Font)              scaled to size 11.03998pt on input line 175.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 8.27998pt on input line 174.
+(Font)              scaled to size 8.27998pt on input line 175.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 6.43999pt on input line 174.
+(Font)              scaled to size 6.43999pt on input line 175.
 
 (/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
@@ -822,30 +822,40 @@ File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 11.03998pt on input line 174.
+(Font)              scaled to size 11.03998pt on input line 175.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 8.27998pt on input line 174.
+(Font)              scaled to size 8.27998pt on input line 175.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 6.43999pt on input line 174.
- [1]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
-84.
+(Font)              scaled to size 6.43999pt on input line 175.
+ [1] [2]
+Underfull \vbox (badness 6268) has occurred while \output is active []
 
-(/usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
+ [3]
+Overfull \hbox (12.05211pt too wide) in paragraph at lines 366--368
+[]\T1/futs/b/n/12 Lemma 3.3. []\T1/futs/m/it/12 Un-der the above as-sump-tion, 
+the func-tion $\FML/futm/m/it/12 %$ \T1/futs/m/it/12 is a $\FML/futm/m/it/12 t$
+\T1/futs/m/it/12 -analytic so-lu-tion to [][][]equa-tion \T1/futs/m/n/12 (2.1a)
+[][]
+ []
+
+[4]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 4
+01.
+ (/usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [2] [3] (./KS_paper.aux) ) 
+ [5] (./KS_paper.aux) ) 
 Here is how much of TeX's memory you used:
- 17184 strings out of 476919
- 267778 string characters out of 5827674
- 641177 words of memory out of 5000000
- 36778 multiletter control sequences out of 15000+600000
+ 17203 strings out of 476919
+ 268109 string characters out of 5827674
+ 644641 words of memory out of 5000000
+ 36797 multiletter control sequences out of 15000+600000
  475851 words of font info for 85 fonts, out of 8000000 for 9000
  1509 hyphenation exceptions out of 8191
- 98i,11n,102p,635b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 98i,13n,102p,635b,532s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on KS_paper.pdf (3 pages).
+Output written on KS_paper.pdf (5 pages).

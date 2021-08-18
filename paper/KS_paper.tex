@@ -129,6 +129,7 @@
 \def\del{\partial}
 \def\delbar{\overline{\partial}}
 \def\rd{\operatorname{d\!}{}}
+\def\dA{\: \rd A}
 
 %%%%%%%%%% Other formatting %%%%%%%%%%
 
@@ -174,7 +175,7 @@
 \begin{document}
 
 \begin{abstract}
-	We study the parabolic--elliptic Keller--Segel equations on compact surfaces.
+	We study the (parabolic-elliptic) Keller--Segel equations on compact surfaces.
 
 	[rest of to be completed...]
 \end{abstract}
@@ -216,11 +217,11 @@ regarded as a function in $L^2 \left( \Sigma, g \right)$.
 
 Now let
 \begin{equation}
-	m (t) \eqdef \int\limits_\Sigma \varrho_t \: \omega.
+	m (t) \eqdef \int\limits_\Sigma \varrho_t \dA.
 \end{equation}
 Then $m$ is constant, because
 \begin{equation}
-	\dot{m} (t) = \int\limits_\Sigma \left( - \Delta \varrho + \rd^* \left( \varrho \rd G \left( \varrho \right) \right) \right) \: \omega = \int\limits_\Sigma \rd^* \left( - \rd \varrho + \varrho \rd G \left( \varrho \right) \right) \: \omega = 0.
+	\dot{m} (t) = \int\limits_\Sigma \left( - \Delta \varrho + \rd^* \left( \varrho \rd G \left( \varrho \right) \right) \right) \dA = \int\limits_\Sigma \rd^* \left( - \rd \varrho + \varrho \rd G \left( \varrho \right) \right) \dA = 0.
 \end{equation}
 Thus we drop the $t$-dependence of $m$ from its notation.
 
@@ -239,14 +240,32 @@ For the rest of the paper, let $A_\Sigma \eqdef \Ar \left( \Sigma, g \right)$. T
 \end{lemma}
 
 \begin{proof}
-	To be completed...
+	The equivalency of \cref{eq:KS_IV} and \cref{eq:new_KS_IV} is obvious.
+
+	Note that $G$ annihilates constants and since $\chi$ is orthogonal to constants, we have that $\Delta \left( G \left( \chi \right) \right) = \chi$. Since $\chi = \varrho - \tfrac{m}{A_\Sigma}$, we get, using \cref{eq:KS_eq}, that
+	\begin{align}
+		\del_t \chi	&= \del_t \left( \varrho - \tfrac{m}{A_\Sigma} \right) \\
+					&= \del_t \varrho - 0 \\
+					&= - \Delta \varrho + \rd^* \left( \varrho \rd G \left( \varrho \right) \right) \\
+					&= - \Delta \left( \tfrac{m}{A_\Sigma} + \chi \right) + \rd^* \left( \left( \tfrac{m}{A_\Sigma} + \chi \right) \rd G \left( \tfrac{m}{A_\Sigma} + \chi \right) \right) \\
+					&= - \Delta \chi + \rd^* \left( \left( \tfrac{m}{A_\Sigma} + \chi \right) \rd G \left( \chi \right) \right) \\
+					&= - \Delta \chi + \tfrac{m}{A_\Sigma} \rd^* \rd G \left( \chi \right) + \rd^* \left( \chi \rd G \left( \chi \right) \right) \\
+					&= \left( \tfrac{m}{A_\Sigma} - \Delta \right) \chi + \rd^* \left( \chi \rd G \left( \chi \right) \right),
+	\end{align}
+	which completes the proof.
 \end{proof}
+
+\smallskip
+
+\begin{remark}
+	Let $\lambda_1$ be the smallest nonzero eigenvalue of $\Delta$ and note that quantity $M_\Sigma = \lambda_1 A_\Sigma$ only depends on the geometry of $\left( \Sigma, g \right)$. When $m < M_\Sigma$, then the linear term in \cref{eq:new_KS_eq} is strictly negative definite.
+\end{remark}
 
 \medskip
 
-\section{The iteration}
+\section{The generalized Fourier transform}
 
-Let now $\left( \Psi_a \right)_{a \in \N}$ be a orthonormal eigenbasis of $\Delta$ and
+Let now $\left( \Psi_a \in L^2 \left( \Sigma, g \right) \right)_{a \in \N}$ be an orthonormal eigenbasis of $\Delta$ and
 \begin{equation}
 	\Delta \Psi_a = \lambda_a \Psi_a.
 \end{equation}
@@ -262,20 +281,118 @@ Assume that $\chi$ is a solution to \cref{eq:new_KS_eq,eq:new_KS_IV} and write
 \end{equation}
 Then for each $a \in \N$, we have that $R_a \in C^1 \left( (0, T); \rl \right)$. Note that $R_0 \equiv \tfrac{m}{A_\Sigma}$. Finally let
 \begin{equation}
-	\forall a, b, c \in \N : \quad \varphi_{abc} \coloneqq \int\limits_\Sigma \Psi_a \Psi_b \Psi_c \: \omega.
+	\forall a, b, c \in \N : \quad \varphi_{abc} \coloneqq \int\limits_\Sigma \Psi_a \Psi_b \Psi_c \dA.
 \end{equation}
+Note that $\varphi_{abc}$ is a completely symmetric 3-tensor.
+
+\smallskip
 
 \begin{theorem}
-	The function $\varrho$ is a solution to \cref{eq:KS_eq,eq:KS_IV} exactly when the functions $\left( R_a \right)_{a \in \N}$ satisfy
+\label{theorem:ODE}
+	The function $\varrho$ is a solution to \cref{eq:KS_eq} exactly when
 	\begin{subequations}
 	\begin{align}
-		\forall t \in (0, T) : \quad \left( R_a (t) \right)_{a \in \N} &\in l^2 \left( \N \right), \\
-		\varrho_0	&= \sum\limits_{a \in \N} \left( \lim\limits_{t \rightarrow 0^+} R_a (t) \right) \Psi_a, \\
-		\forall a \in \N - \{ 0 \} : \quad \dot{R}_a	&= \left( \tfrac{m}{A_\Sigma} - \lambda_a \right) R_a + \sum\limits_{b, c \in N} \frac{\lambda_a - \lambda_b + \lambda_c}{\lambda_c} \varphi_{abc} R_b R_c.
+		\forall t \in (0, T) &: \quad \left( R_a (t) \right)_{a \in \N} \in l^2 \left( \N \right), \label[cond]{cond:R_l2} \\
+		\forall a \in \N_+ &: \quad \dot{R}_a = \left( \tfrac{m}{A_\Sigma} - \lambda_a \right) R_a + \sum\limits_{b, c \in \N} \frac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_b R_c. \label{eq:R_a_eq}
 	\end{align}
 	\end{subequations}
+	Furthermore, if \cref{eq:KS_IV} is also satisfied, then for all $a \in \N$, $\lim_{t \rightarrow 0^+} R_a (t)$ exists and
+	\begin{equation}
+		\varrho_0 = \sum\limits_{a \in \N} \left( \lim\limits_{t \rightarrow 0^+} R_a (t) \right) \Psi_a. \label{eq:R_a_IV}
+	\end{equation}
 \end{theorem}
 
+\begin{proof}
+	Since $\left( \Psi_a \right)_{a \in \N}$ is an orthonormal basis of $L^2 \left( \Sigma, g \right)$ and for all $t \in (0, T)$, $\varrho_t$ is in $L^2 \left( \Sigma, g \right)$, we get \cref{cond:R_l2}.
+
+	Fix $a \in \N_+$. Then
+	\begin{equation}
+		G \left( \Psi_a \right) = \lambda_a^{- 1} \Psi_a.
+	\end{equation}
+	Using the above equation, the self-adjointness of $\Delta$, and \cref{eq:new_KS_eq}, we get
+	\begin{align}
+		\dot{R}_a	&= \left\langle \Psi_a \middle| \partial_t \chi \right\rangle_{L^2 \left( \Sigma, g \right)} \\
+					&= \left\langle \Psi_a \middle| \left( \tfrac{m}{A_\Sigma} - \Delta \right) \chi + \rd^* \left( \chi \rd G \left( \chi \right) \right) \right\rangle_{L^2 \left( \Sigma, g \right)} \\
+					&= \left\langle \left( \tfrac{m}{A_\Sigma} - \Delta \right) \Psi_a \middle| \chi \right\rangle_{L^2 \left( \Sigma, g \right)} + \left\langle \Psi_a \middle| \rd^* \left( \chi \rd G \left( \chi \right) \right) \right\rangle_{L^2 \left( \Sigma, g \right)} \\
+					&= \left( \tfrac{m}{A_\Sigma} - \lambda_a \right) \left\langle \Psi_a \middle| \chi \right\rangle_{L^2 \left( \Sigma, g \right)} + \sum\limits_{b, c \in \N_+} \left\langle \Psi_a \middle| \rd^* \left( \Psi_b \rd G \left( \Psi_c \right) \right) \right\rangle_{L^2 \left( \Sigma, g \right)} R_b R_c \\
+					&= \left( \tfrac{m}{A_\Sigma} - \lambda_a \right) R_a + \sum\limits_{b, c \in \N_+} \left\langle \rd \Psi_a \middle| \Psi_b \rd \Psi_c \right\rangle_{L^2 \left( \Sigma, g \right)} \lambda_c^{- 1} R_b R_c. \label{eq:coeffs}
+	\end{align}
+	Note that
+	\begin{equation}
+		\left\langle \rd \Psi_a \middle| \Psi_b \rd \Psi_c \right\rangle_{L^2 \left( \Sigma, g \right)} = \int\limits_\Sigma \Psi_b g \left( \rd \Psi_a, \rd \Psi_c \right) \dA, \label{eq:triple_coeff}
+	\end{equation}
+	and
+	\begin{equation}
+		\Delta \left( \Psi_a \Psi_c \right) = \left( \Delta \Psi_a \right) \Psi_c + \Psi_a \left( \Delta \Psi_c \right) - 2 g \left( \rd \Psi_a, \rd \Psi_c \right) = \left( \lambda_a + \lambda_c \right) \Psi_a \Psi_c - 2 g \left( \rd \Psi_a, \rd \Psi_c \right).
+	\end{equation}
+	Thus
+	\begin{equation}
+		g \left( \rd \Psi_a, \rd \Psi_c \right) = \frac{\lambda_a + \lambda_c}{2} \Psi_a \Psi_c - \frac{1}{2} \Delta \left( \Psi_a \Psi_c \right).
+	\end{equation}
+	Plugging the above equation into \cref{eq:triple_coeff} we get
+	\begin{align}
+		\left\langle \rd \Psi_a \middle| \Psi_b \rd \Psi_c \right\rangle_{L^2 \left( \Sigma, g \right)}	&= \int\limits_\Sigma \Psi_b g \left( \rd \Psi_a, \rd \Psi_c \right) \dA \\
+			&= \int\limits_\Sigma \Psi_b \left( \frac{\lambda_a + \lambda_c}{2} \Psi_a \Psi_c - \frac{1}{2} \Delta \left( \Psi_a \Psi_c \right) \right) \dA \\
+			&= \frac{\lambda_a + \lambda_c}{2} \varphi_{abc} - \frac{1}{2} \int\limits_\Sigma \left( \Delta \Psi_b \right) \Psi_a \Psi_c \dA \\
+			&= \frac{\lambda_a + \lambda_c}{2} \varphi_{abc} - \frac{\lambda_b}{2} \int\limits_\Sigma \Psi_b \Psi_a \Psi_c \dA \\
+			&=  \frac{\lambda_a - \lambda_b + \lambda_c}{2} \varphi_{abc}.
+	\end{align}
+	Inserting this into \cref{eq:coeffs} yields \cref{eq:R_a_eq}.
+
+	The equivalency of \cref{eq:KS_IV} and \cref{eq:R_a_IV} is straightforward.
+\end{proof}
+
+\smallskip
+
+\begin{remark}
+	The moral of \Cref{theorem:ODE} is that the Keller--Segel equations, which is a (hard) elliptic-parabolic system of partial differential equations, can be transformed (on closed surfaces) into a infinite system of ordinary differential equations, which is potentially easier to handle.
+
+	In the rest of the paper we show that this system can be further simplified under certain extra hypotheses.
+\end{remark}
+
+\smallskip
+
+\subsection{Analytic solutions}
+
+In order to further simplify \cref{eq:R_a_eq}, we search for analytic solutions, that is
+\begin{equation}
+	\forall a \in \N : \forall t \in (0, T): \quad R_a (t) = \sum\limits_{n \in \N} R_{a, n} t^n,
+\end{equation}
+and the right-hand side is assumed to be absolute convergent in $l^2 \left( \N \right)$.
+
+The next lemma rewrites \cref{eq:R_a_eq} in terms of the coefficients $\left( R_{a, n} \right)_{(a, n) \in \N \times \N}$.
+
+\begin{lemma}
+	Under the above assumption, the function $\varrho$ is a $t$-analytic solution to \cref{eq:KS_eq} with mass $m$ exactly when $R_{0, 0} = \tfrac{m}{A_\Sigma}$, for all $n \in \N_+$, $R_{0, n} = 0$, and
+	\begin{subequations}
+	\begin{align}
+		\forall n \in \N	&: \quad \left( R_{a, n} \right)_{a \in \N} \in l^2 \left( \N \right), \\
+		\forall a, n \in \N	&: \quad R_{a, n + 1} = \frac{1}{n + 1} \left( \left( \tfrac{m}{A_\Sigma} - \lambda_a \right) R_{a, n} + \sum\limits_{b, c \in \N} \sum\limits_{m = 0}^n \frac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_{b, m} R_{c, n - m} \right).
+	\end{align}
+	\end{subequations}
+\end{lemma}
+
+\begin{proof}
+	To be completed...
+\end{proof}
+
+\bigskip
+
+\section{Round spheres}
+
+To be completed...
+
+\bigskip
+
+\section{Flat tori}
+
+To be completed...
+
+\bigskip
+
+\section{Solutions on $\rl^2 / \Z^2$}
+
+*If we figure this out.*
 
 	%=========================
 	%\bibliography{references}
