@@ -221,11 +221,11 @@ Now let
 \begin{equation}
 	M (t) \eqdef \int\limits_\Sigma \varrho_t \dA.
 \end{equation}
-Then $m$ is constant, because
+Then $M$ is constant, because
 \begin{equation}
 	\dot{M} (t) = \int\limits_\Sigma \left( - \Delta \varrho + \rd^* \left( \varrho \rd G \left( \varrho \right) \right) \right) \dA = \int\limits_\Sigma \rd^* \left( - \rd \varrho + \varrho \rd G \left( \varrho \right) \right) \dA = 0.
 \end{equation}
-Thus we drop the $t$-dependence of $m$ from its notation.
+Thus we drop the $t$-dependence of $M$ from its notation.
 
 \smallskip
 
@@ -260,10 +260,10 @@ For the rest of the paper, let $A_\Sigma \eqdef \Ar \left( \Sigma, g \right)$. T
 \smallskip
 
 \begin{remark}
-	Let $\lambda_1$ be the smallest nonzero eigenvalue of $\Delta$ and note that quantity $M_\Sigma = \lambda_1 A_\Sigma$ only depends on the geometry of $\left( \Sigma, g \right)$. When $m < M_\Sigma$, then the linear term in \cref{eq:new_KS_eq} is strictly negative definite.
+	Let $\lambda_1$ be the smallest nonzero eigenvalue of $\Delta$ and note that quantity $M_\Sigma = \lambda_1 A_\Sigma$ only depends on the geometry of $\left( \Sigma, g \right)$. When $M < M_\Sigma$, then the linear term in \cref{eq:new_KS_eq} is strictly negative definite.
 \end{remark}
 
-\medskip
+\bigskip
 
 \section{The generalized Fourier transform}
 
@@ -365,7 +365,7 @@ and the right-hand side is assumed to be absolute convergent in $l^2 \left( \N \
 The next lemma rewrites \cref{eq:R_a_eq} in terms of the coefficients $\left( R_{a, n} \right)_{(a, n) \in \N \times \N}$.
 
 \begin{lemma}
-	Under the above assumption, the function $\varrho$ is a $t$-analytic solution to \cref{eq:KS_eq} with mass $m$ exactly when $R_{0, 0} = \tfrac{M}{A_\Sigma}$, for all $n \in \N_+$, $R_{0, n} = 0$, and
+	Under the above assumption, the function $\varrho$ is a $t$-analytic solution to \cref{eq:KS_eq} with mass $M$ exactly when $R_{0, 0} = \tfrac{M}{A_\Sigma}$, for all $n \in \N_+$, $R_{0, n} = 0$, and
 	\begin{subequations}
 	\begin{align}
 		\forall a, n \in \N	&: \quad R_{a, n + 1} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - \lambda_a \right) R_{a, n} + \sum\limits_{b, c \in \N_+} \sum\limits_{m = 0}^n \tfrac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_{b, m} R_{c, n - m} \right), \label{eq:general_iteration} \\
@@ -385,7 +385,7 @@ In the following two sections we investigate two special cases when iteration in
 
 \section{Round spheres}
 
-Let $\Sigma$ be the 2-sphere and $g$ be the round metric of radius $r$. Then we have that $\left( \Psi_a \right)_{a \in \N}$ are the spherical harmonics. Then $A_\Sigma = 4 \pi r^2$. In fact, after relabeling them, we can write the eigenvalue has the form $\lambda_{l, m} \eqdef \tfrac{l (l + 1)}{r^2}$, where $l \in \N$ and $m$ is any integer satisfying $|m| \leqslant l$. Let us now write
+Let $\Sigma$ be the 2-sphere and $g$ be the round metric of radius $r$. Then we have that $\left( \Psi_a \right)_{a \in \N}$ are the spherical harmonics. Then $A_\Sigma = 4 \pi r^2$. In fact, after relabeling them, we can write the eigenvalue has the form $\lambda_{l, m} \eqdef \tfrac{l (l + 1)}{r^2}$, where $l \in \N$ and $M$ is any integer satisfying $|m| \leqslant l$. Let us now write
 \begin{align}
 	\Psi_{(l, m)}							&\eqdef \Psi_l^m, \\
 	R_{l, a}^m 								&\eqdef R_{(l, m), a}, \\
@@ -411,7 +411,7 @@ Before prove the main result of this section, let us make the following definiti
 	Assume that $Z_0$ is finite. Then for all $(l, m) \in \N \times \Z$ and $n \in \N$, $R_{l, n}^m$ exists. Furthermore, $Z_n$ is also finite, and \cref{eq:iteration_on_S2} becomes
 	\begin{align}
 		R_{l, n + 1}^m	&= \frac{1}{n + 1} \left( \tfrac{M}{4 \pi r^2} - \tfrac{l (l + 1)}{r^2} \right) R_{l, n}^m \\
-					& \quad + \sum\limits_{(l_1, m_1) \in Z_n} \sum\limits_{l_2 = \max \left( \{ 1, |l - l_1| \} \right)}^{l + l_1} \sum\limits_{m_2 = - l_2}^{l_2} \sum\limits_{x = 0}^n \tfrac{l (l + 1) - l_1 (l_1 + 1) + l_2 (l_2 + 1)}{2 (n + 1) l_2 (l_2 + 1)} \varphi_{l, l_1, l_2}^{m, m_1, m_2} R_{l_1, x}^{m_1} R_{l_2, n - x}^{m_2}.
+					& \quad + \sum\limits_{x = 0}^n \sum\limits_{\substack{(l_1, m_1) \in Z_x \\ (l_2, m_2) \in Z_{n - x}}} \tfrac{l (l + 1) - l_1 (l_1 + 1) + l_2 (l_2 + 1)}{2 (n + 1) l_2 (l_2 + 1)} \varphi_{l, l_1, l_2}^{m, m_1, m_2} R_{l_1, x}^{m_1} R_{l_2, n - x}^{m_2}.
 	\end{align}
 \end{proposition}
 
