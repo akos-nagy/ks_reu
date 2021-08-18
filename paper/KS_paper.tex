@@ -131,6 +131,7 @@
 \def\delbar{\overline{\partial}}
 \def\rd{\operatorname{d\!}{}}
 \def\dA{\: \rd A}
+\def\TBC{\underline{\textbf{To be completed.}}}
 
 %%%%%%%%%% Other formatting %%%%%%%%%%
 
@@ -141,11 +142,11 @@
 \subjclass[2020]{35J15, 35Q92, 92C17}
 
 \author{Adam Mendenhall}
-\address[UCSB]{University of California, Santa Barbara}
+\address[Adam Mendenhall]{University of California, Santa Barbara}
 \email{\href{amendenhall@ucsb.edu}{amendenhall@ucsb.edu}}
 
 \author{\'Akos Nagy}
-\address[UCSB]{University of California, Santa Barbara}
+\address[\'Akos Nagy]{University of California, Santa Barbara}
 \email{\href{contact@akosnagy.com}{contact@akosnagy.com}}
 \urladdr{\href{https://akosnagy.com}{akosnagy.com}}
 
@@ -178,25 +179,25 @@
 \begin{abstract}
 	We study the (parabolic-elliptic) Keller--Segel equations on compact surfaces.
 
-	[rest of to be completed...]
+	\TBC
 \end{abstract}
 
 \maketitle
 
 \section{Introduction}
 
-{\color{red} This is the part that we will write last.}
+\TBC {\color{red} This is the part that we will write last.}
 
 \medskip
 
 \subsection*{Organization of the paper}
 
-To be completed...
+\TBC
 
 \medskip
 
 \begin{acknowledgment}
-	To be completed...
+	\TBC
 \end{acknowledgment}
 
 \bigskip
@@ -218,11 +219,11 @@ regarded as a function in $L^2 \left( \Sigma, g \right)$.
 
 Now let
 \begin{equation}
-	m (t) \eqdef \int\limits_\Sigma \varrho_t \dA.
+	M (t) \eqdef \int\limits_\Sigma \varrho_t \dA.
 \end{equation}
 Then $m$ is constant, because
 \begin{equation}
-	\dot{m} (t) = \int\limits_\Sigma \left( - \Delta \varrho + \rd^* \left( \varrho \rd G \left( \varrho \right) \right) \right) \dA = \int\limits_\Sigma \rd^* \left( - \rd \varrho + \varrho \rd G \left( \varrho \right) \right) \dA = 0.
+	\dot{M} (t) = \int\limits_\Sigma \left( - \Delta \varrho + \rd^* \left( \varrho \rd G \left( \varrho \right) \right) \right) \dA = \int\limits_\Sigma \rd^* \left( - \rd \varrho + \varrho \rd G \left( \varrho \right) \right) \dA = 0.
 \end{equation}
 Thus we drop the $t$-dependence of $m$ from its notation.
 
@@ -231,10 +232,10 @@ Thus we drop the $t$-dependence of $m$ from its notation.
 For the rest of the paper, let $A_\Sigma \eqdef \Ar \left( \Sigma, g \right)$. The following lemma recasts \cref{eq:KS_eq,eq:KS_IV} in a simpler form.
 
 \begin{lemma}
-	Let $\chi_0 \coloneqq \varrho_0 - \tfrac{m}{A_\Sigma}$ and $\chi \coloneqq \varrho - \tfrac{m}{A_\Sigma}$. Then \cref{eq:KS_eq,eq:KS_IV} is equivalent to
+	Let $\chi_0 \coloneqq \varrho_0 - \tfrac{M}{A_\Sigma}$ and $\chi \coloneqq \varrho - \tfrac{M}{A_\Sigma}$. Then \cref{eq:KS_eq,eq:KS_IV} is equivalent to
 	\begin{subequations}
 	\begin{align}
-		\del_t \chi						&= \left( \tfrac{m}{A_\Sigma} - \Delta \right) \chi + \rd^* \left( \chi \rd G \left( \chi \right) \right), \label{eq:new_KS_eq} \\
+		\del_t \chi						&= \tfrac{M}{A_\Sigma} \chi - \Delta \chi + \rd^* \left( \chi \rd G \left( \chi \right) \right), \label{eq:new_KS_eq} \\
 		\chi|_{\{ 0 \} \times \Sigma}	&= \chi_0. \label{eq:new_KS_IV}
 	\end{align}
 	\end{subequations}
@@ -243,15 +244,15 @@ For the rest of the paper, let $A_\Sigma \eqdef \Ar \left( \Sigma, g \right)$. T
 \begin{proof}
 	The equivalency of \cref{eq:KS_IV} and \cref{eq:new_KS_IV} is obvious.
 
-	Note that $G$ annihilates constants and since $\chi$ is orthogonal to constants, we have that $\Delta \left( G \left( \chi \right) \right) = \chi$. Since $\chi = \varrho - \tfrac{m}{A_\Sigma}$, we get, using \cref{eq:KS_eq}, that
+	Note that $G$ annihilates constants and since $\chi$ is orthogonal to constants, we have that $\Delta \left( G \left( \chi \right) \right) = \chi$. Since $\chi = \varrho - \tfrac{M}{A_\Sigma}$, we get, using \cref{eq:KS_eq}, that
 	\begin{align}
-		\del_t \chi	&= \del_t \left( \varrho - \tfrac{m}{A_\Sigma} \right) \\
+		\del_t \chi	&= \del_t \left( \varrho - \tfrac{M}{A_\Sigma} \right) \\
 					&= \del_t \varrho - 0 \\
 					&= - \Delta \varrho + \rd^* \left( \varrho \rd G \left( \varrho \right) \right) \\
-					&= - \Delta \left( \tfrac{m}{A_\Sigma} + \chi \right) + \rd^* \left( \left( \tfrac{m}{A_\Sigma} + \chi \right) \rd G \left( \tfrac{m}{A_\Sigma} + \chi \right) \right) \\
-					&= - \Delta \chi + \rd^* \left( \left( \tfrac{m}{A_\Sigma} + \chi \right) \rd G \left( \chi \right) \right) \\
-					&= - \Delta \chi + \tfrac{m}{A_\Sigma} \rd^* \rd G \left( \chi \right) + \rd^* \left( \chi \rd G \left( \chi \right) \right) \\
-					&= \left( \tfrac{m}{A_\Sigma} - \Delta \right) \chi + \rd^* \left( \chi \rd G \left( \chi \right) \right),
+					&= - \Delta \left( \tfrac{M}{A_\Sigma} + \chi \right) + \rd^* \left( \left( \tfrac{M}{A_\Sigma} + \chi \right) \rd G \left( \tfrac{M}{A_\Sigma} + \chi \right) \right) \\
+					&= - \Delta \chi + \rd^* \left( \left( \tfrac{M}{A_\Sigma} + \chi \right) \rd G \left( \chi \right) \right) \\
+					&= - \Delta \chi + \tfrac{M}{A_\Sigma} \rd^* \rd G \left( \chi \right) + \rd^* \left( \chi \rd G \left( \chi \right) \right) \\
+					&= \tfrac{M}{A_\Sigma} \chi - \Delta \chi + \rd^* \left( \chi \rd G \left( \chi \right) \right),
 	\end{align}
 	which completes the proof.
 \end{proof}
@@ -280,7 +281,7 @@ Assume that $\chi$ is a solution to \cref{eq:new_KS_eq,eq:new_KS_IV} and write
 \begin{equation}
 	R_a (t) \eqdef \left\langle \Psi_a \middle| \chi|_{\{ t \} \times \Sigma} \right\rangle_{L^2 \left( \Sigma, g \right)}.
 \end{equation}
-Then for each $a \in \N$, we have that $R_a \in C^1 \left( (0, T); \rl \right)$. Note that $R_0 \equiv \tfrac{m}{A_\Sigma}$. Finally let
+Then for each $a \in \N$, we have that $R_a \in C^1 \left( (0, T); \rl \right)$. Note that $R_0 \equiv \tfrac{M}{A_\Sigma}$. Finally let
 \begin{equation}
 	\forall a, b, c \in \N : \quad \varphi_{abc} \coloneqq \int\limits_\Sigma \Psi_a \Psi_b \Psi_c \dA.
 \end{equation}
@@ -294,7 +295,7 @@ Note that $\varphi_{abc}$ is a completely symmetric 3-tensor.
 	\begin{subequations}
 	\begin{align}
 		\forall t \in (0, T) &: \quad \left( R_a (t) \right)_{a \in \N} \in l^2 \left( \N \right), \label[cond]{cond:R_l2} \\
-		\forall a \in \N_+ &: \quad \dot{R}_a = \left( \tfrac{m}{A_\Sigma} - \lambda_a \right) R_a + \sum\limits_{b, c \in \N} \frac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_b R_c. \label{eq:R_a_eq}
+		\forall a \in \N_+ &: \quad \dot{R}_a = \left( \tfrac{M}{A_\Sigma} - \lambda_a \right) R_a + \sum\limits_{b, c \in \N} \frac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_b R_c. \label{eq:R_a_eq}
 	\end{align}
 	\end{subequations}
 	Furthermore, if \cref{eq:KS_IV} is also satisfied, then for all $a \in \N$, $\lim_{t \rightarrow 0^+} R_a (t)$ exists and
@@ -313,10 +314,10 @@ Note that $\varphi_{abc}$ is a completely symmetric 3-tensor.
 	Using the above equation, the self-adjointness of $\Delta$, and \cref{eq:new_KS_eq}, we get
 	\begin{align}
 		\dot{R}_a	&= \left\langle \Psi_a \middle| \partial_t \chi \right\rangle_{L^2 \left( \Sigma, g \right)} \\
-					&= \left\langle \Psi_a \middle| \left( \tfrac{m}{A_\Sigma} - \Delta \right) \chi + \rd^* \left( \chi \rd G \left( \chi \right) \right) \right\rangle_{L^2 \left( \Sigma, g \right)} \\
-					&= \left\langle \left( \tfrac{m}{A_\Sigma} - \Delta \right) \Psi_a \middle| \chi \right\rangle_{L^2 \left( \Sigma, g \right)} + \left\langle \Psi_a \middle| \rd^* \left( \chi \rd G \left( \chi \right) \right) \right\rangle_{L^2 \left( \Sigma, g \right)} \\
-					&= \left( \tfrac{m}{A_\Sigma} - \lambda_a \right) \left\langle \Psi_a \middle| \chi \right\rangle_{L^2 \left( \Sigma, g \right)} + \sum\limits_{b, c \in \N_+} \left\langle \Psi_a \middle| \rd^* \left( \Psi_b \rd G \left( \Psi_c \right) \right) \right\rangle_{L^2 \left( \Sigma, g \right)} R_b R_c \\
-					&= \left( \tfrac{m}{A_\Sigma} - \lambda_a \right) R_a + \sum\limits_{b, c \in \N_+} \left\langle \rd \Psi_a \middle| \Psi_b \rd \Psi_c \right\rangle_{L^2 \left( \Sigma, g \right)} \lambda_c^{- 1} R_b R_c. \label{eq:coeffs}
+					&= \left\langle \Psi_a \middle| \tfrac{M}{A_\Sigma} \chi - \Delta \chi + \rd^* \left( \chi \rd G \left( \chi \right) \right) \right\rangle_{L^2 \left( \Sigma, g \right)} \\
+					&= \left\langle \tfrac{M}{A_\Sigma} \Psi_a - \Delta \Psi_a \middle| \chi \right\rangle_{L^2 \left( \Sigma, g \right)} + \left\langle \rd \Psi_a \middle| \chi \rd G \left( \chi \right) \right\rangle_{L^2 \left( \Sigma, g \right)} \\
+					&= \left( \tfrac{M}{A_\Sigma} - \lambda_a \right) \left\langle \Psi_a \middle| \chi \right\rangle_{L^2 \left( \Sigma, g \right)} + \sum\limits_{b, c \in \N_+} \left\langle \rd \Psi_a \middle| \Psi_b \rd G \left( \Psi_c \right) \right\rangle_{L^2 \left( \Sigma, g \right)} R_b R_c \\
+					&= \left( \tfrac{M}{A_\Sigma} - \lambda_a \right) R_a + \sum\limits_{b, c \in \N_+} \left\langle \rd \Psi_a \middle| \Psi_b \rd \Psi_c \right\rangle_{L^2 \left( \Sigma, g \right)} \lambda_c^{- 1} R_b R_c. \label{eq:coeffs}
 	\end{align}
 	Note that
 	\begin{equation}
@@ -357,17 +358,17 @@ Note that $\varphi_{abc}$ is a completely symmetric 3-tensor.
 
 In order to further simplify \cref{eq:R_a_eq}, we search for analytic solutions, that is
 \begin{equation}
-	\forall a \in \N : \forall t \in (0, T): \quad R_a (t) = \sum\limits_{n \in \N} R_{a, n} t^n,
+	\forall a \in \N : \forall t \in (0, T): \quad R_a (t) = \sum\limits_{n \in \N} R_{a, n} t^n, \label{eq:analycity}
 \end{equation}
 and the right-hand side is assumed to be absolute convergent in $l^2 \left( \N \right)$.
 
 The next lemma rewrites \cref{eq:R_a_eq} in terms of the coefficients $\left( R_{a, n} \right)_{(a, n) \in \N \times \N}$.
 
 \begin{lemma}
-	Under the above assumption, the function $\varrho$ is a $t$-analytic solution to \cref{eq:KS_eq} with mass $m$ exactly when $R_{0, 0} = \tfrac{m}{A_\Sigma}$, for all $n \in \N_+$, $R_{0, n} = 0$, and
+	Under the above assumption, the function $\varrho$ is a $t$-analytic solution to \cref{eq:KS_eq} with mass $m$ exactly when $R_{0, 0} = \tfrac{M}{A_\Sigma}$, for all $n \in \N_+$, $R_{0, n} = 0$, and
 	\begin{subequations}
 	\begin{align}
-		\forall a, n \in \N	&: \quad R_{a, n + 1} = \frac{1}{n + 1} \left( \left( \tfrac{m}{A_\Sigma} - \lambda_a \right) R_{a, n} + \sum\limits_{b, c \in \N} \sum\limits_{m = 0}^n \frac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_{b, m} R_{c, n - m} \right), \label{eq:general_iteration} \\
+		\forall a, n \in \N	&: \quad R_{a, n + 1} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - \lambda_a \right) R_{a, n} + \sum\limits_{b, c \in \N_+} \sum\limits_{m = 0}^n \tfrac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_{b, m} R_{c, n - m} \right), \label{eq:general_iteration} \\
 		\forall n \in \N	&: \quad \cR_n \coloneqq \left( R_{a, n} \right)_{a \in \N} \in l^2 \left( \N \right), \label{eq:regularity} \\
 		& \qquad \limsup\limits_{n \rightarrow \infty} \| \cR_n \|_{l^2 \left( \N \right)}^{\frac{1}{n}} = \limsup\limits_{n \rightarrow \infty} \left( \sum\limits_{a \in \N} R_{a, n}^2 \right)^{\frac{1}{n}} < \frac{1}{T}. \label{eq:convergence_radius}
 	\end{align}
@@ -375,20 +376,54 @@ The next lemma rewrites \cref{eq:R_a_eq} in terms of the coefficients $\left( R_
 \end{lemma}
 
 \begin{proof}
-	To be completed...
+	Inserting \cref{eq:analycity} into \cref{eq:R_a_eq} yields \cref{eq:general_iteration}. The \cref{eq:regularity,eq:convergence_radius} are necessary (and, in fact, sufficient) to have that the convergence radius of the Taylor series of $\varrho$ in the $L^2$ topology is at least $T$.
 \end{proof}
+
+In the following two sections we investigate two special cases when iteration in \cref{eq:general_iteration} exists for all $a$ and $n$.
 
 \bigskip
 
 \section{Round spheres}
 
-To be completed...
+Let $\Sigma$ be the 2-sphere and $g$ be the round metric of radius $r$. Then we have that $\left( \Psi_a \right)_{a \in \N}$ are the spherical harmonics. Then $A_\Sigma = 4 \pi r^2$. In fact, after relabeling them, we can write the eigenvalue has the form $\lambda_{l, m} \eqdef \tfrac{l (l + 1)}{r^2}$, where $l \in \N$ and $m$ is any integer satisfying $|m| \leqslant l$. Let us now write
+\begin{align}
+	\Psi_{(l, m)}							&\eqdef \Psi_l^m, \\
+	R_{l, a}^m 								&\eqdef R_{(l, m), a}, \\
+	\varphi_{l_1, l_2, l_3}^{m_1, m_2, m_3}	&\eqdef \varphi_{(l_1, m_1), (l_2, m_2), (l_3, m_3)}.
+\end{align}
+Using this new set of indices and notation, we can rewrite \cref{eq:general_iteration} as
+\begin{align}
+	\forall l \in \N_+: \quad R_{l, n + 1}^m	&= \frac{1}{n + 1} \left( \tfrac{M}{4 \pi r^2} - \tfrac{l (l + 1)}{r^2} \right) R_{(l, m), n} \\
+					& \quad + \sum\limits_{l_1, l_2 \in \N_+} \sum\limits_{m_1 = - l_1}^{l_1} \sum\limits_{m_2 = - l_2}^{l_2} \sum\limits_{x = 0}^n \tfrac{l (l + 1) - l_1 (l_1 + 1) + l_2 (l_2 + 1)}{2 (n + 1) l_2 (l_2 + 1)} \varphi_{l, l_1, l_2}^{m, m_1, m_2} R_{l_1, x}^{m_1} R_{l_2, n - x}^{m_2}. \label{eq:iteration_on_S2_naive}
+\end{align}
+Using the Clebsch--Gordan Theorem, we have that if $l_1 \geqslant l_2 + l_3$ or $l_1 \leqslant |l_2 - l_3|$, then for all $m_1, m_2$, and $m_3$, we have $\varphi_{l_1, l_2, l_3}^{m_1, m_2, m_3} = 0$. Thus \cref{eq:iteration_on_S2_naive} becomes
+\begin{align}
+	R_{l, n + 1}^m	&= \frac{1}{n + 1} \left( \tfrac{M}{4 \pi r^2} - \tfrac{l (l + 1)}{r^2} \right) R_{l, n}^m \\
+					& \quad + \sum\limits_{l_1 \in \N_+} \sum\limits_{l_2 = \max \left( \{ 1, |l - l_1| \} \right)}^{l + l_1} \sum\limits_{m_1 = - l_1}^{l_1} \sum\limits_{m_2 = - l_2}^{l_2} \sum\limits_{x = 0}^n \tfrac{l (l + 1) - l_1 (l_1 + 1) + l_2 (l_2 + 1)}{2 (n + 1) l_2 (l_2 + 1)} \varphi_{l, l_1, l_2}^{m, m_1, m_2} R_{l_1, x}^{m_1} R_{l_2, n - x}^{m_2}. \label{eq:iteration_on_S2}
+\end{align}
+
+Before prove the main result of this section, let us make the following definition:
+\begin{equation}
+	\forall n \in \N : \quad Z_n \eqdef \left\{ \ (l, m) \in \N \times \Z \ \middle| \ R_{l, n}^m \neq 0 \ \right\}.
+\end{equation}
+
+\begin{proposition}
+	Assume that $Z_0$ is finite. Then for all $(l, m) \in \N \times \Z$ and $n \in \N$, $R_{l, n}^m$ exists. Furthermore, $Z_n$ is also finite, and \cref{eq:iteration_on_S2} becomes
+	\begin{align}
+		R_{l, n + 1}^m	&= \frac{1}{n + 1} \left( \tfrac{M}{4 \pi r^2} - \tfrac{l (l + 1)}{r^2} \right) R_{l, n}^m \\
+					& \quad + \sum\limits_{(l_1, m_1) \in Z_n} \sum\limits_{l_2 = \max \left( \{ 1, |l - l_1| \} \right)}^{l + l_1} \sum\limits_{m_2 = - l_2}^{l_2} \sum\limits_{x = 0}^n \tfrac{l (l + 1) - l_1 (l_1 + 1) + l_2 (l_2 + 1)}{2 (n + 1) l_2 (l_2 + 1)} \varphi_{l, l_1, l_2}^{m, m_1, m_2} R_{l_1, x}^{m_1} R_{l_2, n - x}^{m_2}.
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	\TBC
+\end{proof}
 
 \bigskip
 
 \section{Flat tori}
 
-To be completed...
+\TBC
 
 \bigskip
 
