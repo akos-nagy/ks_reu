@@ -358,19 +358,19 @@ Note that $\varphi_{abc}$ is a completely symmetric 3-tensor.
 
 In order to further simplify \cref{eq:R_a_eq}, we search for analytic solutions, that is
 \begin{equation}
-	\forall a \in \N : \forall t \in (0, T): \quad R_a (t) = \sum\limits_{n \in \N} R_{a, n} t^n, \label{eq:analycity}
+	\forall a \in \N : \forall t \in (0, T): \quad R_a (t) = \sum\limits_{n \in \N} R_{n, a} t^n, \label{eq:analycity}
 \end{equation}
 and the right-hand side is assumed to be absolute convergent in $l^2 \left( \N \right)$.
 
-The next lemma rewrites \cref{eq:R_a_eq} in terms of the coefficients $\left( R_{a, n} \right)_{(a, n) \in \N \times \N}$.
+The next lemma rewrites \cref{eq:R_a_eq} in terms of the coefficients $\left( R_{n, a} \right)_{(n, a) \in \N \times \N}$.
 
 \begin{lemma}
-	Under the above assumption, the function $\varrho$ is a $t$-analytic solution to \cref{eq:KS_eq} with mass $M$ exactly when $R_{0, 0} = \tfrac{M}{A_\Sigma}$, for all $n \in \N_+$, $R_{0, n} = 0$, and
+	Under the above assumption, the function $\varrho$ is a $t$-analytic solution to \cref{eq:KS_eq} with mass $M$ exactly when $R_{0, 0} = \tfrac{M}{A_\Sigma}$, for all $n \in \N_+$, $R_{n, 0} = 0$, and
 	\begin{subequations}
 	\begin{align}
-		\forall a, n \in \N	&: \quad R_{a, n + 1} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - \lambda_a \right) R_{a, n} + \sum\limits_{b, c \in \N_+} \sum\limits_{m = 0}^n \tfrac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_{b, m} R_{c, n - m} \right), \label{eq:general_iteration} \\
-		\forall n \in \N	&: \quad \cR_n \coloneqq \left( R_{a, n} \right)_{a \in \N} \in l^2 \left( \N \right), \label{eq:regularity} \\
-		& \qquad \limsup\limits_{n \rightarrow \infty} \| \cR_n \|_{l^2 \left( \N \right)}^{\frac{1}{n}} = \limsup\limits_{n \rightarrow \infty} \left( \sum\limits_{a \in \N} R_{a, n}^2 \right)^{\frac{1}{n}} < \frac{1}{T}. \label{eq:convergence_radius}
+		\forall a, n \in \N	&: \quad R_{n + 1, a} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - \lambda_a \right) R_{n, a} + \sum\limits_{b, c \in \N_+} \sum\limits_{m = 0}^n \tfrac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_{m, b} R_{n - m, c} \right), \label{eq:general_iteration} \\
+		\forall n \in \N	&: \quad \cR_n \coloneqq \left( R_{n, a} \right)_{a \in \N} \in l^2 \left( \N \right), \label{eq:regularity} \\
+		& \qquad \limsup\limits_{n \rightarrow \infty} \| \cR_n \|_{l^2 \left( \N \right)}^{\frac{1}{n}} = \limsup\limits_{n \rightarrow \infty} \left( \sum\limits_{a \in \N} R_{n, a}^2 \right)^{\frac{1}{n}} < \frac{1}{T}. \label{eq:convergence_radius}
 	\end{align}
 	\end{subequations}
 \end{lemma}
@@ -479,7 +479,7 @@ Finally, if $\varrho$ is analytic in $t$, and we define $R_{n, \underline{k}} \i
 \end{equation}
 then we get the corresponding iteration for these coefficients to be
 \begin{equation}
-	R_{n + 1, \underline{k}} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} + \sum\limits_{\underline{l} \in \Lambda^*} \sum\limits_m^n \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right). \label{eq:iteration_on_torus}
+	R_{n + 1, \underline{k}} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} + \sum\limits_{\underline{l} \in \Lambda^*} \sum\limits_{m = 0}^n \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right). \label{eq:iteration_on_torus}
 \end{equation}
 
 As in \Cref{sec:sphere}, let us make the following definition:
@@ -496,15 +496,15 @@ Since we assume that $M \neq 0$, we have that $\underline{0} \in Z_n$.
 	\end{equation}
 	and \cref{eq:iteration_on_torus} becomes
 	\begin{equation}
-		R_{n + 1, \underline{k}} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} + \sum\limits_{\substack{\underline{l} \in Z_m \\ \underline{k} - \underline{l} \in Z_{n - m}}} \sum\limits_m^n \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right). \label{eq:iteration_on_torus_finite}
+		R_{n + 1, \underline{k}} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} + \sum\limits_{\substack{\underline{l} \in Z_m \\ \underline{k} - \underline{l} \in Z_{n - m}}} \sum\limits_{m = 0}^n \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right). \label{eq:iteration_on_torus_finite}
 	\end{equation}
 	Finally, let
 	\begin{equation}
-		d \eqdef \max \left( \left\{ \ \left| \underline{k} \right| \ \middle| \ \underline{k} \in Z_0 \ \right\} \right) > 0.
+		d_n \eqdef \max \left( \left\{ \ \left| \underline{k} \right| \ \middle| \ \underline{k} \in Z_n \ \right\} \right) > 0.
 	\end{equation}
 	Then
 	\begin{equation}
-		d_n \eqdef \max \left( \left\{ \ \left| \underline{k} \right| \ \middle| \ \underline{k} \in Z_n \ \right\} \right) \leqslant 2^n d.
+		d_n \leqslant (n + 1) d_0. \label[ineq]{ineq:d_n}
 	\end{equation}
 \end{theorem}
 
@@ -519,31 +519,38 @@ Since we assume that $M \neq 0$, we have that $\underline{0} \in Z_n$.
 
 	Now let $Z_{n + 1}^\prime \eqdef Z_n + Z_n$. If $\underline{k} \in \Lambda^* - Z_{n + 1}^\prime$, then for all $m \in \N$, such that $0 \leqslant m \leqslant n$, there does now exists $\underline{k} \in Z_m$ that could also satisfy $\underline{k} - \underline{l} \in Z_{n - m}$. Furthermore, since $Z_n \subseteq Z_{n + 1}^\prime$ we also have that $\underline{k} \notin Z_n$. Thus all terms in \cref{eq:iteration_on_torus_finite} are zero, and hence $\underline{k} \in Z_{n + 1}$, which proves \cref{eq:Z_n_iteration}.
 
-	Finally, if $\underline{k} \in Z_{n + 1}$, then there exist $\underline{l}_1, \underline{l}_2 \in Z_n$, such that $\underline{k} = \underline{l}_1 + \underline{l}_2$. Thus
+	Finally, if $\underline{k} \in Z_{n + 1}$, then there exist $m \in [0, n] \cap \N$, $\underline{l}_1 \in Z_m$, and $\underline{l}_2 \in Z_{n - m}$, such that $\underline{k} = \underline{l}_1 + \underline{l}_2$. Thus
 	\begin{equation}
-		\left| \underline{k} \right|  = \left| \underline{l}_1 + \underline{l}_2 \right| \leqslant \left| \underline{l}_1 \right| + \left| \underline{l}_2 \right| \leqslant 2^n d + 2^n d = 2^{n + 1} d,
+		\left| \underline{k} \right|  = \left| \underline{l}_1 + \underline{l}_2 \right| \leqslant \left| \underline{l}_1 \right| + \left| \underline{l}_2 \right| \leqslant d_m + d_{n - m}.
 	\end{equation}
+	Once again, using induction and the fact that \cref{ineq:d_n} holds trivially for $n = 0$, we get that if \cref{ineq:d_n} holds for all nonnegative integers up to and including $n$. Then if $\underline{k}$ is an element such that $\left| \underline{k} \right| = d_{n + 1}$, then
+	\begin{align}
+		d_{n + 1} = \left| \underline{k} \right| \leqslant d_m + d_{n - m} \leqslant (m + 1) d_0 + (n - m + 1) d_0 = \left( (n + 1) + 1 \right) d_0,
+	\end{align}
 	which concludes the proof.
 \end{proof}
 
 \smallskip
 
-\begin{remark}
-	Under the assumptions of \Cref{theorem:torus_finite} we also have
+\begin{corollary}
+	Under the assumptions of \Cref{theorem:torus_finite}, let $d \eqdef d_0$. Then we have
 	\begin{equation}
-		|Z_n| \leqslant \pi \left( 2^n d \right)^2 A_\Sigma.
+		|Z_n| \leqslant 2 \pi n^2 d^2 A_\Sigma.
 	\end{equation}
-	Let $C \eqdef \pi d L_1 L_2 \sin (\theta)$, which only depends on the "input" parameters. Then
+\end{corollary}
+
+\smallskip
+
+\begin{theorem}
+	Under the assumptions of \Cref{theorem:torus_finite}, we have the following: There exists $C > 0$, that only depends on $\cR_0$, as in \cref{eq:regularity}, and the geometry of $\Sigma$, such that for all $n \in \N$ and $\underline{k} \in \Lambda^*$ we have
 	\begin{equation}
-		|Z_n| \leqslant C 4^n.
+		\left| R_{n, \underline{k}} \right| \leqslant C^{n + 1} \exp \left( - \tfrac{\left| \underline{k} \right|}{2^n C} \right).
 	\end{equation}
-\end{remark}
+\end{theorem}
 
-\bigskip
-
-\section{Solutions on $\rl^2 / \Z^2$}
-
-*If we figure this out.*
+\begin{proof}
+	{\color{red} I think that's now doable (and enough for short time existence). I'll try to do it tomorrow.}
+\end{proof}
 
 	%=========================
 	%\bibliography{references}
