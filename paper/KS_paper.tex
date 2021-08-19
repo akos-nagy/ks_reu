@@ -384,16 +384,15 @@ In the following two sections we investigate two special cases when iteration in
 \bigskip
 
 \section{Round spheres}
+\label{sec:sphere}
 
 Let $\Sigma$ be the 2-sphere and $g$ be the round metric of radius $r$. Then we have that $\left( \Psi_a \right)_{a \in \N}$ are the spherical harmonics. Then $A_\Sigma = 4 \pi r^2$. In fact, after relabeling them, we can write the eigenvalue has the form $\lambda_{l, m} \eqdef \tfrac{l (l + 1)}{r^2}$, where $l \in \N$ and $M$ is any integer satisfying $|m| \leqslant l$. Let us now write
-\begin{align}
-	\Psi_{(l, m)}							&\eqdef \Psi_l^m, \\
-	R_{l, a}^m 								&\eqdef R_{(l, m), a}, \\
-	\varphi_{l_1, l_2, l_3}^{m_1, m_2, m_3}	&\eqdef \varphi_{(l_1, m_1), (l_2, m_2), (l_3, m_3)}.
-\end{align}
+\begin{equation}
+	\Psi_l^m \eqdef \Psi_{(l, m)}, \quad \& \quad R_{l, a}^m \eqdef R_{(l, m), a}, \quad \& \quad \varphi_{l_1, l_2, l_3}^{m_1, m_2, m_3} \eqdef \varphi_{(l_1, m_1), (l_2, m_2), (l_3, m_3)}.
+\end{equation}
 Using this new set of indices and notation, we can rewrite \cref{eq:general_iteration} as
 \begin{align}
-	\forall l \in \N_+: \quad R_{l, n + 1}^m	&= \frac{1}{n + 1} \left( \tfrac{M}{4 \pi r^2} - \tfrac{l (l + 1)}{r^2} \right) R_{(l, m), n} \\
+	R_{l, n + 1}^m	&= \frac{1}{n + 1} \left( \tfrac{M}{4 \pi r^2} - \tfrac{l (l + 1)}{r^2} \right) R_{(l, m), n} \\
 					& \quad + \sum\limits_{l_1, l_2 \in \N_+} \sum\limits_{m_1 = - l_1}^{l_1} \sum\limits_{m_2 = - l_2}^{l_2} \sum\limits_{x = 0}^n \tfrac{l (l + 1) - l_1 (l_1 + 1) + l_2 (l_2 + 1)}{2 (n + 1) l_2 (l_2 + 1)} \varphi_{l, l_1, l_2}^{m, m_1, m_2} R_{l_1, x}^{m_1} R_{l_2, n - x}^{m_2}. \label{eq:iteration_on_S2_naive}
 \end{align}
 Using the Clebsch--Gordan Theorem, we have that if $l_1 \geqslant l_2 + l_3$ or $l_1 \leqslant |l_2 - l_3|$, then for all $m_1, m_2$, and $m_3$, we have $\varphi_{l_1, l_2, l_3}^{m_1, m_2, m_3} = 0$. Thus \cref{eq:iteration_on_S2_naive} becomes
@@ -423,7 +422,64 @@ Before prove the main result of this section, let us make the following definiti
 
 \section{Flat tori}
 
-\TBC
+Let now $\Sigma$ be a flat torus. Thus, without any loss of generality, we can assume that there are vectors
+\begin{equation}
+	\underline{e}_1 = \begin{pmatrix} L_1 \\ 0 \end{pmatrix}, \quad \& \quad \underline{e}_2 = \begin{pmatrix} L_2 \cos (\theta) \\ L_2 \sin (\theta) \end{pmatrix}.
+\end{equation}
+such that, if $\Lambda \eqdef \Z \underline{e}_1 \oplus \Z \underline{e}_2$, then
+\begin{equation}
+	\Sigma = \rl^2 / \Lambda.
+\end{equation}
+Note that $A_\Sigma = L_1 L_2 \sin (\theta)$.
+
+Let
+\begin{equation}
+	\forall \underline{x} \in \Sigma : \forall \underline{k} \in \Lambda : \quad \Psi_{\underline{k}} \left( \underline{x} \right) \eqdef \frac{1}{\sqrt{A_\Sigma}} e^{2 \pi i \underline{k} \cdot \underline{x}}.
+\end{equation}
+Then $\left( \Psi_{\underline{k}} \right)_{\underline{k} \in \Lambda}$ is an orthonormal basis for the \emph{complex} Hilbert space $L_\cx^2 \left( \Sigma, g \right)$. Furthermore, note that $\Psi_{\underline{k}} = \overline{\Psi_{- \underline{k}}}$. Finally, note that
+\begin{equation}
+	\Delta \Psi_{\underline{k}} = 4 \pi^2 \left| \underline{k} \right|^2 \Psi_{\underline{k}},
+\end{equation}
+thus $\left( \Psi_{\underline{k}} \right)_{\underline{k} \in \Lambda}$ is an eigenbasis for the Laplacian, albeit a complex one. The corresponding spectrum is $\left( 4 \pi^2 \left| \underline{k} \right|^2 \right)_{\underline{k} \in \Lambda}$.
+
+Function on $\Sigma$ can be viewed as $\Lambda$-periodic functions on $\rl^2$, thus if $\varrho$ is an ($L_\cx^2$) function on $\Sigma$, then we use Fourier decomposition to get:
+\begin{equation}
+	\forall \underline{k} \in \Lambda : \quad R_{\underline{k}} \eqdef \frac{1}{\sqrt{A_\Sigma}} \int\limits_\Sigma e^{- 2 \pi i \underline{k} \cdot \underline{x}} \varrho \left( \underline{x} \right) \dA \left( \underline{x} \right), \quad \Leftrightarrow \quad \varrho = \sum\limits_{\underline{k} \in \Lambda} R_{\underline{k}} \Psi_{\underline{k}}.
+\end{equation}
+If $\varrho$ is real, then $R_{\underline{k}} = \overline{R_{- \underline{k}}}$. In this section we slightly deviate from our previous method and use the above complex basis and coefficients.
+
+Nonetheless, the ideas and proofs of the previous sections still apply, and if $\varrho \in C^1 \left( (0, T), L_\cx^2 \left( \Sigma, g \right) \right)$, then we can define the coefficients functions $R_{\underline{k}} \in C_\cx^1 \left( \Sigma \right)$, so that
+\begin{equation}
+	\varrho \left( t, \underline{x} \right) = \sum\limits_{n \in \N} \sum\limits_{\underline{k} \in \Lambda} R_{\underline{k}} (t) \Psi_{\underline{k}} \left( \underline{x} \right).
+\end{equation}
+If, furthermore, $\varrho$ is a solution to the Keller--Segel \cref{eq:KS_eq}, then we get (after a straightforward computation) that
+\begin{equation}
+	\dot{R}_{\underline{k}} = \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{\underline{k}} + \sum\limits_{\underline{l} \in \Lambda} \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{\underline{l}} R_{\underline{k} - \underline{l}}.
+\end{equation}
+Finally, if $\varrho$ is analytic in $t$, and we define $R_{n, \underline{k}} \in \cx$ as
+\begin{equation}
+	R_{\underline{k}} (t) = \sum\limits_{n \in \N} R_{n, \underline{k}} t^n,
+\end{equation}
+then we get the corresponding iteration for these coefficients to be
+\begin{equation}
+	R_{n + 1, \underline{k}} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} + \sum\limits_{\underline{l} \in \Lambda} \sum\limits_m^n \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right). \label{eq:iteration_on_torus}
+\end{equation}
+
+As in \Cref{sec:sphere}, let us make the following definition:
+\begin{equation}
+	\forall n \in \N : \quad Z_n \eqdef \left\{ \ \underline{k} \in \Lambda \ \middle| \ R_{n, \underline{k}} \neq 0 \ \right\}.
+\end{equation}
+
+\begin{proposition}
+	Assume that $Z_0$ is finite. Then for all $\underline{k} \in \Lambda$ and $n \in \N$, $R_{n, \underline{k}}$ exists. Furthermore, $Z_n$ is also finite, and \cref{eq:iteration_on_torus} becomes
+	\begin{equation}
+		R_{n + 1, \underline{k}} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} + \sum\limits_{\substack{\underline{l} \in Z_m \\ \underline{k} - \underline{l} \in Z_{n - m}}} \sum\limits_m^n \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right). \label{eq:iteration_on_torus_finite}
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	\TBC
+\end{proof}
 
 \bigskip
 
