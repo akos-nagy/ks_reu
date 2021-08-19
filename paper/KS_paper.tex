@@ -2,8 +2,8 @@
 
 %%%%%%%%%% Packages %%%%%%%%%%
 
-\usepackage{amsmath,amssymb,mathtools,verbatim,enumitem,appendix,kpfonts}
-%\usepackage[widespace,upright]{fourier}
+\usepackage{amsmath,amssymb,mathtools,verbatim,enumitem,appendix}%,kpfonts}
+\usepackage[widespace,upright]{fourier}
 \usepackage[backrefs]{amsrefs}
 \usepackage[protrusion=true,babel=true]{microtype}
 \usepackage[english]{babel}
@@ -15,7 +15,7 @@
 \expandafter\def\csname ver@etex.sty\endcsname{3000/12/31}	% this fixes a random, irrelevant warning that clever throws
 \let\globcount\newcount
 \usepackage{autonum}										% must call after cleveref
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
 
 %%%%%%%%%% align break fix %%%%%%%%%%
 
@@ -135,7 +135,7 @@
 
 %%%%%%%%%% Other formatting %%%%%%%%%%
 
-\title{The Keller--Segel equation compact surfaces}
+\title{The Keller--Segel equation closed surfaces}
 \date{\today}
 \keywords{Keller--Segel equations}
 \keywords{chemotaxis, Keller--Segel equations}
@@ -177,7 +177,7 @@
 \begin{document}
 
 \begin{abstract}
-	We study the (parabolic-elliptic) Keller--Segel equations on compact surfaces.
+	We study the (parabolic-elliptic) Keller--Segel equations on closed surfaces.
 
 	\TBC
 \end{abstract}
@@ -549,7 +549,12 @@ Since we assume that $M \neq 0$, we have that $\underline{0} \in Z_n$.
 \end{theorem}
 
 \begin{proof}
-	{\color{red} I think that's now doable (and enough for short time existence). I'll try to do it tomorrow.}
+	Let
+	\begin{equation}
+		C^\prime \coloneqq \inf \left( \left\{ \ c \ \middle| \ \forall \underline{k} \in Z_0 - \{ \underline{0} \} : \quad \left| R_{0, \underline{k}} \right| \leqslant c \exp \left( - \tfrac{\left| \underline{k} \right|}{c} \right) \ \right\} \right).
+	\end{equation}
+
+	\TBC
 \end{proof}
 
 	%=========================
