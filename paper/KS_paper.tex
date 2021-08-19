@@ -65,8 +65,8 @@
 \creflabelformat{lemma}{#2{#1}#3}							% label format for 'lemma'
 \crefname{corollary}{Corollary}{Corollaries}				% label for Corollaries
 \creflabelformat{corollary}{#2{#1}#3}						% label format for 'corollary'
-\crefname{proposition}{Proposition}{Propositions}			% label for Propositions
-\creflabelformat{proposition}{#2{#1}#3}						% label format for 'proposition'
+\crefname{theorem}{Proposition}{Propositions}			% label for Propositions
+\creflabelformat{theorem}{#2{#1}#3}						% label format for 'theorem'
 \crefname{ineq}{inequality}{inequalities}					% label for inequalities
 \creflabelformat{ineq}{#2{\upshape(#1)}#3}					% label format for 'ineq'
 \crefname{cond}{condition}{conditions}						% label for conditions
@@ -406,16 +406,22 @@ Before prove the main result of this section, let us make the following definiti
 	\forall n \in \N : \quad Z_n \eqdef \left\{ \ (l, m) \in \N \times \Z \ \middle| \ R_{l, n}^m \neq 0 \ \right\}.
 \end{equation}
 
-\begin{proposition}
+\begin{theorem}
 	Assume that $Z_0$ is finite. Then for all $(l, m) \in \N \times \Z$ and $n \in \N$, $R_{l, n}^m$ exists. Furthermore, $Z_n$ is also finite, and \cref{eq:iteration_on_S2} becomes
 	\begin{align}
 		R_{l, n + 1}^m	&= \frac{1}{n + 1} \left( \tfrac{M}{4 \pi r^2} - \tfrac{l (l + 1)}{r^2} \right) R_{l, n}^m \\
-					& \quad + \sum\limits_{x = 0}^n \sum\limits_{\substack{(l_1, m_1) \in Z_x \\ (l_2, m_2) \in Z_{n - x}}} \tfrac{l (l + 1) - l_1 (l_1 + 1) + l_2 (l_2 + 1)}{2 (n + 1) l_2 (l_2 + 1)} \varphi_{l, l_1, l_2}^{m, m_1, m_2} R_{l_1, x}^{m_1} R_{l_2, n - x}^{m_2}.
+						& \quad + \sum\limits_{x = 0}^n \sum\limits_{\substack{(l_1, m_1) \in Z_x \\ (l_2, m_2) \in Z_{n - x}}} \tfrac{l (l + 1) - l_1 (l_1 + 1) + l_2 (l_2 + 1)}{2 (n + 1) l_2 (l_2 + 1)} \varphi_{l, l_1, l_2}^{m, m_1, m_2} R_{l_1, x}^{m_1} R_{l_2, n - x}^{m_2}. \label{eq:iteration_on_S2_finite}
 	\end{align}
-\end{proposition}
+\end{theorem}
 
 \begin{proof}
-	\TBC
+	Let us prove by induction.
+
+	Since the claim for $n = 0$ is the hypothesis of the theorem, we only need to assume that we have already prove the claim for all nonnegative integers up to and including $n \in \N_+$.
+
+	The right-hand side of \cref{eq:iteration_on_S2} contains coefficients of the form $R_{l_1, x}^{m_1}$ and $R_{l_2, n - x}^{m_2}$, with $0 \leqslant x \leqslant n$, we have that $R_{l_1, x}^{m_1}$ unless $(l_1, m_1) \in Z_x$ and $R_{l_2, n - x}^{m_2}$ unless $(l_2, m_2) \in Z_{n - x}$. Thus for every $x$ we have the contribution of a finite sum, and we only consider finitely many $x$'s, this proves \cref{eq:iteration_on_S2_finite}.
+
+	Since now $R_{l, n + 1}^m$ is expressed as a finite sum, it exists, which concludes the proof.
 \end{proof}
 
 \bigskip
@@ -426,35 +432,46 @@ Let now $\Sigma$ be a flat torus. Thus, without any loss of generality, we can a
 \begin{equation}
 	\underline{e}_1 = \begin{pmatrix} L_1 \\ 0 \end{pmatrix}, \quad \& \quad \underline{e}_2 = \begin{pmatrix} L_2 \cos (\theta) \\ L_2 \sin (\theta) \end{pmatrix}.
 \end{equation}
-such that, if $\Lambda \eqdef \Z \underline{e}_1 \oplus \Z \underline{e}_2$, then
+such that, if we define the \emph{lattice} $\Lambda \eqdef \Z \underline{e}_1 \oplus \Z \underline{e}_2$, then
 \begin{equation}
 	\Sigma = \rl^2 / \Lambda.
 \end{equation}
-Note that $A_\Sigma = L_1 L_2 \sin (\theta)$.
-
-Let
+Note that $A_\Sigma = L_1 L_2 \sin (\theta)$. Let the \emph{dual} lattice be
 \begin{equation}
-	\forall \underline{x} \in \Sigma : \forall \underline{k} \in \Lambda : \quad \Psi_{\underline{k}} \left( \underline{x} \right) \eqdef \frac{1}{\sqrt{A_\Sigma}} e^{2 \pi i \underline{k} \cdot \underline{x}}.
+	\Lambda^* \eqdef \left\{ \ \underline{k} \in \rl^2 \ \middle| \ \forall \underline{x} \in \Lambda : \ \underline{k} \cdot \underline{x} \in \Z \ \right\}.
 \end{equation}
-Then $\left( \Psi_{\underline{k}} \right)_{\underline{k} \in \Lambda}$ is an orthonormal basis for the \emph{complex} Hilbert space $L_\cx^2 \left( \Sigma, g \right)$. Furthermore, note that $\Psi_{\underline{k}} = \overline{\Psi_{- \underline{k}}}$. Finally, note that
+It is easy to see that if
+\begin{equation}
+	\underline{f}_1 \eqdef \begin{pmatrix} \tfrac{1}{L_1} \\ - \tfrac{\cot (\theta)}{L_1} \end{pmatrix}, \quad \& \quad \underline{f}_2 = \begin{pmatrix} 0 \\ \tfrac{1}{L_2 \sin (\theta)} \end{pmatrix}.
+\end{equation}
+then $\underline{e}_i \cdot \underline{f}_j = \delta_{i, j}$ and thus
+\begin{equation}
+	\Lambda^* = \Z \underline{f}_1 \oplus \Z \underline{f}_2.
+\end{equation}
+
+Now let
+\begin{equation}
+	\forall \underline{x} \in \Sigma : \forall \underline{k} \in \Lambda^* : \quad \Psi_{\underline{k}} \left( \underline{x} \right) \eqdef \frac{1}{\sqrt{A_\Sigma}} e^{2 \pi i \underline{k} \cdot \underline{x}}.
+\end{equation}
+Then $\left( \Psi_{\underline{k}} \right)_{\underline{k} \in \Lambda^*}$ is an orthonormal basis for the \emph{complex} Hilbert space $L_\cx^2 \left( \Sigma, g \right)$. Furthermore, note that $\Psi_{\underline{k}} = \overline{\Psi_{- \underline{k}}}$. Finally, note that
 \begin{equation}
 	\Delta \Psi_{\underline{k}} = 4 \pi^2 \left| \underline{k} \right|^2 \Psi_{\underline{k}},
 \end{equation}
-thus $\left( \Psi_{\underline{k}} \right)_{\underline{k} \in \Lambda}$ is an eigenbasis for the Laplacian, albeit a complex one. The corresponding spectrum is $\left( 4 \pi^2 \left| \underline{k} \right|^2 \right)_{\underline{k} \in \Lambda}$.
+thus $\left( \Psi_{\underline{k}} \right)_{\underline{k} \in \Lambda^*}$ is an eigenbasis for the Laplacian, albeit a complex one. The corresponding spectrum is $\left( 4 \pi^2 \left| \underline{k} \right|^2 \right)_{\underline{k} \in \Lambda^*}$.
 
 Function on $\Sigma$ can be viewed as $\Lambda$-periodic functions on $\rl^2$, thus if $\varrho$ is an ($L_\cx^2$) function on $\Sigma$, then we use Fourier decomposition to get:
 \begin{equation}
-	\forall \underline{k} \in \Lambda : \quad R_{\underline{k}} \eqdef \frac{1}{\sqrt{A_\Sigma}} \int\limits_\Sigma e^{- 2 \pi i \underline{k} \cdot \underline{x}} \varrho \left( \underline{x} \right) \dA \left( \underline{x} \right), \quad \Leftrightarrow \quad \varrho = \sum\limits_{\underline{k} \in \Lambda} R_{\underline{k}} \Psi_{\underline{k}}.
+	\forall \underline{k} \in \Lambda^* : \quad R_{\underline{k}} \eqdef \frac{1}{\sqrt{A_\Sigma}} \int\limits_\Sigma e^{- 2 \pi i \underline{k} \cdot \underline{x}} \varrho \left( \underline{x} \right) \dA \left( \underline{x} \right), \quad \Leftrightarrow \quad \varrho = \sum\limits_{\underline{k} \in \Lambda^*} R_{\underline{k}} \Psi_{\underline{k}}.
 \end{equation}
 If $\varrho$ is real, then $R_{\underline{k}} = \overline{R_{- \underline{k}}}$. In this section we slightly deviate from our previous method and use the above complex basis and coefficients.
 
-Nonetheless, the ideas and proofs of the previous sections still apply, and if $\varrho \in C^1 \left( (0, T), L_\cx^2 \left( \Sigma, g \right) \right)$, then we can define the coefficients functions $R_{\underline{k}} \in C_\cx^1 \left( \Sigma \right)$, so that
+The ideas and proofs of the previous sections still apply, and if $\varrho \in C^1 \left( (0, T), L_\cx^2 \left( \Sigma, g \right) \right)$, then we can define the coefficients functions $R_{\underline{k}} \in C_\cx^1 \left( \Sigma \right)$, so that
 \begin{equation}
-	\varrho \left( t, \underline{x} \right) = \sum\limits_{n \in \N} \sum\limits_{\underline{k} \in \Lambda} R_{\underline{k}} (t) \Psi_{\underline{k}} \left( \underline{x} \right).
+	\varrho \left( t, \underline{x} \right) = \sum\limits_{n \in \N} \sum\limits_{\underline{k} \in \Lambda^*} R_{\underline{k}} (t) \Psi_{\underline{k}} \left( \underline{x} \right).
 \end{equation}
 If, furthermore, $\varrho$ is a solution to the Keller--Segel \cref{eq:KS_eq}, then we get (after a straightforward computation) that
 \begin{equation}
-	\dot{R}_{\underline{k}} = \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{\underline{k}} + \sum\limits_{\underline{l} \in \Lambda} \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{\underline{l}} R_{\underline{k} - \underline{l}}.
+	\dot{R}_{\underline{k}} = \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{\underline{k}} + \sum\limits_{\underline{l} \in \Lambda^*} \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{\underline{l}} R_{\underline{k} - \underline{l}}.
 \end{equation}
 Finally, if $\varrho$ is analytic in $t$, and we define $R_{n, \underline{k}} \in \cx$ as
 \begin{equation}
@@ -462,24 +479,65 @@ Finally, if $\varrho$ is analytic in $t$, and we define $R_{n, \underline{k}} \i
 \end{equation}
 then we get the corresponding iteration for these coefficients to be
 \begin{equation}
-	R_{n + 1, \underline{k}} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} + \sum\limits_{\underline{l} \in \Lambda} \sum\limits_m^n \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right). \label{eq:iteration_on_torus}
+	R_{n + 1, \underline{k}} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} + \sum\limits_{\underline{l} \in \Lambda^*} \sum\limits_m^n \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right). \label{eq:iteration_on_torus}
 \end{equation}
 
 As in \Cref{sec:sphere}, let us make the following definition:
 \begin{equation}
-	\forall n \in \N : \quad Z_n \eqdef \left\{ \ \underline{k} \in \Lambda \ \middle| \ R_{n, \underline{k}} \neq 0 \ \right\}.
+	\forall n \in \N : \quad Z_n \eqdef \left\{ \ \underline{k} \in \Lambda^* \ \middle| \ R_{n, \underline{k}} \neq 0 \ \right\}.
 \end{equation}
+Since we assume that $M \neq 0$, we have that $\underline{0} \in Z_n$.
 
-\begin{proposition}
-	Assume that $Z_0$ is finite. Then for all $\underline{k} \in \Lambda$ and $n \in \N$, $R_{n, \underline{k}}$ exists. Furthermore, $Z_n$ is also finite, and \cref{eq:iteration_on_torus} becomes
+\begin{theorem}
+	\label{theorem:torus_finite}
+	Assume that $Z_0$ is finite. Then for all $\underline{k} \in \Lambda^*$ and $n \in \N$, $R_{n, \underline{k}}$ exists. Moreover, $Z_n$ is also finite and satisfies
+	\begin{equation}
+		Z_n \subseteq Z_{n - 1} + Z_{n - 1}, \label{eq:Z_n_iteration}
+	\end{equation}
+	and \cref{eq:iteration_on_torus} becomes
 	\begin{equation}
 		R_{n + 1, \underline{k}} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} + \sum\limits_{\substack{\underline{l} \in Z_m \\ \underline{k} - \underline{l} \in Z_{n - m}}} \sum\limits_m^n \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right). \label{eq:iteration_on_torus_finite}
 	\end{equation}
-\end{proposition}
+	Finally, let
+	\begin{equation}
+		d \eqdef \max \left( \left\{ \ \left| \underline{k} \right| \ \middle| \ \underline{k} \in Z_0 \ \right\} \right) > 0.
+	\end{equation}
+	Then
+	\begin{equation}
+		d_n \eqdef \max \left( \left\{ \ \left| \underline{k} \right| \ \middle| \ \underline{k} \in Z_n \ \right\} \right) \leqslant 2^n d.
+	\end{equation}
+\end{theorem}
 
 \begin{proof}
-	\TBC
+	Let us prove by induction.
+
+	Since the claim for $n = 0$ is the hypothesis of the theorem, we only need to assume that we have already prove the claim for all nonnegative integers up to and including $n \in \N_+$.
+
+	The right-hand side of \cref{eq:iteration_on_torus} contains coefficients of the form $R_{m, \underline{l}}$ and $R_{n - m, \underline{k} - \underline{l}}$, with $0 \leqslant m \leqslant n$, we have that $R_{m, \underline{l}} = 0$ unless $\underline{l} \in Z_m$ and $R_{n - m, \underline{k} - \underline{l}} = 0$ unless $\underline{k} - \underline{l} \in Z_{n - m}$. That proves \cref{eq:iteration_on_torus_finite}.
+
+	Since now $R_{n + 1, \underline{k}}$ is expressed as a finite sum, it exists.
+
+	Now let $Z_{n + 1}^\prime \eqdef Z_n + Z_n$. If $\underline{k} \in \Lambda^* - Z_{n + 1}^\prime$, then for all $m \in \N$, such that $0 \leqslant m \leqslant n$, there does now exists $\underline{k} \in Z_m$ that could also satisfy $\underline{k} - \underline{l} \in Z_{n - m}$. Furthermore, since $Z_n \subseteq Z_{n + 1}^\prime$ we also have that $\underline{k} \notin Z_n$. Thus all terms in \cref{eq:iteration_on_torus_finite} are zero, and hence $\underline{k} \in Z_{n + 1}$, which proves \cref{eq:Z_n_iteration}.
+
+	Finally, if $\underline{k} \in Z_{n + 1}$, then there exist $\underline{l}_1, \underline{l}_2 \in Z_n$, such that $\underline{k} = \underline{l}_1 + \underline{l}_2$. Thus
+	\begin{equation}
+		\left| \underline{k} \right|  = \left| \underline{l}_1 + \underline{l}_2 \right| \leqslant \left| \underline{l}_1 \right| + \left| \underline{l}_2 \right| \leqslant 2^n d + 2^n d = 2^{n + 1} d,
+	\end{equation}
+	which concludes the proof.
 \end{proof}
+
+\smallskip
+
+\begin{remark}
+	Under the assumptions of \Cref{theorem:torus_finite} we also have
+	\begin{equation}
+		|Z_n| \leqslant \pi \left( 2^n d \right)^2 A_\Sigma.
+	\end{equation}
+	Let $C \eqdef \pi d L_1 L_2 \sin (\theta)$, which only depends on the "input" parameters. Then
+	\begin{equation}
+		|Z_n| \leqslant C 4^n.
+	\end{equation}
+\end{remark}
 
 \bigskip
 
