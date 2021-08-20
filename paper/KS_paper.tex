@@ -38,7 +38,7 @@
 
 \newcommand{\creflastconjunction}{, and\nobreakspace}
 
-%%%%%%%%%% coloneqq fix %%%%%%%%%%
+%%%%%%%%%% eqdef fix %%%%%%%%%%
 
 \newcommand{\eqdef}{\mathrel{\vcenter{\baselineskip0.5ex\lineskiplimit0pt\hbox{.}\hbox{.}}}=}
 
@@ -232,7 +232,7 @@ Thus we drop the $t$-dependence of $M$ from its notation.
 For the rest of the paper, let $A_\Sigma \eqdef \Ar \left( \Sigma, g \right)$. The following lemma recasts \cref{eq:KS_eq,eq:KS_IV} in a simpler form.
 
 \begin{lemma}
-	Let $\chi_0 \coloneqq \varrho_0 - \tfrac{M}{A_\Sigma}$ and $\chi \coloneqq \varrho - \tfrac{M}{A_\Sigma}$. Then \cref{eq:KS_eq,eq:KS_IV} is equivalent to
+	Let $\chi_0 \eqdef \varrho_0 - \tfrac{M}{A_\Sigma}$ and $\chi \eqdef \varrho - \tfrac{M}{A_\Sigma}$. Then \cref{eq:KS_eq,eq:KS_IV} is equivalent to
 	\begin{subequations}
 	\begin{align}
 		\del_t \chi						&= \tfrac{M}{A_\Sigma} \chi - \Delta \chi + \rd^* \left( \chi \rd G \left( \chi \right) \right), \label{eq:new_KS_eq} \\
@@ -279,11 +279,11 @@ In particular, $\Psi_0 = \tfrac{1}{\sqrt{A_\Sigma}}$.
 
 Assume that $\chi$ is a solution to \cref{eq:new_KS_eq,eq:new_KS_IV} and write
 \begin{equation}
-	R_a (t) \eqdef \left\langle \Psi_a \middle| \chi|_{\{ t \} \times \Sigma} \right\rangle_{L^2 \left( \Sigma, g \right)}.
+	\forall t \in (0, T): \quad R_a (t) \eqdef \left\langle \Psi_a \middle| \chi|_{\{ t \} \times \Sigma} \right\rangle_{L^2 \left( \Sigma, g \right)}.
 \end{equation}
-Then for each $a \in \N$, we have that $R_a \in C^1 \left( (0, T); \rl \right)$. Note that $R_0 \equiv \tfrac{M}{A_\Sigma}$. Finally let
+Then for each $a \in \N$, we have that $R_a \in C^1 \left( (0, T); \rl \right)$. Note that $R_0 \equiv 0$. Finally let
 \begin{equation}
-	\forall a, b, c \in \N : \quad \varphi_{abc} \coloneqq \int\limits_\Sigma \Psi_a \Psi_b \Psi_c \dA.
+	\forall a, b, c \in \N : \quad \varphi_{abc} \eqdef \int\limits_\Sigma \Psi_a \Psi_b \Psi_c \dA.
 \end{equation}
 Note that $\varphi_{abc}$ is a completely symmetric 3-tensor.
 
@@ -295,7 +295,7 @@ Note that $\varphi_{abc}$ is a completely symmetric 3-tensor.
 	\begin{subequations}
 	\begin{align}
 		\forall t \in (0, T) &: \quad \left( R_a (t) \right)_{a \in \N} \in l^2 \left( \N \right), \label[cond]{cond:R_l2} \\
-		\forall a \in \N_+ &: \quad \dot{R}_a = \left( \tfrac{M}{A_\Sigma} - \lambda_a \right) R_a + \sum\limits_{b, c \in \N} \frac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_b R_c. \label{eq:R_a_eq}
+		\forall a \in \N_+ &: \quad \dot{R}_a = \left( \tfrac{M}{A_\Sigma} - \lambda_a \right) R_a + \sum\limits_{b, c \in \N_+} \frac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_b R_c. \label{eq:R_a_eq}
 	\end{align}
 	\end{subequations}
 	Furthermore, if \cref{eq:KS_IV} is also satisfied, then for all $a \in \N$, $\lim_{t \rightarrow 0^+} R_a (t)$ exists and
@@ -369,7 +369,7 @@ The next lemma rewrites \cref{eq:R_a_eq} in terms of the coefficients $\left( R_
 	\begin{subequations}
 	\begin{align}
 		\forall a, n \in \N	&: \quad R_{n + 1, a} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - \lambda_a \right) R_{n, a} + \sum\limits_{b, c \in \N_+} \sum\limits_{m = 0}^n \tfrac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_{m, b} R_{n - m, c} \right), \label{eq:general_iteration} \\
-		\forall n \in \N	&: \quad \cR_n \coloneqq \left( R_{n, a} \right)_{a \in \N} \in l^2 \left( \N \right), \label{eq:regularity} \\
+		\forall n \in \N	&: \quad \cR_n \eqdef \left( R_{n, a} \right)_{a \in \N} \in l^2 \left( \N \right), \label{eq:regularity} \\
 		& \qquad \limsup\limits_{n \rightarrow \infty} \| \cR_n \|_{l^2 \left( \N \right)}^{\frac{1}{n}} = \limsup\limits_{n \rightarrow \infty} \left( \sum\limits_{a \in \N} R_{n, a}^2 \right)^{\frac{1}{n}} < \frac{1}{T}. \label{eq:convergence_radius}
 	\end{align}
 	\end{subequations}
@@ -517,7 +517,7 @@ Since we assume that $M \neq 0$, we have that $\underline{0} \in Z_n$.
 
 	Since now $R_{n + 1, \underline{k}}$ is expressed as a finite sum, it exists.
 
-	Now let $Z_{n + 1}^\prime \eqdef Z_n + Z_n$. If $\underline{k} \in \Lambda^* - Z_{n + 1}^\prime$, then for all $m \in \N$, such that $0 \leqslant m \leqslant n$, there does now exists $\underline{k} \in Z_m$ that could also satisfy $\underline{k} - \underline{l} \in Z_{n - m}$. Furthermore, since $Z_n \subseteq Z_{n + 1}^\prime$ we also have that $\underline{k} \notin Z_n$. Thus all terms in \cref{eq:iteration_on_torus_finite} are zero, and hence $\underline{k} \in Z_{n + 1}$, which proves \cref{eq:Z_n_iteration}.
+	Now let $Z_{n + 1}^\prime \eqdef Z_n + Z_n$. If $\underline{k} \in \Lambda^* - Z_{n + 1}^\prime$, then for all $m \in \N$, such that $0 \leqslant m \leqslant n$, there does not exists $\underline{l} \in Z_m$ that could also satisfies $\underline{k} - \underline{l} \in Z_{n - m}$. Furthermore, since $Z_n \subseteq Z_{n + 1}^\prime$ we also have that $\underline{k} \notin Z_n$. Thus all terms in \cref{eq:iteration_on_torus_finite} are zero, and hence $\underline{k} \in Z_{n + 1}$, which proves \cref{eq:Z_n_iteration}.
 
 	Finally, if $\underline{k} \in Z_{n + 1}$, then there exist $m \in [0, n] \cap \N$, $\underline{l}_1 \in Z_m$, and $\underline{l}_2 \in Z_{n - m}$, such that $\underline{k} = \underline{l}_1 + \underline{l}_2$. Thus
 	\begin{equation}
@@ -551,8 +551,18 @@ Since we assume that $M \neq 0$, we have that $\underline{0} \in Z_n$.
 \begin{proof}
 	Let
 	\begin{equation}
-		C^\prime \coloneqq \inf \left( \left\{ \ c \ \middle| \ \forall \underline{k} \in Z_0 - \{ \underline{0} \} : \quad \left| R_{0, \underline{k}} \right| \leqslant c \exp \left( - \tfrac{\left| \underline{k} \right|}{c} \right) \ \right\} \right).
+		C^\prime \eqdef \inf \left( \left\{ \ c \in \rl_+ \ \middle| \ \forall \underline{k} \in Z_0 - \{ \underline{0} \} : \quad \left| R_{0, \underline{k}} \right| \leqslant c \exp \left( - \tfrac{\left| \underline{k} \right|}{c} \right) \ \right\} \right),
 	\end{equation}
+	and let
+	\begin{equation}
+		C \eqdef \max \left( \left\{ \ C^\prime, ??? \ \right\} \right).
+	\end{equation}
+	We prove that $C$ is the constant in the claim using induction. By construction the claim is true for $n = 0$. Let us assume that we have already prove the claim for all nonnegative integers up to and including $n \in \N_+$.
+
+	Let $\underline{k} \in Z_{n + 1}$. Then we have
+	\begin{align}
+		\left| \frac{1}{n + 1} \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} \right|	&= \frac{1}{n + 1} C \left| \underline{k} \right|^2 C^{n + 1} \exp \left( - \tfrac{\left| \underline{k} \right|}{2^n C} \right)
+	\end{align}
 
 	\TBC
 \end{proof}

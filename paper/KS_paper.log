@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/Arch Linux) (preloaded format=xelatex 2021.5.23)  19 AUG 2021 16:58
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/Arch Linux) (preloaded format=xelatex 2021.5.23)  19 AUG 2021 19:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -828,7 +828,7 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 6.43999pt on input line 177.
  [1] [2]
-Underfull \vbox (badness 6094) has occurred while \output is active []
+Underfull \vbox (badness 5985) has occurred while \output is active []
 
  [3]
 Overfull \hbox (12.05211pt too wide) in paragraph at lines 368--370
@@ -856,7 +856,7 @@ Underfull \vbox (badness 2903) has occurred while \output is active []
  [7]
 [8]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 5
-64.
+74.
  (/usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
