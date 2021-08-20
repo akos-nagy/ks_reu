@@ -2,7 +2,7 @@
 
 %%%%%%%%%% Packages %%%%%%%%%%
 
-\usepackage{amsmath,amssymb,mathtools,verbatim,enumitem,appendix}%,kpfonts}
+\usepackage{amsmath,amssymb,mathtools,verbatim,enumitem,appendix,bbm}%,kpfonts}
 \usepackage[widespace,upright]{fourier}
 \usepackage[backrefs]{amsrefs}
 \usepackage[protrusion=true,babel=true]{microtype}
@@ -131,6 +131,7 @@
 \def\delbar{\overline{\partial}}
 \def\rd{\operatorname{d\!}{}}
 \def\dA{\: \rd A}
+\def\loc{\mathrm{loc}}
 \def\TBC{\underline{\textbf{To be completed.}}}
 
 %%%%%%%%%% Other formatting %%%%%%%%%%
@@ -204,35 +205,35 @@
 
 \section{Reformulation of the equation}
 
-Let $\Sigma$ be a smooth, closed surface with a Riemannian metric $g$ and area form $\omega$. Let $G$ be the Green operator of the Laplacian, $\Delta$, on $L^2 \left( \Sigma, g \right)$ and let us fix $\varrho_0 \in L^2 \left( \Sigma, g \right)$. Note that $L^2 \hookrightarrow L^1$ on domains of finite measure. We say that a positive function, $\varrho \in C^1 \left( (0, T); L^2 \left( \Sigma, g \right) \right)$ is said to satisfy the \emph{parabolic--elliptic Keller--Segel equations} on $\left( \Sigma, g \right)$ with initial value $\varrho_0$ if it is a solution to the following system:
+Let $\Sigma$ be a smooth, closed surface with a Riemannian metric $g$ and area form $\omega$. Let $G$ be the Green operator of the Laplacian, $\Delta$. For each function, $\varrho \in C^1 \left( (0, T); L^1 \left( \Sigma \right) \right)$, let
+\begin{equation}
+	 \forall t \in (0, T) : \quad \varrho_t \eqdef \varrho|_{\{ t \} \times \Sigma} \in L^1 \left( \Sigma \right).
+\end{equation}
+Let us fix $\varrho_0 \in L^1 \left( \Sigma, g \right)$. A function, $\varrho \in C^1 \left( (0, T); L^1 \left( \Sigma \right) \right)$, satisfies the \emph{(parabolic-elliptic) Keller--Segel equations} with initial value $\varrho_0$ if for all $t \in (0, T)$, $\varrho_t \in L_{1, \loc}^2$ and $\varrho$ is (weak) solution to the following system:
 \begin{subequations}
 \begin{align}
 	\del_t \varrho								&= - \Delta \varrho + \rd^* \left( \varrho \rd G \left( \varrho \right) \right), \label{eq:KS_eq} \\
 	\lim\limits_{t \rightarrow 0^+} \varrho_t	&= \varrho_0. \label{eq:KS_IV}
 \end{align}
 \end{subequations}
-where for all $t \in (0, T)$
-\begin{equation}
-	 \varrho_t \eqdef \varrho|_{\{ t \} \times \Sigma},
-\end{equation}
-regarded as a function in $L^2 \left( \Sigma, g \right)$.
+The convergence in \cref{eq:KS_IV} is in $L^1 \left( \Sigma, g \right)$.
 
-Now let
+The mass of $\varrho_t$ is
 \begin{equation}
 	M (t) \eqdef \int\limits_\Sigma \varrho_t \dA.
 \end{equation}
-Then $M$ is constant, because
+Then
 \begin{equation}
-	\dot{M} (t) = \int\limits_\Sigma \left( - \Delta \varrho + \rd^* \left( \varrho \rd G \left( \varrho \right) \right) \right) \dA = \int\limits_\Sigma \rd^* \left( - \rd \varrho + \varrho \rd G \left( \varrho \right) \right) \dA = 0.
+	\dot{M} (t) = \int\limits_\Sigma \left( - \Delta \varrho + \rd^* \left( \varrho \rd G \left( \varrho \right) \right) \right) \dA = \int\limits_\Sigma \rd^* \left( - \rd \varrho + \varrho \rd G \left( \varrho \right) \right) \dA = 0,
 \end{equation}
-Thus we drop the $t$-dependence of $M$ from its notation.
+Thus $M$ constant and hence we drop the $t$-dependence from its notation.
 
 \smallskip
 
 For the rest of the paper, let $A_\Sigma \eqdef \Ar \left( \Sigma, g \right)$. The following lemma recasts \cref{eq:KS_eq,eq:KS_IV} in a simpler form.
 
 \begin{lemma}
-	Let $\chi_0 \eqdef \varrho_0 - \tfrac{M}{A_\Sigma}$ and $\chi \eqdef \varrho - \tfrac{M}{A_\Sigma}$. Then \cref{eq:KS_eq,eq:KS_IV} is equivalent to
+	Let $\chi_0 \eqdef \varrho_0 - \tfrac{M}{A_\Sigma} \in L^1 \left( \Sigma \right)$ and $\chi \eqdef \varrho - \tfrac{M}{A_\Sigma} \in C^1 \left( (0, T); L^1 \left( \Sigma \right) \right)$. Then \cref{eq:KS_eq,eq:KS_IV} are equivalent to
 	\begin{subequations}
 	\begin{align}
 		\del_t \chi						&= \tfrac{M}{A_\Sigma} \chi - \Delta \chi + \rd^* \left( \chi \rd G \left( \chi \right) \right), \label{eq:new_KS_eq} \\
@@ -267,6 +268,8 @@ For the rest of the paper, let $A_\Sigma \eqdef \Ar \left( \Sigma, g \right)$. T
 
 \section{The generalized Fourier transform}
 
+Since $\Sigma$ is compact, for all $p \in (1, \infty]$, we have that $L^p \left( \Sigma \right) \hookrightarrow L^1 \left( \Sigma, g \right)$. Let us assume now that $\varrho \in C^1 \left( (0, T); L^2 \left( \Sigma \right) \right) \hookrightarrow C^1 \left( (0, T); L^1 \left( \Sigma \right) \right)$ is a solution to the Keller--Segel \cref{eq:KS_eq}.
+
 Let now $\left( \Psi_a \in L^2 \left( \Sigma, g \right) \right)_{a \in \N}$ be an orthonormal eigenbasis of $\Delta$ and
 \begin{equation}
 	\Delta \Psi_a = \lambda_a \Psi_a.
@@ -277,41 +280,36 @@ Let us order this basis so that
 \end{equation}
 In particular, $\Psi_0 = \tfrac{1}{\sqrt{A_\Sigma}}$.
 
-Assume that $\chi$ is a solution to \cref{eq:new_KS_eq,eq:new_KS_IV} and write
+Assume that $\chi$ is a solution to \cref{eq:new_KS_eq} and write
 \begin{equation}
-	\forall t \in (0, T): \quad R_a (t) \eqdef \left\langle \Psi_a \middle| \chi|_{\{ t \} \times \Sigma} \right\rangle_{L^2 \left( \Sigma, g \right)}.
+	\forall a \in \N : \ \forall t \in (0, T) : \quad R_a (t) \eqdef \left\langle \Psi_a \middle| \chi|_{\{ t \} \times \Sigma} \right\rangle_{L^2 \left( \Sigma, g \right)}.
 \end{equation}
 Then for each $a \in \N$, we have that $R_a \in C^1 \left( (0, T); \rl \right)$. Note that $R_0 \equiv 0$. Finally let
 \begin{equation}
-	\forall a, b, c \in \N : \quad \varphi_{abc} \eqdef \int\limits_\Sigma \Psi_a \Psi_b \Psi_c \dA.
+	\forall a, b, c \in \N : \quad \varphi_{a, b, c} \eqdef \int\limits_\Sigma \Psi_a \Psi_b \Psi_c \dA.
 \end{equation}
-Note that $\varphi_{abc}$ is a completely symmetric 3-tensor.
+Then $\varphi$ is a completely symmetric 3-tensor, and
+\begin{equation}
+	\forall  b, c \in \N : \quad \varphi_{0, b, c} = \tfrac{1}{\sqrt{A_\Sigma}} \delta_{b, c}.
+\end{equation}
 
 \smallskip
 
 \begin{theorem}
 \label{theorem:ODE}
-	The function $\varrho$ is a solution to \cref{eq:KS_eq} exactly when
+	Under the above assumptions, the function $\chi$ is a solution to \cref{eq:new_KS_eq} exactly when
 	\begin{subequations}
 	\begin{align}
-		\forall t \in (0, T) &: \quad \left( R_a (t) \right)_{a \in \N} \in l^2 \left( \N \right), \label[cond]{cond:R_l2} \\
-		\forall a \in \N_+ &: \quad \dot{R}_a = \left( \tfrac{M}{A_\Sigma} - \lambda_a \right) R_a + \sum\limits_{b, c \in \N_+} \frac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_b R_c. \label{eq:R_a_eq}
+		\forall t \in (0, T) &: \quad \left( R_a (t) \right)_{a \in \N_+} \in l^2 \left( \N_+ \right), \label[cond]{cond:R_l2} \\
+		\forall a \in \N_+ &: \quad \dot{R}_a = \left( \tfrac{M}{A_\Sigma} - \lambda_a \right) R_a + \sum\limits_{b, c \in \N_+} \frac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{a, b, c} R_b R_c. \label{eq:R_a_eq}
 	\end{align}
 	\end{subequations}
-	Furthermore, if \cref{eq:KS_IV} is also satisfied, then for all $a \in \N$, $\lim_{t \rightarrow 0^+} R_a (t)$ exists and
-	\begin{equation}
-		\varrho_0 = \sum\limits_{a \in \N} \left( \lim\limits_{t \rightarrow 0^+} R_a (t) \right) \Psi_a. \label{eq:R_a_IV}
-	\end{equation}
 \end{theorem}
 
 \begin{proof}
 	Since $\left( \Psi_a \right)_{a \in \N}$ is an orthonormal basis of $L^2 \left( \Sigma, g \right)$ and for all $t \in (0, T)$, $\varrho_t$ is in $L^2 \left( \Sigma, g \right)$, we get \cref{cond:R_l2}.
 
-	Fix $a \in \N_+$. Then
-	\begin{equation}
-		G \left( \Psi_a \right) = \lambda_a^{- 1} \Psi_a.
-	\end{equation}
-	Using the above equation, the self-adjointness of $\Delta$, and \cref{eq:new_KS_eq}, we get
+	For all $a \in \N_+$, we have $G \left( \Psi_a \right) = \lambda_a^{- 1} \Psi_a$. Using this, the self-adjointness of $\Delta$, and \cref{eq:new_KS_eq}, we get
 	\begin{align}
 		\dot{R}_a	&= \left\langle \Psi_a \middle| \partial_t \chi \right\rangle_{L^2 \left( \Sigma, g \right)} \\
 					&= \left\langle \Psi_a \middle| \tfrac{M}{A_\Sigma} \chi - \Delta \chi + \rd^* \left( \chi \rd G \left( \chi \right) \right) \right\rangle_{L^2 \left( \Sigma, g \right)} \\
@@ -335,48 +333,67 @@ Note that $\varphi_{abc}$ is a completely symmetric 3-tensor.
 	\begin{align}
 		\left\langle \rd \Psi_a \middle| \Psi_b \rd \Psi_c \right\rangle_{L^2 \left( \Sigma, g \right)}	&= \int\limits_\Sigma \Psi_b g \left( \rd \Psi_a, \rd \Psi_c \right) \dA \\
 			&= \int\limits_\Sigma \Psi_b \left( \frac{\lambda_a + \lambda_c}{2} \Psi_a \Psi_c - \frac{1}{2} \Delta \left( \Psi_a \Psi_c \right) \right) \dA \\
-			&= \frac{\lambda_a + \lambda_c}{2} \varphi_{abc} - \frac{1}{2} \int\limits_\Sigma \left( \Delta \Psi_b \right) \Psi_a \Psi_c \dA \\
-			&= \frac{\lambda_a + \lambda_c}{2} \varphi_{abc} - \frac{\lambda_b}{2} \int\limits_\Sigma \Psi_b \Psi_a \Psi_c \dA \\
-			&=  \frac{\lambda_a - \lambda_b + \lambda_c}{2} \varphi_{abc}.
+			&= \frac{\lambda_a + \lambda_c}{2} \varphi_{a, b, c} - \frac{1}{2} \int\limits_\Sigma \left( \Delta \Psi_b \right) \Psi_a \Psi_c \dA \\
+			&= \frac{\lambda_a + \lambda_c}{2} \varphi_{a, b, c} - \frac{\lambda_b}{2} \int\limits_\Sigma \Psi_b \Psi_a \Psi_c \dA \\
+			&=  \frac{\lambda_a - \lambda_b + \lambda_c}{2} \varphi_{a, b, c}.
 	\end{align}
 	Inserting this into \cref{eq:coeffs} yields \cref{eq:R_a_eq}.
-
-	The equivalency of \cref{eq:KS_IV} and \cref{eq:R_a_IV} is straightforward.
 \end{proof}
 
 \smallskip
 
 \begin{remark}
-	The moral of \Cref{theorem:ODE} is that the Keller--Segel equations, which is a (hard) elliptic-parabolic system of partial differential equations, can be transformed (on closed surfaces) into a infinite system of ordinary differential equations, which is potentially easier to handle.
+	The moral of \Cref{theorem:ODE} is that the Keller--Segel equations, which is a (hard) parabolic-elliptic system of partial differential equations, can be transformed (on closed surfaces) into a infinite system of ordinary differential equations, which is potentially easier to handle.
 
 	In the rest of the paper we show that this system can be further simplified under certain extra hypotheses.
 \end{remark}
+
+\subsection{Integrating factors}
+
+Using the notation and assumptions of the previous section, let us define (for all $a \in \N_+$ and $n \in \N$)
+\begin{equation}
+	S_a (t) \eqdef \exp \left( \left( \lambda_a - \tfrac{M}{A_\Sigma} \right) t \right) R_a (t). \label{eq:S_a_def}
+\end{equation}
+These are the "Fourier" coefficient of $\exp \left( \Delta - \tfrac{M}{A_\Sigma} \id \right) \chi$. Using \cref{eq:R_a_eq}, we get that
+\begin{equation}
+	\dot{S}_a (t) \eqdef \sum\limits_{b, c \in \N_+} \frac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{a, b, c} \exp \left( \left( \tfrac{M}{A_\Sigma} + \lambda_a - \lambda_b - \lambda_c \right) t \right) S_b (t) R_c (t). \label{eq:S_a_eq}
+\end{equation}
 
 \smallskip
 
 \subsection{Analytic solutions}
 
-In order to further simplify \cref{eq:R_a_eq}, we search for analytic solutions, that is
+In order to further simplify \cref{eq:R_a_eq,eq:S_a_eq}, we search for analytic solutions, that is
 \begin{equation}
-	\forall a \in \N : \forall t \in (0, T): \quad R_a (t) = \sum\limits_{n \in \N} R_{n, a} t^n, \label{eq:analycity}
+	\forall a \in \N_+ : \forall t \in (0, T): \quad R_a (t) = \sum\limits_{n \in \N} R_{n, a} t^n, \label{eq:analycity}
 \end{equation}
-and the right-hand side is assumed to be absolute convergent in $l^2 \left( \N \right)$.
-
-The next lemma rewrites \cref{eq:R_a_eq} in terms of the coefficients $\left( R_{n, a} \right)_{(n, a) \in \N \times \N}$.
+and the sums
+\begin{equation}
+	\forall t \in (0, T): \sum\limits_{n \in \N} \left( R_{n, a} \right)_{a \in \N_+} t^n,
+\end{equation}
+are assumed to be absolute convergent in $l^2 \left( \N_+ \right)$. Similarly we define
+\begin{equation}
+	\forall a \in \N_+ : \forall t \in (0, T): \quad S_a (t) = \sum\limits_{n \in \N} S_{n, a} t^n, \label{eq:analycity_for_S}
+\end{equation}
+The next lemma rewrites \cref{eq:R_a_eq,eq:S_a_eq} in terms of the coefficients $\left( R_{n, a} \right)_{(n, a) \in \N \times \N_+}$ and $\left( S_{n, a} \right)_{(n, a) \in \N \times \N_+}$.
 
 \begin{lemma}
-	Under the above assumption, the function $\varrho$ is a $t$-analytic solution to \cref{eq:KS_eq} with mass $M$ exactly when $R_{0, 0} = \tfrac{M}{A_\Sigma}$, for all $n \in \N_+$, $R_{n, 0} = 0$, and
+	Under the above assumptions, the function $\chi$ is a $t$-analytic solution to \cref{eq:new_KS_eq} exactly when (for all relevant $a$ and $n$) we have
 	\begin{subequations}
 	\begin{align}
-		\forall a, n \in \N	&: \quad R_{n + 1, a} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - \lambda_a \right) R_{n, a} + \sum\limits_{b, c \in \N_+} \sum\limits_{m = 0}^n \tfrac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{abc} R_{m, b} R_{n - m, c} \right), \label{eq:general_iteration} \\
-		\forall n \in \N	&: \quad \cR_n \eqdef \left( R_{n, a} \right)_{a \in \N} \in l^2 \left( \N \right), \label{eq:regularity} \\
-		& \qquad \limsup\limits_{n \rightarrow \infty} \| \cR_n \|_{l^2 \left( \N \right)}^{\frac{1}{n}} = \limsup\limits_{n \rightarrow \infty} \left( \sum\limits_{a \in \N} R_{n, a}^2 \right)^{\frac{1}{n}} < \frac{1}{T}. \label{eq:convergence_radius}
+		R_{n + 1, a}	&= \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - \lambda_a \right) R_{n, a} + \sum\limits_{b, c \in \N_+} \sum\limits_{m = 0}^n \tfrac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{a, b, c} R_{m, b} R_{n - m, c} \right), \label{eq:general_iteration} \\
+		\left( R_{n, a} \right)_{a \in \N} &\in l^2 \left( \N \right), \label{eq:regularity} \\
+		\limsup\limits_{n \rightarrow \infty} \left( \sum\limits_{a \in \N} R_{n, a}^2 \right)^{\frac{1}{n}} &\leqslant \frac{1}{T}. \label{eq:convergence_radius}
 	\end{align}
 	\end{subequations}
+	If $\exp \left( \Delta - \tfrac{M}{A_\Sigma} \id \right) \chi$ is also defined for all $t \in (0, T)$, then
+	\begin{equation}
+		S_{n + 1, a} = \frac{1}{n + 1} \sum\limits_{b, c \in \N_+} \sum\limits_{x + y + z = n} \tfrac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{a, b, c} S_{x, b} S_{y, c} \tfrac{\left( \tfrac{M}{A_\Sigma} + \lambda_a - \lambda_b - \lambda_c \right)^z}{z!}. \label{eq:general_iteration_for_S}
+	\end{equation}
 \end{lemma}
 
 \begin{proof}
-	Inserting \cref{eq:analycity} into \cref{eq:R_a_eq} yields \cref{eq:general_iteration}. The \cref{eq:regularity,eq:convergence_radius} are necessary (and, in fact, sufficient) to have that the convergence radius of the Taylor series of $\varrho$ in the $L^2$ topology is at least $T$.
+	Inserting \cref{eq:analycity} into \cref{eq:R_a_eq} yields \cref{eq:general_iteration}. The \cref{eq:regularity,eq:convergence_radius} are necessary (and, in fact, sufficient) to have that the convergence radius of the Taylor series of $\varrho$ in the $L^2$ topology is at least $T$. The claim about \cref{eq:general_iteration_for_S} is straightforward to check.
 \end{proof}
 
 In the following two sections we investigate two special cases when iteration in \cref{eq:general_iteration} exists for all $a$ and $n$.
@@ -390,7 +407,7 @@ Let $\Sigma$ be the 2-sphere and $g$ be the round metric of radius $r$. Then we 
 \begin{equation}
 	\Psi_l^m \eqdef \Psi_{(l, m)}, \quad \& \quad R_{l, a}^m \eqdef R_{(l, m), a}, \quad \& \quad \varphi_{l_1, l_2, l_3}^{m_1, m_2, m_3} \eqdef \varphi_{(l_1, m_1), (l_2, m_2), (l_3, m_3)}.
 \end{equation}
-Using this new set of indices and notation, we can rewrite \cref{eq:general_iteration} as
+Using this new set of indices and notation, we can rewrite \cref{eq:general_iteration} as (for all $l \in \N_+$)
 \begin{align}
 	R_{l, n + 1}^m	&= \frac{1}{n + 1} \left( \tfrac{M}{4 \pi r^2} - \tfrac{l (l + 1)}{r^2} \right) R_{(l, m), n} \\
 					& \quad + \sum\limits_{l_1, l_2 \in \N_+} \sum\limits_{m_1 = - l_1}^{l_1} \sum\limits_{m_2 = - l_2}^{l_2} \sum\limits_{x = 0}^n \tfrac{l (l + 1) - l_1 (l_1 + 1) + l_2 (l_2 + 1)}{2 (n + 1) l_2 (l_2 + 1)} \varphi_{l, l_1, l_2}^{m, m_1, m_2} R_{l_1, x}^{m_1} R_{l_2, n - x}^{m_2}. \label{eq:iteration_on_S2_naive}
@@ -424,9 +441,16 @@ Before prove the main result of this section, let us make the following definiti
 	Since now $R_{l, n + 1}^m$ is expressed as a finite sum, it exists, which concludes the proof.
 \end{proof}
 
+\smallskip
+
+\begin{remark}
+	Similar results can be proven about the corresponding $S_{n, a}$ coefficients, which we omit here.
+\end{remark}
+
 \bigskip
 
 \section{Flat tori}
+\label{sec:tori}
 
 Let now $\Sigma$ be a flat torus. Thus, without any loss of generality, we can assume that there are vectors
 \begin{equation}
@@ -459,74 +483,85 @@ Then $\left( \Psi_{\underline{k}} \right)_{\underline{k} \in \Lambda^*}$ is an o
 \end{equation}
 thus $\left( \Psi_{\underline{k}} \right)_{\underline{k} \in \Lambda^*}$ is an eigenbasis for the Laplacian, albeit a complex one. The corresponding spectrum is $\left( 4 \pi^2 \left| \underline{k} \right|^2 \right)_{\underline{k} \in \Lambda^*}$.
 
-Function on $\Sigma$ can be viewed as $\Lambda$-periodic functions on $\rl^2$, thus if $\varrho$ is an ($L_\cx^2$) function on $\Sigma$, then we use Fourier decomposition to get:
+Function on $\Sigma$ can be viewed as $\Lambda$-periodic functions on $\rl^2$, thus if $\chi$ is an ($L_\cx^2$) function on $\Sigma$, then we use Fourier decomposition to get:
 \begin{equation}
-	\forall \underline{k} \in \Lambda^* : \quad R_{\underline{k}} \eqdef \frac{1}{\sqrt{A_\Sigma}} \int\limits_\Sigma e^{- 2 \pi i \underline{k} \cdot \underline{x}} \varrho \left( \underline{x} \right) \dA \left( \underline{x} \right), \quad \Leftrightarrow \quad \varrho = \sum\limits_{\underline{k} \in \Lambda^*} R_{\underline{k}} \Psi_{\underline{k}}.
+	\forall \underline{k} \in \Lambda^* : \quad R_{\underline{k}} \eqdef \frac{1}{\sqrt{A_\Sigma}} \int\limits_\Sigma e^{- 2 \pi i \underline{k} \cdot \underline{x}} \chi \left( \underline{x} \right) \dA \left( \underline{x} \right), \quad \Leftrightarrow \quad \chi = \sum\limits_{\underline{k} \in \Lambda^*} R_{\underline{k}} \Psi_{\underline{k}}.
 \end{equation}
-If $\varrho$ is real, then $R_{\underline{k}} = \overline{R_{- \underline{k}}}$. In this section we slightly deviate from our previous method and use the above complex basis and coefficients.
+Note again that $R_{\underline{0}} \equiv 0$. If $\chi$ is real, then $R_{\underline{k}} = \overline{R_{- \underline{k}}}$. In this section we slightly deviate from our previous method and use the above complex basis and coefficients.
 
-The ideas and proofs of the previous sections still apply, and if $\varrho \in C^1 \left( (0, T), L_\cx^2 \left( \Sigma, g \right) \right)$, then we can define the coefficients functions $R_{\underline{k}} \in C_\cx^1 \left( \Sigma \right)$, so that
-\begin{equation}
-	\varrho \left( t, \underline{x} \right) = \sum\limits_{n \in \N} \sum\limits_{\underline{k} \in \Lambda^*} R_{\underline{k}} (t) \Psi_{\underline{k}} \left( \underline{x} \right).
-\end{equation}
-If, furthermore, $\varrho$ is a solution to the Keller--Segel \cref{eq:KS_eq}, then we get (after a straightforward computation) that
-\begin{equation}
-	\dot{R}_{\underline{k}} = \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{\underline{k}} + \sum\limits_{\underline{l} \in \Lambda^*} \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{\underline{l}} R_{\underline{k} - \underline{l}}.
-\end{equation}
-Finally, if $\varrho$ is analytic in $t$, and we define $R_{n, \underline{k}} \in \cx$ as
-\begin{equation}
-	R_{\underline{k}} (t) = \sum\limits_{n \in \N} R_{n, \underline{k}} t^n,
-\end{equation}
-then we get the corresponding iteration for these coefficients to be
-\begin{equation}
-	R_{n + 1, \underline{k}} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} + \sum\limits_{\underline{l} \in \Lambda^*} \sum\limits_{m = 0}^n \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right). \label{eq:iteration_on_torus}
-\end{equation}
+The ideas and proofs of the previous sections still apply, and if $\chi \in C^1 \left( (0, T), L_\cx^2 \left( \Sigma, g \right) \right)$, then we can define the coefficients functions $R_{\underline{k}}, S_{\underline{k}} \in C_\cx^1 \left( \Sigma \right)$, so that
+\begin{align}
+	\chi \left( t, \underline{x} \right)																	&= \sum\limits_{n \in \N} \sum\limits_{\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}} R_{\underline{k}} (t) \Psi_{\underline{k}} \left( \underline{x} \right), \\
+	\exp \left( \left( \Delta - \tfrac{M}{A_\Sigma} \right) t \right) \chi \left( t, \underline{x} \right)	&= \sum\limits_{n \in \N} \sum\limits_{\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}} S_{\underline{k}} (t) \Psi_{\underline{k}} \left( \underline{x} \right).
+\end{align}
+If, furthermore, $\chi$ is a solution to the Keller--Segel \cref{eq:new_KS_eq}, then we get (after a straightforward computation) that for all $\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}$
+\begin{align}
+	\dot{R}_{\underline{k}}	&= \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{\underline{k}} + \sum\limits_{\underline{l} \in \Lambda^* - \left\{ \underline{0}, \underline{k} \right\}} \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2 \sqrt{A_\Sigma}} R_{\underline{l}} R_{\underline{k} - \underline{l}}, \\
+	\dot{S}_{\underline{k}}	&= \sum\limits_{\underline{l} \in \Lambda^* - \left\{ \underline{0}, \underline{k} \right\}} \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2 \sqrt{A_\Sigma}} \exp \left( \tfrac{M}{A_\Sigma} + 8 \pi^2 \left( \underline{k} - \underline{l} \right) \cdot \underline{l} \right) S_{\underline{l}} S_{\underline{k} - \underline{l}}
+\end{align}
+Finally, if $\chi$ is analytic in $t$, and we define $R_{n, \underline{k}}, S_{n, \underline{k}} \in \cx$ through
+\begin{align}
+	R_{\underline{k}} (t)	&= \sum\limits_{n \in \N} R_{n, \underline{k}} t^n, \\
+	S_{\underline{k}} (t)	&= \sum\limits_{n \in \N} S_{n, \underline{k}} t^n,
+\end{align}
+then we get the corresponding iteration is (for all $n \in \N$ and $\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}$)
+\begin{subequations}
+\begin{align}
+	R_{n + 1, \underline{k}} &= \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} + \sum\limits_{\underline{l} \in \Lambda^* - \left\{ \underline{0}, \underline{k} \right\}} \sum\limits_{m = 0}^n \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2 \sqrt{A_\Sigma}} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right), \label{eq:iteration_on_torus} \\
+	S_{n + 1, \underline{k}} &= \frac{1}{n + 1} \sum\limits_{\underline{l} \in \Lambda^* - \left\{ \underline{0}, \underline{k} \right\}} \sum\limits_{a + b + c = n} \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2 \sqrt{A_\Sigma}} S_{a, \underline{l}} S_{b, \underline{k} - \underline{l}} \frac{\left( \tfrac{M}{A_\Sigma} + 8 \pi^2 \left( \underline{k} - \underline{l} \right) \cdot \underline{l} \right)^c}{c!}, \label{eq:iteration_on_torus_for_S}
+\end{align}
+\end{subequations}
 
-As in \Cref{sec:sphere}, let us make the following definition:
-\begin{equation}
-	\forall n \in \N : \quad Z_n \eqdef \left\{ \ \underline{k} \in \Lambda^* \ \middle| \ R_{n, \underline{k}} \neq 0 \ \right\}.
-\end{equation}
-Since we assume that $M \neq 0$, we have that $\underline{0} \in Z_n$.
+As in \Cref{sec:sphere}, let us make the following definition: For all $n \in \N$, let
+\begin{align}
+	Z_n			&\eqdef \left\{ \ \underline{k} \in \Lambda^* - \left\{ \underline{0} \right\} \ \middle| \ R_{n, \underline{k}} \neq 0 \ \right\} \cup \left\{ \underline{0} \right\}, \\
+	\hat{Z}_n	&\eqdef \left\{ \ \underline{k} \in \Lambda^* - \left\{ \underline{0} \right\} \ \middle| \ S_{n, \underline{k}} \neq 0 \ \right\} \cup \left\{ \underline{0} \right\}.
+\end{align}
+Furthermore, let
+\begin{align}
+	d_n			&\eqdef \max \left( \left\{ \ \left| \underline{k} \right| \ \middle| \ \underline{k} \in Z_n \ \right\} \right), \\
+	\hat{d}_n	&\eqdef \max \left( \left\{ \ \left| \underline{k} \right| \ \middle| \ \underline{k} \in \hat{Z}_n \ \right\} \right).
+\end{align}
+Note that $Z_0 = \hat{Z}_0$, and thus $d_0 = \hat{d}_0$.
 
 \begin{theorem}
 	\label{theorem:torus_finite}
-	Assume that $Z_0$ is finite. Then for all $\underline{k} \in \Lambda^*$ and $n \in \N$, $R_{n, \underline{k}}$ exists. Moreover, $Z_n$ is also finite and satisfies
-	\begin{equation}
-		Z_n \subseteq Z_{n - 1} + Z_{n - 1}, \label{eq:Z_n_iteration}
-	\end{equation}
-	and \cref{eq:iteration_on_torus} becomes
-	\begin{equation}
-		R_{n + 1, \underline{k}} = \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} + \sum\limits_{\substack{\underline{l} \in Z_m \\ \underline{k} - \underline{l} \in Z_{n - m}}} \sum\limits_{m = 0}^n \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right). \label{eq:iteration_on_torus_finite}
-	\end{equation}
-	Finally, let
-	\begin{equation}
-		d_n \eqdef \max \left( \left\{ \ \left| \underline{k} \right| \ \middle| \ \underline{k} \in Z_n \ \right\} \right) > 0.
-	\end{equation}
-	Then
-	\begin{equation}
-		d_n \leqslant (n + 1) d_0. \label[ineq]{ineq:d_n}
-	\end{equation}
+	Assume that $Z_0$ is finite. Then for all $\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}$ and $n \in \N$, $R_{n, \underline{k}}$ exists. Moreover, $Z_n$ is also finite and \cref{eq:iteration_on_torus,eq:iteration_on_torus_for_S} become, for all $\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}$
+	\begin{align}
+		 R_{n + 1, \underline{k}}	&= \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} + \sum\limits_{\substack{\underline{l} \in Z_m \\ \underline{k} - \underline{l} \in Z_{n - m}}} \sum\limits_{m = 0}^n \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2 \sqrt{A_\Sigma}} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right), \label{eq:iteration_on_torus_finite} \\
+		 S_{n + 1, \underline{k}}	&= \frac{1}{n + 1} \sum\limits_{x + y + z = n} \sum\limits_{\substack{\underline{l} \in \hat{Z}_a \\ \underline{k} - \underline{l} \in \hat{Z}_b}} \tfrac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2 \sqrt{A_\Sigma}} S_{a, \underline{l}} S_{b, \underline{k} - \underline{l}} \tfrac{\left( \tfrac{M}{A_\Sigma} + 8 \pi^2 \left( \underline{k} - \underline{l} \right) \cdot \underline{l} \right)^z}{z!}. \label{eq:iteration_on_torus_finite_for_S}
+	\end{align}
+	Moreover
+	\begin{align}
+		d_n, \hat{d}_n \leqslant (n + 1) d_0, \label[ineq]{ineq:d_n}
+	\end{align}
 \end{theorem}
 
 \begin{proof}
-	Let us prove by induction.
+	We only prove the claim for the $R_{n, \underline{k}}$ coefficients. The proof is analogous for the $S_{n, \underline{k}}$ coefficients.
 
-	Since the claim for $n = 0$ is the hypothesis of the theorem, we only need to assume that we have already prove the claim for all nonnegative integers up to and including $n \in \N_+$.
+	Let us prove by induction. The claim for $n = 0$ is the hypothesis of the theorem.
 
-	The right-hand side of \cref{eq:iteration_on_torus} contains coefficients of the form $R_{m, \underline{l}}$ and $R_{n - m, \underline{k} - \underline{l}}$, with $0 \leqslant m \leqslant n$, we have that $R_{m, \underline{l}} = 0$ unless $\underline{l} \in Z_m$ and $R_{n - m, \underline{k} - \underline{l}} = 0$ unless $\underline{k} - \underline{l} \in Z_{n - m}$. That proves \cref{eq:iteration_on_torus_finite}.
+	Let us now assume that all nonnegative integers, $m$, up to but not including $n \in \N_+$, we have that for all $\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}$, $R_{m, \underline{k}}$ exists, $Z_m$ is finite, \cref{eq:iteration_on_torus_finite} holds (with $n$ replaced by $m$), and $d_m \leqslant (m + 1) d_0$.
 
-	Since now $R_{n + 1, \underline{k}}$ is expressed as a finite sum, it exists.
-
-	Now let $Z_{n + 1}^\prime \eqdef Z_n + Z_n$. If $\underline{k} \in \Lambda^* - Z_{n + 1}^\prime$, then for all $m \in \N$, such that $0 \leqslant m \leqslant n$, there does not exists $\underline{l} \in Z_m$ that could also satisfies $\underline{k} - \underline{l} \in Z_{n - m}$. Furthermore, since $Z_n \subseteq Z_{n + 1}^\prime$ we also have that $\underline{k} \notin Z_n$. Thus all terms in \cref{eq:iteration_on_torus_finite} are zero, and hence $\underline{k} \in Z_{n + 1}$, which proves \cref{eq:Z_n_iteration}.
-
-	Finally, if $\underline{k} \in Z_{n + 1}$, then there exist $m \in [0, n] \cap \N$, $\underline{l}_1 \in Z_m$, and $\underline{l}_2 \in Z_{n - m}$, such that $\underline{k} = \underline{l}_1 + \underline{l}_2$. Thus
+	Since \cref{eq:iteration_on_torus_finite} holds when $n$ is replaced by $m = n - 1$, we have that
 	\begin{equation}
-		\left| \underline{k} \right|  = \left| \underline{l}_1 + \underline{l}_2 \right| \leqslant \left| \underline{l}_1 \right| + \left| \underline{l}_2 \right| \leqslant d_m + d_{n - m}.
+		\forall \underline{k} \in \Lambda^* - \left\{ \underline{0} \right\} : R_{n, \underline{k}} = \frac{1}{n} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n - 1, \underline{k}} + \sum\limits_{m = 0}^{n - 1} \sum\limits_{\substack{\underline{l} \in Z_m \\ \underline{k} - \underline{l} \in Z_{n - 1 - m}}} \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right). \label{eq:iteration_for_n}
 	\end{equation}
-	Once again, using induction and the fact that \cref{ineq:d_n} holds trivially for $n = 0$, we get that if \cref{ineq:d_n} holds for all nonnegative integers up to and including $n$. Then if $\underline{k}$ is an element such that $\left| \underline{k} \right| = d_{n + 1}$, then
-	\begin{align}
-		d_{n + 1} = \left| \underline{k} \right| \leqslant d_m + d_{n - m} \leqslant (m + 1) d_0 + (n - m + 1) d_0 = \left( (n + 1) + 1 \right) d_0,
-	\end{align}
+	Let
+	\begin{equation}
+		Z_n^\prime \bigcup\limits_{m = 0}^{n - 1} \left( Z_m + Z_{n - 1 - m} \right),
+	\end{equation}
+	By assumption, $Z_n^\prime$ is a finite union of finite sets, so it is also finite. Pick any $\underline{k} \in Z_n^\prime$. Since $Z_{n - 1} \subseteq Z_n^\prime$, we have that the first term in \cref{eq:iteration_for_n} vanishes. By construction, there cannot exist $m \in [0, n - 1] \cap \N$ and $\underline{l} \in Z_m$, such that $\underline{k} - \underline{l} \in Z_{n - 1 - m}$, so all summands of the second term of \cref{eq:iteration_for_n} also vanish. Thus $Z_n \subseteq Z_n^\prime$, thus $Z_n$ is finite.
+
+	Using the finiteness of $Z_m$, now for all $m \in [0, n] \cap \N$, and \cref{eq:iteration_on_torus} implies \cref{eq:iteration_on_torus_finite}.
+
+	Since now $R_{n, \underline{k}}$ is expressed as a finite sum, it exists.
+
+	Finally, if $\underline{k} \in Z_n - Z_{n - 1}$, then there exist $m \in [0, n - 1] \cap \N$, $\underline{l}_1 \in Z_m$, and $\underline{l}_2 \in Z_{n - m}$, such that $\underline{k} = \underline{l}_1 + \underline{l}_2$. Thus
+	\begin{equation}
+		\left| \underline{k} \right|  = \left| \underline{l}_1 + \underline{l}_2 \right| \leqslant \left| \underline{l}_1 \right| + \left| \underline{l}_2 \right| \leqslant d_m + d_{n - m} \leqslant (m + 1) d_0 + (n - m + 1) d_0 = \left( (n + 1) + 1 \right) d_0,
+	\end{equation}
 	which concludes the proof.
 \end{proof}
 
@@ -541,30 +576,57 @@ Since we assume that $M \neq 0$, we have that $\underline{0} \in Z_n$.
 
 \smallskip
 
+We are now ready to prove our main theorem.
+
 \begin{theorem}
-	Under the assumptions of \Cref{theorem:torus_finite}, we have the following: There exists $C > 0$, that only depends on $\cR_0$, as in \cref{eq:regularity}, and the geometry of $\Sigma$, such that for all $n \in \N$ and $\underline{k} \in \Lambda^*$ we have
-	\begin{equation}
-		\left| R_{n, \underline{k}} \right| \leqslant C^{n + 1} \exp \left( - \tfrac{\left| \underline{k} \right|}{2^n C} \right).
-	\end{equation}
+	Let $\varrho_0 \in L^1 \left( \Sigma, g \right)$ be such that it has only finitely many nonzero Fourier coefficients, that is $Z_0$ is finite. Then there exists $T > 0$, and $\varrho \in C^\omega \left( (0 , T), L^2 \left( \Sigma, g \right) \right)$, such that it solves \cref{eq:KS_eq,eq:KS_IV}.
 \end{theorem}
 
 \begin{proof}
-	Let
+	By \Cref{theorem:torus_finite}, for all $n \in \N$ and $\underline{k} \in \Lambda^* - \left\{ 0 \right\}$ the $S_{n, \underline{k}}$ coefficients exist. We first prove that there exists $T$, such that for all $\underline{k} \in \Lambda^* - \left\{ 0 \right\}$
 	\begin{equation}
-		C^\prime \eqdef \inf \left( \left\{ \ c \in \rl_+ \ \middle| \ \forall \underline{k} \in Z_0 - \{ \underline{0} \} : \quad \left| R_{0, \underline{k}} \right| \leqslant c \exp \left( - \tfrac{\left| \underline{k} \right|}{c} \right) \ \right\} \right),
+		\limsup\limits_{n \in \N} \sqrt[n]{\left| S_{n, \underline{k}} \right|} \leqslant \frac{1}{T}, \label[ineq]{ineq:T_def}
 	\end{equation}
-	and let
+	and thus the Taylor series
 	\begin{equation}
-		C \eqdef \max \left( \left\{ \ C^\prime, ??? \ \right\} \right).
+		S_{\underline{k}} (t) = \sum\limits_{n \in \N} S_{n, \underline{k}} t^n,
 	\end{equation}
-	We prove that $C$ is the constant in the claim using induction. By construction the claim is true for $n = 0$. Let us assume that we have already prove the claim for all nonnegative integers up to and including $n \in \N_+$.
+	is convergent for all $t \in (- T, T)$.
 
-	Let $\underline{k} \in Z_{n + 1}$. Then we have
+	---
+
+	*This part is \TBC *
+
+	---
+
+	Now for all $t \in (0, T)$ and $\underline{x} \in \Sigma$, let
+	\begin{equation}
+		\varrho \left( t, \underline{x} \right) \eqdef \tfrac{M}{A_\Sigma} + \sum\limits_{\underline{k} \in \Lambda^* - \left\{ 0 \right\}} S_{\underline{k}} (t) \exp \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) t \right) \tfrac{e^{2 \pi i \underline{k} \cdot \underline{x}}}{\sqrt{A_\Sigma}}. \label{eq:varrho_def}
+	\end{equation}
+	Now note that if $\underline{k} \in \hat{Z}_n - \hat{Z}_{n - 1}$, then
+	\begin{equation}
+		\left| S_{\underline{k}} (t) - S_{\underline{k}} (0) \right| \leqslant C \frac{t^n}{T - |t|}.
+	\end{equation}
+	In particular, if $n > 0$, then
+	\begin{equation}
+		\left| S_{\underline{k}} (t) \right| \leqslant C \frac{t^n}{T - |t|}.
+	\end{equation}
+	Thus
 	\begin{align}
-		\left| \frac{1}{n + 1} \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} \right|	&= \frac{1}{n + 1} C \left| \underline{k} \right|^2 C^{n + 1} \exp \left( - \tfrac{\left| \underline{k} \right|}{2^n C} \right)
+		\sum\limits_{\underline{k} \in \Lambda^* - \left\{ 0 \right\}} \left| S_{\underline{k}} (t) \exp \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) t \right) \tfrac{e^{2 \pi i \underline{k} \cdot \underline{x}}}{\sqrt{A_\Sigma}} \right|	&\leqslant \sum\limits_{\underline{k} \in Z_0} \left| S_{\underline{k}} (t) \right| \exp \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) t \right) \tfrac{1}{\sqrt{A_\Sigma}} \\
+		& \quad + \sum\limits_{n \in \N_+} \sum\limits_{\underline{k} \in \hat{Z}_n - \hat{Z}_{n - 1}} \left| S_{\underline{k}} (t) \right| \exp \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) t \right) \tfrac{1}{\sqrt{A_\Sigma}} \\
+		&\leqslant \frac{C}{(T - |t|) \sqrt{A_\Sigma}} \exp \left( \tfrac{M}{A_\Sigma} t \right) \left( \| \varrho_0 \|_{L^1 \left( \Sigma, g \right)} + \sum\limits_{n \in \N} |\hat{Z}_n| t^n \right) \\
+		&\leqslant \frac{C}{(T - |t|) \sqrt{A_\Sigma}} \exp \left( \tfrac{M}{A_\Sigma} T \right) \left( \| \varrho_0 \|_{L^1 \left( \Sigma, g \right)} + C \frac{T^2}{(T - |t|)^3} \right).
 	\end{align}
 
-	\TBC
+	Thus right-hand side of \cref{eq:varrho_def} is absolute convergent for all $t \in (- T, T)$. In particular
+	\begin{align}
+		\lim\limits_{t \rightarrow 0^+} \varrho \left( t, \underline{x} \right)	&= \varrho \left( 0, \underline{x} \right) \\
+		&= \tfrac{M}{A_\Sigma} + \sum\limits_{\underline{k} \in \Lambda^* - \left\{ 0 \right\}} S_{\underline{k}} (0) \exp \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) 0 \right) \tfrac{e^{2 \pi i \underline{k} \cdot \underline{x}}}{\sqrt{A_\Sigma}} \\
+		&= \tfrac{M}{A_\Sigma} + \sum\limits_{\underline{k} \in \Lambda^* - \left\{ 0 \right\}} R_{\underline{k}} (0) \tfrac{e^{2 \pi i \underline{k} \cdot \underline{x}}}{\sqrt{A_\Sigma}} \\
+		&= \varrho_0 \left( \underline{x} \right),
+	\end{align}
+	which concludes the proof.
 \end{proof}
 
 	%=========================
