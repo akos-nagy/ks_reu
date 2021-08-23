@@ -40,7 +40,8 @@
 
 %%%%%%%%%% eqdef fix %%%%%%%%%%
 
-\newcommand{\eqdef}{\mathrel{\vcenter{\baselineskip0.5ex\lineskiplimit0pt\hbox{.}\hbox{.}}}=}
+\newcommand{\eqdef}{\mathrel{\vcenter{\hbox{.}\hbox{.}}}=}
+\newcommand{\defeq}{=\mathrel{\vcenter{\baselineskip0.5ex\lineskiplimit0pt\hbox{.}\hbox{.}}}}
 
 %%%%%%%%%% Theorems/numbering %%%%%%%%%%
 
@@ -57,24 +58,24 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{hypoth}[theorem]{Hypothesis}
-\crefname{theorem}{Theorem}{Theorems}						% label for Theorems
-\creflabelformat{theorem}{#2{#1}#3}							% label format for 'theorem'
-\crefname{Mtheorem}{Main Theorem}{Main Theorems}			% label for the Main Theorems
-\creflabelformat{Mtheorem}{#2{#1}#3}						% label format for 'Mtheorem'
-\crefname{lemma}{Lemma}{Lemmata}							% label for Lemmata
-\creflabelformat{lemma}{#2{#1}#3}							% label format for 'lemma'
-\crefname{corollary}{Corollary}{Corollaries}				% label for Corollaries
-\creflabelformat{corollary}{#2{#1}#3}						% label format for 'corollary'
+\crefname{theorem}{Theorem}{Theorems}					% label for Theorems
+\creflabelformat{theorem}{#2{#1}#3}						% label format for 'theorem'
+\crefname{Mtheorem}{Main Theorem}{Main Theorems}		% label for the Main Theorems
+\creflabelformat{Mtheorem}{#2{#1}#3}					% label format for 'Mtheorem'
+\crefname{lemma}{Lemma}{Lemmata}						% label for Lemmata
+\creflabelformat{lemma}{#2{#1}#3}						% label format for 'lemma'
+\crefname{corollary}{Corollary}{Corollaries}			% label for Corollaries
+\creflabelformat{corollary}{#2{#1}#3}					% label format for 'corollary'
 \crefname{theorem}{Proposition}{Propositions}			% label for Propositions
 \creflabelformat{theorem}{#2{#1}#3}						% label format for 'theorem'
-\crefname{ineq}{inequality}{inequalities}					% label for inequalities
-\creflabelformat{ineq}{#2{\upshape(#1)}#3}					% label format for 'ineq'
-\crefname{cond}{condition}{conditions}						% label for conditions
-\creflabelformat{cond}{#2{\upshape(#1)}#3}					% label format for 'cond'
-\crefname{hypoth}{Hypothesis}{Hypotheses}					% label for Hypotheses
-\creflabelformat{hypoth}{#2{#1}#3}							% label format for 'hypoth'
-\crefname{definition}{Definition}{Definitions}						% label for Definitions
-\creflabelformat{def}{#2{#1}#3}								% label format for 'def'
+\crefname{ineq}{inequality}{inequalities}				% label for inequalities
+\creflabelformat{ineq}{#2{\upshape(#1)}#3}				% label format for 'ineq'
+\crefname{cond}{condition}{conditions}					% label for conditions
+\creflabelformat{cond}{#2{\upshape(#1)}#3}				% label format for 'cond'
+\crefname{hypoth}{Hypothesis}{Hypotheses}				% label for Hypotheses
+\creflabelformat{hypoth}{#2{#1}#3}						% label format for 'hypoth'
+\crefname{definition}{Definition}{Definitions}			% label for Definitions
+\creflabelformat{def}{#2{#1}#3}							% label format for 'def'
 \crefname{appsec}{Appendix}{Appendices}
 
 %%%%%%%%%% Blackboard %%%%%%%%%%
@@ -434,7 +435,7 @@ Before prove the main result of this section, let us make the following definiti
 \begin{proof}
 	Let us prove by induction.
 
-	Since the claim for $n = 0$ is the hypothesis of the theorem, we only need to assume that we have already prove the claim for all nonnegative integers up to and including $n \in \N_+$.
+	Since the claim for $n = 0$ is the hypothesis of the theorem, we only need to assume that we have already proven the claim for all nonnegative integers up to and including $n \in \N_+$.
 
 	The right-hand side of \cref{eq:iteration_on_S2} contains coefficients of the form $R_{l_1, x}^{m_1}$ and $R_{l_2, n - x}^{m_2}$, with $0 \leqslant x \leqslant n$, we have that $R_{l_1, x}^{m_1}$ unless $(l_1, m_1) \in Z_x$ and $R_{l_2, n - x}^{m_2}$ unless $(l_2, m_2) \in Z_{n - x}$. Thus for every $x$ we have the contribution of a finite sum, and we only consider finitely many $x$'s, this proves \cref{eq:iteration_on_S2_finite}.
 
@@ -528,7 +529,7 @@ Note that $Z_0 = \hat{Z}_0$, and thus $d_0 = \hat{d}_0$.
 	\label{theorem:torus_finite}
 	Assume that $Z_0$ is finite. Then for all $\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}$ and $n \in \N$, $R_{n, \underline{k}}$ exists. Moreover, $Z_n$ is also finite and \cref{eq:iteration_on_torus,eq:iteration_on_torus_for_S} become, for all $\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}$
 	\begin{align}
-		 R_{n + 1, \underline{k}}	&= \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} + \sum\limits_{\substack{\underline{l} \in Z_m \\ \underline{k} - \underline{l} \in Z_{n - m}}} \sum\limits_{m = 0}^n \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2 \sqrt{A_\Sigma}} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right), \label{eq:iteration_on_torus_finite} \\
+		 R_{n + 1, \underline{k}}	&= \frac{1}{n + 1} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n, \underline{k}} + \sum\limits_{m = 0}^n \sum\limits_{\substack{\underline{l} \in Z_m \\ \underline{k} - \underline{l} \in Z_{n - m}}} \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2 \sqrt{A_\Sigma}} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right), \label{eq:iteration_on_torus_finite} \\
 		 S_{n + 1, \underline{k}}	&= \frac{1}{n + 1} \sum\limits_{x + y + z = n} \sum\limits_{\substack{\underline{l} \in \hat{Z}_a \\ \underline{k} - \underline{l} \in \hat{Z}_b}} \tfrac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2 \sqrt{A_\Sigma}} S_{a, \underline{l}} S_{b, \underline{k} - \underline{l}} \tfrac{\left( \tfrac{M}{A_\Sigma} + 8 \pi^2 \left( \underline{k} - \underline{l} \right) \cdot \underline{l} \right)^z}{z!}. \label{eq:iteration_on_torus_finite_for_S}
 	\end{align}
 	Moreover
@@ -546,13 +547,13 @@ Note that $Z_0 = \hat{Z}_0$, and thus $d_0 = \hat{d}_0$.
 
 	Since \cref{eq:iteration_on_torus_finite} holds when $n$ is replaced by $m = n - 1$, we have that
 	\begin{equation}
-		\forall \underline{k} \in \Lambda^* - \left\{ \underline{0} \right\} : R_{n, \underline{k}} = \frac{1}{n} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n - 1, \underline{k}} + \sum\limits_{m = 0}^{n - 1} \sum\limits_{\substack{\underline{l} \in Z_m \\ \underline{k} - \underline{l} \in Z_{n - 1 - m}}} \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{m, \underline{l}} R_{n - m, \underline{k} - \underline{l}} \right). \label{eq:iteration_for_n}
+		\forall \underline{k} \in \Lambda^* - \left\{ \underline{0} \right\} : R_{n, \underline{k}} = \frac{1}{n} \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) R_{n - 1, \underline{k}} + \sum\limits_{m = 0}^{n - 1} \sum\limits_{\substack{\underline{l} \in Z_m \\ \underline{k} - \underline{l} \in Z_{n - 1 - m}}} \frac{\underline{k} \cdot \underline{l}}{\left| \underline{l} \right|^2} R_{m, \underline{l}} R_{n - 1 - m, \underline{k} - \underline{l}} \right). \label{eq:iteration_for_n}
 	\end{equation}
 	Let
 	\begin{equation}
-		Z_n^\prime \bigcup\limits_{m = 0}^{n - 1} \left( Z_m + Z_{n - 1 - m} \right),
+		Z_n^\prime \eqdef \bigcup\limits_{m = 0}^{n - 1} \left( Z_m + Z_{n - 1 - m} \right),
 	\end{equation}
-	By assumption, $Z_n^\prime$ is a finite union of finite sets, so it is also finite. Pick any $\underline{k} \in Z_n^\prime$. Since $Z_{n - 1} \subseteq Z_n^\prime$, we have that the first term in \cref{eq:iteration_for_n} vanishes. By construction, there cannot exist $m \in [0, n - 1] \cap \N$ and $\underline{l} \in Z_m$, such that $\underline{k} - \underline{l} \in Z_{n - 1 - m}$, so all summands of the second term of \cref{eq:iteration_for_n} also vanish. Thus $Z_n \subseteq Z_n^\prime$, thus $Z_n$ is finite.
+	By assumption, $Z_n^\prime$ is a finite union of finite sets, so it is also finite. Pick any $\underline{k} \in Z_n^\prime$. Since $Z_{n - 1} \subseteq Z_n^\prime$, we have that the first term in \cref{eq:iteration_for_n} vanishes. By construction, there cannot exist $m \in [0, n - 1] \cap \N$ and $\underline{l} \in Z_m$, such that $\underline{k} - \underline{l} \in Z_{n - 1 - m}$, so all summands of the second term of \cref{eq:iteration_for_n} also vanish, hence $Z_n \subseteq Z_n^\prime$, thus $Z_n$ is finite.
 
 	Using the finiteness of $Z_m$, now for all $m \in [0, n] \cap \N$, and \cref{eq:iteration_on_torus} implies \cref{eq:iteration_on_torus_finite}.
 
@@ -579,19 +580,25 @@ Note that $Z_0 = \hat{Z}_0$, and thus $d_0 = \hat{d}_0$.
 We are now ready to prove our main theorem.
 
 \begin{theorem}
-	Let $\varrho_0 \in L^1 \left( \Sigma, g \right)$ be such that it has only finitely many nonzero Fourier coefficients, that is $Z_0$ is finite. Then there exists $T > 0$, and $\varrho \in C^\omega \left( (0 , T), L^2 \left( \Sigma, g \right) \right)$, such that it solves \cref{eq:KS_eq,eq:KS_IV}.
+	Let $\varrho_0 \in L^1 \left( \Sigma, g \right)$ be such that it has only finitely many nonzero Fourier coefficients, that is, $Z_0$ is finite. Then there exists $T > 0$, and $\varrho \in C^\omega \left( (0 , T), L^2 \left( \Sigma, g \right) \right)$, such that it solves \cref{eq:KS_eq,eq:KS_IV}.
 \end{theorem}
 
 \begin{proof}
-	By \Cref{theorem:torus_finite}, for all $n \in \N$ and $\underline{k} \in \Lambda^* - \left\{ 0 \right\}$ the $S_{n, \underline{k}}$ coefficients exist. We first prove that there exists $T$, such that for all $\underline{k} \in \Lambda^* - \left\{ 0 \right\}$
+	By \Cref{theorem:torus_finite}, for all $n \in \N$ and $\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}$ the $R_{n, \underline{k}}$ coefficients exist. We first prove that there exists $C$, such that for all $n \in \N_+$ and $\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}$
 	\begin{equation}
-		\limsup\limits_{n \in \N} \sqrt[n]{\left| S_{n, \underline{k}} \right|} \leqslant \frac{1}{T}, \label[ineq]{ineq:T_def}
+		\left| R_{n, \underline{k}} \right| \leqslant C^{n + 1} \tfrac{n^n}{(n + 1)!} \exp \left( \tfrac{\left| \underline{k} \right|}{C} \right), \label[ineq]{ineq:R_bound}
 	\end{equation}
-	and thus the Taylor series
+	and thus
 	\begin{equation}
-		S_{\underline{k}} (t) = \sum\limits_{n \in \N} S_{n, \underline{k}} t^n,
+		\limsup\limits_{n \in \N} \sqrt[n]{\left\| R_n \right\|_{l^1 \left( \Lambda^* \right)}} = \lim\limits_{n \rightarrow \infty} \sqrt[n]{\left\| R_n \right\|_{l^1 \left( \Lambda^* \right)}} \leqslant \frac{C}{e} \defeq \frac{1}{T}. \label[ineq]{ineq:T_def}
 	\end{equation}
-	is convergent for all $t \in (- T, T)$.
+	One can pick $C > 0$, so that \cref{ineq:R_bound} holds for $n = 0$. Let us assume that we have already proven \cref{eq:R_bound} for all nonnegative integers up to and including $n \in \N_+$. Then, by \Cref{theorem:torus_finite}, for $n + 1$, we only need to consider $\underline{k} \in Z_{n + 1}$, in particular, $\left| \underline{k} \right| \leqslant (n + 2) d_0$
+	\begin{align}
+		\left| \tfrac{\tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2}{n + 1} R_{n, \underline{k}} \right|	&\leqslant \tfrac{C \left| \underline{k} \right|^2}{2} C^{n + 1} \tfrac{n^n}{(n + 1)!} \exp \left( \tfrac{\left| \underline{k} \right|}{C} \right)
+	\end{align}
+
+
+	, using \cref{eq:iteration_on_torus_finite}, we have
 
 	---
 
@@ -601,7 +608,7 @@ We are now ready to prove our main theorem.
 
 	Now for all $t \in (0, T)$ and $\underline{x} \in \Sigma$, let
 	\begin{equation}
-		\varrho \left( t, \underline{x} \right) \eqdef \tfrac{M}{A_\Sigma} + \sum\limits_{\underline{k} \in \Lambda^* - \left\{ 0 \right\}} S_{\underline{k}} (t) \exp \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) t \right) \tfrac{e^{2 \pi i \underline{k} \cdot \underline{x}}}{\sqrt{A_\Sigma}}. \label{eq:varrho_def}
+		\varrho \left( t, \underline{x} \right) \eqdef \tfrac{M}{A_\Sigma} + \sum\limits_{\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}} S_{\underline{k}} (t) \exp \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) t \right) \tfrac{e^{2 \pi i \underline{k} \cdot \underline{x}}}{\sqrt{A_\Sigma}}. \label{eq:varrho_def}
 	\end{equation}
 	Now note that if $\underline{k} \in \hat{Z}_n - \hat{Z}_{n - 1}$, then
 	\begin{equation}
@@ -613,7 +620,7 @@ We are now ready to prove our main theorem.
 	\end{equation}
 	Thus
 	\begin{align}
-		\sum\limits_{\underline{k} \in \Lambda^* - \left\{ 0 \right\}} \left| S_{\underline{k}} (t) \exp \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) t \right) \tfrac{e^{2 \pi i \underline{k} \cdot \underline{x}}}{\sqrt{A_\Sigma}} \right|	&\leqslant \sum\limits_{\underline{k} \in Z_0} \left| S_{\underline{k}} (t) \right| \exp \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) t \right) \tfrac{1}{\sqrt{A_\Sigma}} \\
+		\sum\limits_{\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}} \left| S_{\underline{k}} (t) \exp \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) t \right) \tfrac{e^{2 \pi i \underline{k} \cdot \underline{x}}}{\sqrt{A_\Sigma}} \right|	&\leqslant \sum\limits_{\underline{k} \in Z_0} \left| S_{\underline{k}} (t) \right| \exp \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) t \right) \tfrac{1}{\sqrt{A_\Sigma}} \\
 		& \quad + \sum\limits_{n \in \N_+} \sum\limits_{\underline{k} \in \hat{Z}_n - \hat{Z}_{n - 1}} \left| S_{\underline{k}} (t) \right| \exp \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) t \right) \tfrac{1}{\sqrt{A_\Sigma}} \\
 		&\leqslant \frac{C}{(T - |t|) \sqrt{A_\Sigma}} \exp \left( \tfrac{M}{A_\Sigma} t \right) \left( \| \varrho_0 \|_{L^1 \left( \Sigma, g \right)} + \sum\limits_{n \in \N} |\hat{Z}_n| t^n \right) \\
 		&\leqslant \frac{C}{(T - |t|) \sqrt{A_\Sigma}} \exp \left( \tfrac{M}{A_\Sigma} T \right) \left( \| \varrho_0 \|_{L^1 \left( \Sigma, g \right)} + C \frac{T^2}{(T - |t|)^3} \right).
@@ -622,12 +629,14 @@ We are now ready to prove our main theorem.
 	Thus right-hand side of \cref{eq:varrho_def} is absolute convergent for all $t \in (- T, T)$. In particular
 	\begin{align}
 		\lim\limits_{t \rightarrow 0^+} \varrho \left( t, \underline{x} \right)	&= \varrho \left( 0, \underline{x} \right) \\
-		&= \tfrac{M}{A_\Sigma} + \sum\limits_{\underline{k} \in \Lambda^* - \left\{ 0 \right\}} S_{\underline{k}} (0) \exp \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) 0 \right) \tfrac{e^{2 \pi i \underline{k} \cdot \underline{x}}}{\sqrt{A_\Sigma}} \\
-		&= \tfrac{M}{A_\Sigma} + \sum\limits_{\underline{k} \in \Lambda^* - \left\{ 0 \right\}} R_{\underline{k}} (0) \tfrac{e^{2 \pi i \underline{k} \cdot \underline{x}}}{\sqrt{A_\Sigma}} \\
+		&= \tfrac{M}{A_\Sigma} + \sum\limits_{\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}} S_{\underline{k}} (0) \exp \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) 0 \right) \tfrac{e^{2 \pi i \underline{k} \cdot \underline{x}}}{\sqrt{A_\Sigma}} \\
+		&= \tfrac{M}{A_\Sigma} + \sum\limits_{\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}} R_{\underline{k}} (0) \tfrac{e^{2 \pi i \underline{k} \cdot \underline{x}}}{\sqrt{A_\Sigma}} \\
 		&= \varrho_0 \left( \underline{x} \right),
 	\end{align}
 	which concludes the proof.
 \end{proof}
+
+\section{Exact solutions}
 
 	%=========================
 	%\bibliography{references}
