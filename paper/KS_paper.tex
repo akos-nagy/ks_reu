@@ -40,7 +40,7 @@
 
 %%%%%%%%%% eqdef fix %%%%%%%%%%
 
-\newcommand{\eqdef}{\mathrel{\vcenter{\hbox{.}\hbox{.}}}=}
+\newcommand{\eqdef}{\mathrel{\vcenter{\baselineskip0.5ex\lineskiplimit0pt\hbox{.}\hbox{.}}}=}
 \newcommand{\defeq}{=\mathrel{\vcenter{\baselineskip0.5ex\lineskiplimit0pt\hbox{.}\hbox{.}}}}
 
 %%%%%%%%%% Theorems/numbering %%%%%%%%%%
@@ -206,15 +206,15 @@
 
 \section{Reformulation of the equation}
 
-Let $\Sigma$ be a smooth, closed surface with a Riemannian metric $g$ and area form $\omega$. Let $G$ be the Green operator of the Laplacian, $\Delta$. For each function, $\varrho \in C^1 \left( (0, T); L^1 \left( \Sigma \right) \right)$, let
+Let $\Sigma$ be a smooth, closed surface with a Riemannian metric $g$ and area form $\omega$. Let $G$ be the Green operator of the Laplacian, $\Delta$. Let $I \subseteq \rl$ be a connected, open interval and $t_0 \in I$. For each function, $\varrho \in C^1 \left( I; L^1 \left( \Sigma \right) \right)$, let
 \begin{equation}
-	 \forall t \in (0, T) : \quad \varrho_t \eqdef \varrho|_{\{ t \} \times \Sigma} \in L^1 \left( \Sigma \right).
+	 \forall t \in I : \quad \varrho_t \eqdef \varrho|_{\{ t \} \times \Sigma} \in L^1 \left( \Sigma \right).
 \end{equation}
-Let us fix $\varrho_0 \in L^1 \left( \Sigma, g \right)$. A function, $\varrho \in C^1 \left( (0, T); L^1 \left( \Sigma \right) \right)$, satisfies the \emph{(parabolic-elliptic) Keller--Segel equations} with initial value $\varrho_0$ if for all $t \in (0, T)$, $\varrho_t \in L_{1, \loc}^2$ and $\varrho$ is (weak) solution to the following system:
+Let us fix $\varrho_0 \in L^1 \left( \Sigma, g \right)$. A function, $\varrho \in C^1 \left( I; L^1 \left( \Sigma \right) \right)$, satisfies the \emph{(parabolic-elliptic) Keller--Segel equations} with initial value $\varrho_0$ if for all $t \in I$, $\varrho_t \in L_{1, \loc}^2$ and $\varrho$ is (weak) solution to the following system:
 \begin{subequations}
 \begin{align}
 	\del_t \varrho								&= - \Delta \varrho + \rd^* \left( \varrho \rd G \left( \varrho \right) \right), \label{eq:KS_eq} \\
-	\lim\limits_{t \rightarrow 0^+} \varrho_t	&= \varrho_0. \label{eq:KS_IV}
+	\lim\limits_{t \rightarrow t_0^+} \varrho_t	&= \varrho_0. \label{eq:KS_IV}
 \end{align}
 \end{subequations}
 The convergence in \cref{eq:KS_IV} is in $L^1 \left( \Sigma, g \right)$.
@@ -234,11 +234,11 @@ Thus $M$ constant and hence we drop the $t$-dependence from its notation.
 For the rest of the paper, let $A_\Sigma \eqdef \Ar \left( \Sigma, g \right)$. The following lemma recasts \cref{eq:KS_eq,eq:KS_IV} in a simpler form.
 
 \begin{lemma}
-	Let $\chi_0 \eqdef \varrho_0 - \tfrac{M}{A_\Sigma} \in L^1 \left( \Sigma \right)$ and $\chi \eqdef \varrho - \tfrac{M}{A_\Sigma} \in C^1 \left( (0, T); L^1 \left( \Sigma \right) \right)$. Then \cref{eq:KS_eq,eq:KS_IV} are equivalent to
+	Let $\chi_0 \eqdef \varrho_0 - \tfrac{M}{A_\Sigma} \in L^1 \left( \Sigma \right)$ and $\chi \eqdef \varrho - \tfrac{M}{A_\Sigma} \in C^1 \left( I; L^1 \left( \Sigma \right) \right)$. Then \cref{eq:KS_eq,eq:KS_IV} are equivalent to
 	\begin{subequations}
 	\begin{align}
-		\del_t \chi						&= \tfrac{M}{A_\Sigma} \chi - \Delta \chi + \rd^* \left( \chi \rd G \left( \chi \right) \right), \label{eq:new_KS_eq} \\
-		\chi|_{\{ 0 \} \times \Sigma}	&= \chi_0. \label{eq:new_KS_IV}
+		\del_t \chi									&= \tfrac{M}{A_\Sigma} \chi - \Delta \chi + \rd^* \left( \chi \rd G \left( \chi \right) \right), \label{eq:new_KS_eq} \\
+		\lim\limits_{t \rightarrow t_0^+} \chi_t	&= \chi_0. \label{eq:new_KS_IV}
 	\end{align}
 	\end{subequations}
 \end{lemma}
@@ -269,7 +269,7 @@ For the rest of the paper, let $A_\Sigma \eqdef \Ar \left( \Sigma, g \right)$. T
 
 \section{The generalized Fourier transform}
 
-Since $\Sigma$ is compact, for all $p \in (1, \infty]$, we have that $L^p \left( \Sigma \right) \hookrightarrow L^1 \left( \Sigma, g \right)$. Let us assume now that $\varrho \in C^1 \left( (0, T); L^2 \left( \Sigma \right) \right) \hookrightarrow C^1 \left( (0, T); L^1 \left( \Sigma \right) \right)$ is a solution to the Keller--Segel \cref{eq:KS_eq}.
+Since $\Sigma$ is compact, for all $p \in (1, \infty]$, we have that $L^p \left( \Sigma \right) \hookrightarrow L^1 \left( \Sigma, g \right)$. Let us assume now that $\varrho \in C^1 \left( I; L^2 \left( \Sigma \right) \right) \hookrightarrow C^1 \left( I; L^1 \left( \Sigma \right) \right)$ is a solution to the Keller--Segel \cref{eq:KS_eq}.
 
 Let now $\left( \Psi_a \in L^2 \left( \Sigma, g \right) \right)_{a \in \N}$ be an orthonormal eigenbasis of $\Delta$ and
 \begin{equation}
@@ -283,9 +283,9 @@ In particular, $\Psi_0 = \tfrac{1}{\sqrt{A_\Sigma}}$.
 
 Assume that $\chi$ is a solution to \cref{eq:new_KS_eq} and write
 \begin{equation}
-	\forall a \in \N : \ \forall t \in (0, T) : \quad R_a (t) \eqdef \left\langle \Psi_a \middle| \chi|_{\{ t \} \times \Sigma} \right\rangle_{L^2 \left( \Sigma, g \right)}.
+	\forall a \in \N : \ \forall t \in I : \quad R_a (t) \eqdef \left\langle \Psi_a \middle| \chi|_{\{ t \} \times \Sigma} \right\rangle_{L^2 \left( \Sigma, g \right)}.
 \end{equation}
-Then for each $a \in \N$, we have that $R_a \in C^1 \left( (0, T); \rl \right)$. Note that $R_0 \equiv 0$. Finally let
+Then for each $a \in \N$, we have that $R_a \in C^1 \left( I; \rl \right)$. Note that $R_0 \equiv 0$. Finally let
 \begin{equation}
 	\forall a, b, c \in \N : \quad \varphi_{a, b, c} \eqdef \int\limits_\Sigma \Psi_a \Psi_b \Psi_c \dA.
 \end{equation}
@@ -301,14 +301,14 @@ Then $\varphi$ is a completely symmetric 3-tensor, and
 	Under the above assumptions, the function $\chi$ is a solution to \cref{eq:new_KS_eq} exactly when
 	\begin{subequations}
 	\begin{align}
-		\forall t \in (0, T) &: \quad \left( R_a (t) \right)_{a \in \N_+} \in l^2 \left( \N_+ \right), \label[cond]{cond:R_l2} \\
+		\forall t \in I &: \quad \left( R_a (t) \right)_{a \in \N_+} \in l^2 \left( \N_+ \right), \label[cond]{cond:R_l2} \\
 		\forall a \in \N_+ &: \quad \dot{R}_a = \left( \tfrac{M}{A_\Sigma} - \lambda_a \right) R_a + \sum\limits_{b, c \in \N_+} \frac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{a, b, c} R_b R_c. \label{eq:R_a_eq}
 	\end{align}
 	\end{subequations}
 \end{theorem}
 
 \begin{proof}
-	Since $\left( \Psi_a \right)_{a \in \N}$ is an orthonormal basis of $L^2 \left( \Sigma, g \right)$ and for all $t \in (0, T)$, $\varrho_t$ is in $L^2 \left( \Sigma, g \right)$, we get \cref{cond:R_l2}.
+	Since $\left( \Psi_a \right)_{a \in \N}$ is an orthonormal basis of $L^2 \left( \Sigma, g \right)$ and for all $t \in I$, $\varrho_t$ is in $L^2 \left( \Sigma, g \right)$, we get \cref{cond:R_l2}.
 
 	For all $a \in \N_+$, we have $G \left( \Psi_a \right) = \lambda_a^{- 1} \Psi_a$. Using this, the self-adjointness of $\Delta$, and \cref{eq:new_KS_eq}, we get
 	\begin{align}
@@ -364,17 +364,18 @@ These are the "Fourier" coefficient of $\exp \left( \Delta - \tfrac{M}{A_\Sigma}
 
 \subsection{Analytic solutions}
 
-In order to further simplify \cref{eq:R_a_eq,eq:S_a_eq}, we search for analytic solutions, that is
+
+Let $T > 0$ and assume that $I = (- T, T)$. In order to further simplify \cref{eq:R_a_eq,eq:S_a_eq}, we search for analytic solutions, that is
 \begin{equation}
-	\forall a \in \N_+ : \forall t \in (0, T): \quad R_a (t) = \sum\limits_{n \in \N} R_{n, a} t^n, \label{eq:analycity}
+	\forall a \in \N_+ : \forall t \in I: \quad R_a (t) = \sum\limits_{n \in \N} R_{n, a} t^n, \label{eq:analycity}
 \end{equation}
 and the sums
 \begin{equation}
-	\forall t \in (0, T): \sum\limits_{n \in \N} \left( R_{n, a} \right)_{a \in \N_+} t^n,
+	\forall t \in I: \sum\limits_{n \in \N} \left( R_{n, a} \right)_{a \in \N_+} t^n,
 \end{equation}
 are assumed to be absolute convergent in $l^2 \left( \N_+ \right)$. Similarly we define
 \begin{equation}
-	\forall a \in \N_+ : \forall t \in (0, T): \quad S_a (t) = \sum\limits_{n \in \N} S_{n, a} t^n, \label{eq:analycity_for_S}
+	\forall a \in \N_+ : \forall t \in I: \quad S_a (t) = \sum\limits_{n \in \N} S_{n, a} t^n, \label{eq:analycity_for_S}
 \end{equation}
 The next lemma rewrites \cref{eq:R_a_eq,eq:S_a_eq} in terms of the coefficients $\left( R_{n, a} \right)_{(n, a) \in \N \times \N_+}$ and $\left( S_{n, a} \right)_{(n, a) \in \N \times \N_+}$.
 
@@ -387,7 +388,7 @@ The next lemma rewrites \cref{eq:R_a_eq,eq:S_a_eq} in terms of the coefficients 
 		\limsup\limits_{n \rightarrow \infty} \left( \sum\limits_{a \in \N} R_{n, a}^2 \right)^{\frac{1}{n}} &\leqslant \frac{1}{T}. \label{eq:convergence_radius}
 	\end{align}
 	\end{subequations}
-	If $\exp \left( \Delta - \tfrac{M}{A_\Sigma} \id \right) \chi$ is also defined for all $t \in (0, T)$, then
+	If $\exp \left( \Delta - \tfrac{M}{A_\Sigma} \id \right) \chi$ is also defined for all $t \in I$, then
 	\begin{equation}
 		S_{n + 1, a} = \frac{1}{n + 1} \sum\limits_{b, c \in \N_+} \sum\limits_{x + y + z = n} \tfrac{\lambda_a - \lambda_b + \lambda_c}{2 \lambda_c} \varphi_{a, b, c} S_{x, b} S_{y, c} \tfrac{\left( \tfrac{M}{A_\Sigma} + \lambda_a - \lambda_b - \lambda_c \right)^z}{z!}. \label{eq:general_iteration_for_S}
 	\end{equation}
@@ -396,6 +397,17 @@ The next lemma rewrites \cref{eq:R_a_eq,eq:S_a_eq} in terms of the coefficients 
 \begin{proof}
 	Inserting \cref{eq:analycity} into \cref{eq:R_a_eq} yields \cref{eq:general_iteration}. The \cref{eq:regularity,eq:convergence_radius} are necessary (and, in fact, sufficient) to have that the convergence radius of the Taylor series of $\varrho$ in the $L^2$ topology is at least $T$. The claim about \cref{eq:general_iteration_for_S} is straightforward to check.
 \end{proof}
+
+\smallskip
+
+*?*add comment here about how showing short time existence is hard, but if we have it, then the next theorem is cool*
+
+\begin{theorem}
+	Let us assume that the coefficient $S_{n, a}$ exist for all $n \in \N$ and $a \in \N_+$. Moreover, assume that they are not all zero, and
+	\begin{equation}
+		\frac{1}{T} \eqdef \sup \left( \left\{ \ \sqrt[n]{S_{n, a}} \ \middle| \ n \in \N \mbox{ and } a \in \N_+ \ \right\} \right) < \infty.
+	\end{equation}
+\end{theorem}
 
 In the following two sections we investigate two special cases when iteration in \cref{eq:general_iteration} exists for all $a$ and $n$.
 
@@ -490,7 +502,7 @@ Function on $\Sigma$ can be viewed as $\Lambda$-periodic functions on $\rl^2$, t
 \end{equation}
 Note again that $R_{\underline{0}} \equiv 0$. If $\chi$ is real, then $R_{\underline{k}} = \overline{R_{- \underline{k}}}$. In this section we slightly deviate from our previous method and use the above complex basis and coefficients.
 
-The ideas and proofs of the previous sections still apply, and if $\chi \in C^1 \left( (0, T), L_\cx^2 \left( \Sigma, g \right) \right)$, then we can define the coefficients functions $R_{\underline{k}}, S_{\underline{k}} \in C_\cx^1 \left( \Sigma \right)$, so that
+The ideas and proofs of the previous sections still apply, and if $\chi \in C^1 \left( I, L_\cx^2 \left( \Sigma, g \right) \right)$, then we can define the coefficients functions $R_{\underline{k}}, S_{\underline{k}} \in C_\cx^1 \left( \Sigma \right)$, so that
 \begin{align}
 	\chi \left( t, \underline{x} \right)																	&= \sum\limits_{n \in \N} \sum\limits_{\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}} R_{\underline{k}} (t) \Psi_{\underline{k}} \left( \underline{x} \right), \\
 	\exp \left( \left( \Delta - \tfrac{M}{A_\Sigma} \right) t \right) \chi \left( t, \underline{x} \right)	&= \sum\limits_{n \in \N} \sum\limits_{\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}} S_{\underline{k}} (t) \Psi_{\underline{k}} \left( \underline{x} \right).
@@ -606,7 +618,7 @@ We are now ready to prove our main theorem.
 
 	---
 
-	Now for all $t \in (0, T)$ and $\underline{x} \in \Sigma$, let
+	Now for all $t \in I$ and $\underline{x} \in \Sigma$, let
 	\begin{equation}
 		\varrho \left( t, \underline{x} \right) \eqdef \tfrac{M}{A_\Sigma} + \sum\limits_{\underline{k} \in \Lambda^* - \left\{ \underline{0} \right\}} S_{\underline{k}} (t) \exp \left( \left( \tfrac{M}{A_\Sigma} - 4 \pi^2 \left| \underline{k} \right|^2 \right) t \right) \tfrac{e^{2 \pi i \underline{k} \cdot \underline{x}}}{\sqrt{A_\Sigma}}. \label{eq:varrho_def}
 	\end{equation}

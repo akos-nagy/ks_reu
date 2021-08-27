@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/Arch Linux) (preloaded format=xelatex 2021.5.23)  23 AUG 2021 15:44
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/Arch Linux) (preloaded format=xelatex 2021.5.23)  25 AUG 2021 16:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -841,33 +841,29 @@ LaTeX Font Info:    Trying to load font information for U+bbm on input line 358
 (/usr/share/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [4]
-Overfull \hbox (1.40854pt too wide) in paragraph at lines 397--398
+Overfull \hbox (1.40854pt too wide) in paragraph at lines 398--399
 []\T1/futs/m/n/12 Inserting [][][]equa-tion (3.5)[][] into [][][]equa-tion (3.1
 b)[][] yields [][][]equa-tion (3.6a)[][]. The [][][][]equa-tions (3.6b)[][]
  []
 
 
-Overfull \hbox (10.88669pt too wide) in paragraph at lines 400--401
+Overfull \hbox (10.88669pt too wide) in paragraph at lines 412--413
 []\T1/futs/m/n/12 In the fol-low-ing two sec-tions we in-ves-ti-gate two spe-ci
 al cases when it-er-a-tion in [][][]equa-tion (3.6a)[][]
  []
 
-[5] [6]
+[5] [6] [7]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7]
-[8] [9]
+ [8]
+[9]
 
-LaTeX Warning: Reference `eq:R_bound' on page 1 undefined on input line 595.
+LaTeX Warning: Reference `eq:R_bound' on page 1 undefined on input line 607.
 
-
-Underfull \vbox (badness 4872) has occurred while \output is active []
-
- [10]
+[10]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
-45.
-
-(/usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
+57.
+ (/usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 Package microtype Info: Loading generic protrusion settings for font family
@@ -882,10 +878,10 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  17318 strings out of 476919
  270698 string characters out of 5827674
- 654723 words of memory out of 5000000
+ 652733 words of memory out of 5000000
  36900 multiletter control sequences out of 15000+600000
  484469 words of font info for 90 fonts, out of 8000000 for 9000
  1509 hyphenation exceptions out of 8191
- 98i,16n,102p,570b,491s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 98i,16n,102p,570b,442s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on KS_paper.pdf (11 pages).
