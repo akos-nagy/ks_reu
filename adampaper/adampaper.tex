@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\newcommand{\dm}{\;\mathrm d\mu}
+\begin{document}
+	Creatures began moving long before they developed appendages for that purpose.  Bacteria and other organisms move towards chemical attractants in their environment in far simpler ways.  In order to control their movements, cells excrete attractant as they go: both consuming and producing some field of goo in $\mathbb R^2$, denoted $c(x,y)$.  Keller-Segel equations model such movements by roughly (or finely) specifying how $c(x,y)$ and the bacterium on a field, $\rho(x,y)$, interact.
+
+	Until modernity, ``spontaneous generation'' was an accepted hypothesis for the origins of life.  The idea that beings can appear from nothing is explicitly rejected by the so called ``conservation laws''.  Three quantities are involved in these laws: $r,\vec J$ and $\sigma$, all functions from, say, $\mathbb R^3\times\mathbb R_{\geq0}$, space and time.
+	\begin{itemize}
+		\item The quantity $r$ is to be thought of as ``desnity'' or ``concentration'': the amount of stuff at a point.
+		\item The quantity $\vec J$ is to be thought of as ``flow'' or ``flux'': where stuff is moving and how much at a point.
+		\item The quantity $\sigma$ is to be thought of as ``source/sink'': the amount of stuff being created/destroyed at a point.
+	\end{itemize}
+	Over an arbitrary volume $U$ with boundary $\partial U$, we impose
+	\begin{equation}
+		\partial_t\int_Ur\dm=\int_{\partial U}\vec J\cdot\hat n\dm+\int_U\sigma\dm\label{conteqnprimaltato}
+	\end{equation}
+	for all fixed time $t$.  The amount of stuff entering/exiting $U$ is captured by the middle integral of $\vec J$.  The amount of stuff being created/destroyed in $U$ is captured by the right integral.  The change in the amount of stuff in $U$ ought to be equal to the sum of these (otherwise where is the stuff coming from?).
+
+	Let's apply Green's theorem to (\ref{conteqnprimaltato}), and commute derivatives and integrals under some suitable assumptions about $U$:
+	\begin{equation}
+		\int_U\partial_tr\dm-\int_U\nabla\cdot\vec J\dm-\int_U\sigma\dm=0
+	\end{equation}
+	Supposing $r,\vec J$ and $\sigma$ are continuous, we may take limits as $U$ approaches arbitrary points to find
+	\begin{equation}
+		\partial_tr-\nabla\cdot\vec J-\sigma=0\label{conteqn}
+	\end{equation}
+	In a petri dish, both chemical attractant and bacteria might obey (\ref{conteqn}).
+	\begin{itemize}
+		\item For the bacteria, $r=\rho$, $\sigma=0$, and $\vec J=-\nabla\rho+\rho\nabla c$.  The first gradient models bacteriums ``wanting'' to move away from other bacteriums and is called ``diffusion''.  The second gradient expresses bateriums ``wanting'' to move towards the attractant \textit{en masse}.
+		\item For the chemical attracting, $r=c$, $\sigma=\rho$, and $\vec J=-\nabla c$.  The production of chemical is proportional to the density of bacteria, and the chemical also diffuses.
+	\end{itemize}
+	Substituting these terms into (\ref{conteqn}), we obtain
+	\begin{align}
+		\partial_t\rho&=-\nabla\cdot(-\nabla\rho+\rho\nabla c)=\nabla^2\rho-\nabla\cdot(\rho\nabla c)\nonumber\\
+		\partial_tc&=\nabla\cdot(-\nabla c)+\rho=\nabla^2c+\rho
+	\end{align}
+	To obtain the Keller-Segel equations, make the assumption that $\partial_tc=0$ on meaningful timescales.  This is motivated by the idea that chemicals stabilize much quicker than any organisms or relevant processes and is sometimes said ``$c$ moves through equilibra''.
+	\begin{align}
+		\partial_t\rho&=\nabla^2\rho-\nabla\cdot(\rho\nabla c)\nonumber\\
+		-\rho&=\nabla^2c
+	\end{align}
+
+
+	\hrule\vspace{1ex}
+	\noindent Eliminating $c$ when countable fourier expansions exist: with
+	\[\rho=\sum_{i_0,i_1\in\mathbb N}e^{2\pi i(i_0x+i_1y)}a_{i_0,i_1}(t)\]
+	setting
+	\[c=\frac1{4\pi^2}\sum_{i_0,i_1\in\mathbb N}e^{2\pi i(i_0x+i_1y)}\frac{a_{i_0,i_1}(t)}{i_0^2+i_1^2}\]
+	satisfies the second equation.  The upper equation becomes
+	\begin{multline*}
+		\sum_{i_0,i_1\in\mathbb N}e^{2\pi i(i_0x+i_1y)}\partial_ta_{i_0,i_1}(t)=-4\pi^2\sum_{i_0,i_1\in\mathbb N}e^{2\pi i(i_0x+i_1y)}(i_0^2+i_1^2)a_{i_0,i_1}(t)+\sum_{i_0,i_1\in\mathbb N}e^{2\pi i(i_0x+i_1y)}a_{i_0,i_1}(t)+\rho\sum_{i_0,i_1\in\mathbb N}e^{2\pi i(i_0x+i_1y)}a_{i_0,i_1}(t)
+	\end{multline*}
+\end{document}
